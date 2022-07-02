@@ -44,7 +44,7 @@ function Cards() {
             <CardItem
               src="/assets/갱지5.jpg"
               text="강쥐6"
-              underInfo="귀여운 강아지6"
+              underInfo="귀여운 강아지"
               path="/dog6"
             />
           </ul>
