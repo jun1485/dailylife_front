@@ -1,0 +1,131 @@
+
+
+.cards {
+  padding: 4rem;
+  background: rgb(255, 255, 255);
+}
+
+h1 {
+  color: rgb(26, 26, 26);
+  text-align: center;
+  font-size: 4vw;
+}
+
+.cards__container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.cards__wrapper {
+  position: relative;
+  margin: 50px 0 45px;
+  width: 100%;
+}
+
+.cards__items {
+  list-style: none;
+  display: flex;
+  margin-bottom: 50px;
+  padding: 0;
+  justify-content: center;
+}
+
+.cards__item {
+  margin: 0 1rem;
+  border-radius: 10px;
+  width: 25vw;
+  height: 28vw;
+  grid-area: item;
+  background-color: rgb(247, 247, 247);
+  box-shadow: rgba(79, 79, 117, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;;
+}
+
+.cards__item__pic-wrap {
+  position: relative;
+  margin: 1vw auto 0 auto;
+  width: 90%;
+  padding-top: 75%;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cards__item__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  transition: all 0.2s linear;
+}
+
+.cards__item__img:hover {
+  transform: scale(1.1);
+}
+
+.cards__item__info {
+  cursor: pointer;
+}
+
+.cards__item__text {
+  color: #252e48;
+  font-size: 2.5vw;
+  margin: 3vw 0 2vw 0;
+  line-height:0px;
+}
+
+.cards__item__underInfo {
+  cursor: pointer;
+}
+
+
+/* @media only screen and (min-width: 1200px) {
+  .content__blog__container {
+    width: 84%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cards__items {
+    display: flex;
+    width: 100rem;
+  }
+} */
+
+@media only screen and (max-width: 1024px) {
+  h1 {
+    font-size: 10vw;
+  }
+
+  .cards__items {
+    display: block;
+  }
+
+  .cards__item {
+    margin: 0 auto 17vw auto;
+    padding-top: 0.2vw;
+    width: 60vw;
+    height: 69vw;
+  }
+
+  .cards__item__pic-wrap {
+    margin-top: 3vw;
+  }
+
+  .cards__item__text {
+    color: #252e48;
+    font-size: 6vw;
+    margin: 7.5vw 0 5vw 0;
+    line-height:0px;
+  }
+  
+} 
