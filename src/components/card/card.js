@@ -1,14 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import CardItem from "./cardItem";
 import "./Cards.css";
 
 function Cards() {
+  useSelector((state) => state);
+
   return (
     <div className="cards">
-      <h1>Daily Life</h1>
       <div className="cards__container">
         <div className="cards__wrapper">
-          <ul className="cards__items">
+          <div className="cards__items">
             <CardItem
               src="/assets/dog1.jpg"
               text="강쥐1"
@@ -27,8 +29,6 @@ function Cards() {
               underInfo="귀여운 강아지3"
               path="/dog3"
             />
-          </ul>
-          <ul className="cards__items">
             <CardItem
               src="/assets/갱지3.jpg"
               text="강쥐4"
@@ -44,10 +44,10 @@ function Cards() {
             <CardItem
               src="/assets/갱지5.jpg"
               text="강쥐6"
-              underInfo="귀여운 강아지"
+              underInfo="귀여운 강아지6"
               path="/dog6"
             />
-          </ul>
+          </div>
         </div>
       </div>
     </div>
