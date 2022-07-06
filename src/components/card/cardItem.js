@@ -9,7 +9,7 @@ function CardItem(props) {
         </figure>
         <div className="cards__item__info">
           <h5 className="cards__item__text">{props.text}</h5>
-          <p className=".cards__item__underInfo">{props.underInfo}</p>
+          <p className="cards__item__underInfo">{props.underInfo}</p>
         </div>
       </li>
     </>
