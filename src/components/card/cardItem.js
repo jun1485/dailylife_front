@@ -1,9 +1,13 @@
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 function CardItem(props) {
+  const openModal = (to) => {
+    window.location.href = "/#" + "open-modal";
+  };
   return (
     <>
-      <li className="cards__item">
+      <li className="cards__item" onClick={openModal}>
         <figure className="cards__item__pic-wrap">
           <img className="cards__item__img" alt="img" src={props.src} />
         </figure>

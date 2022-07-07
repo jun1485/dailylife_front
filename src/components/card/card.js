@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CardItem from "./cardItem";
 import "./Cards.css";
+import PostModal from "../postModal/PostModal";
 
 function Cards() {
   useSelector((state) => state);
-
   return (
     <div className="cards">
       <div className="cards__container">
@@ -15,7 +15,7 @@ function Cards() {
               src="/assets/dog1.jpg"
               text="강쥐1"
               underInfo="귀여운 강아지1"
-              path="/dog1"
+              path="/dog2"
             />
             <CardItem
               src="/assets/갱지2.jpg"
