@@ -1,6 +1,12 @@
+import { useEffect, useState } from "react";
 import "./PostModal.css";
 
 function PostModal(props) {
+  // const [postInfo, setPostInfo] = useState("");
+
+  // useEffect(() => {
+  //   setPostInfo(props.text);
+  // });
   return (
     <>
       <div className="container">
@@ -11,8 +17,8 @@ function PostModal(props) {
           <a href="#" title="Close" className="modal-close">
             Close
           </a>
-          <h1>강아지</h1>
-          <div>귀여운 강ㅇ지</div>
+          <h1>{props.text}</h1>
+          <div>{props.underInfo}</div>
           <br />
         </div>
       </div>

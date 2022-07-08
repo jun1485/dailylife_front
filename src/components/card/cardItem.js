@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import PostModal from "../postModal/PostModal";
 
 function CardItem(props) {
   const openModal = (to) => {
@@ -16,6 +16,12 @@ function CardItem(props) {
           <p className="cards__item__underInfo">{props.underInfo}</p>
         </div>
       </li>
+      {/* <PostModal
+        src={props.src}
+        text={props.text}
+        underInfo={props.underInfo}
+        path={props.path}
+      /> */}
     </>
   );
 }
