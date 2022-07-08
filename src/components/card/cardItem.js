@@ -4,6 +4,7 @@ import PostModal from "../postModal/PostModal";
 function CardItem(props) {
   const openModal = (to) => {
     window.location.href = "/#" + "open-modal";
+    console.log(props);
   };
   return (
     <>
@@ -16,12 +17,12 @@ function CardItem(props) {
           <p className="cards__item__underInfo">{props.underInfo}</p>
         </div>
       </li>
-      {/* <PostModal
+      <PostModal
         src={props.src}
         text={props.text}
         underInfo={props.underInfo}
         path={props.path}
-      /> */}
+      />
     </>
   );
 }
