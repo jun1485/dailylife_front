@@ -23,6 +23,7 @@ function Cards() {
                 />
               );
             })}
+            <PostModal />
           </div>
         </div>
       </div>

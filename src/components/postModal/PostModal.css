@@ -17,8 +17,8 @@
     pointer-events: auto;
   }
   .modal-window > div {
-    width: 40%;
-    height: 40%;
+    width: 80%;
+    height: 80%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -54,12 +54,6 @@
   a {
     color: inherit;
     text-decoration: none;
-  }
-  
-  .container {
-    display: grid;
-    justify-content: center;
-    align-items: center;
   }
   
   .modal-window > div {
