@@ -6,7 +6,7 @@ function SignIn() {
     <div className="login-page">
       <div className="form">
         <form>
-          <input type="text" placeholder="name" />
+          <input type="text" placeholder="id" />
           <input type="password" placeholder="password" autoComplete="on" />
           <input type="text" placeholder="email address" />
           <button>create</button>

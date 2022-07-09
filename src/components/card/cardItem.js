@@ -1,9 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { postActions } from "../store/selectedPostData";
 
 function CardItem(props) {
+  const dispatch = useDispatch();
+  const postData = useSelector((state) => state.selectedPostData);
+
+  const openModal = (to) => {
+    window.location.href = "/#open-modal";
+  };
   return (
     <>
-      <li className="cards__item">
+      <li
+        className="cards__item"
+        onClick={() => {
+          openModal();
+          dispatch(
+            postActions.updateData({
+              src: props.src,
+              text: props.text,
+              underInfo: props.underInfo,
+            })
+          );
+        }}
+      >
         <figure className="cards__item__pic-wrap">
           <img className="cards__item__img" alt="img" src={props.src} />
         </figure>
