@@ -8,29 +8,34 @@ function PostModal(props) {
   return (
     <>
       <div className="container">
-        <div className="interior"></div>
         <div
           id="open-modal"
           onClick={(event) => {
             window.location.href = "#";
-            // window.addEventListener("click", function (e) {
-            //   if (e.target !== modal) window.location.href = "#";
-            // });
-            window.addEventListener("click", function (e) {
-              if (e.target === modal) console.log("asd");
-            });
           }}
           className="modal-window"
         >
-          <div className="modal-inside">
-            <a href="#" title="Close" className="modal-close">
-              Close
-            </a>
+          <div
+            className="modal-inside"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
             <div className="modal-src-container">
-              <img src={currentPostData.src} alt={"postSrc"} />
+              <img
+                className="img-in-modal"
+                src={currentPostData.src}
+                alt={"postSrc"}
+              />
             </div>
-            <h1>{currentPostData.text}</h1>
-            <div>{currentPostData.underInfo}</div>
+            <div className="modal-content-container">
+              <a href="#" title="Close" className="modal-close">
+                Close
+              </a>
+              <h1 className="title-in-modal">{currentPostData.text}</h1>
+              <hr />
+              <div className="text-in-modal">{currentPostData.underInfo}</div>
+            </div>
             <br />
           </div>
         </div>
