@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Navbar from "./components/navbar/Navbar";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux/es/exports";
 import store from "./components/store/store";
@@ -12,6 +13,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
+        <Navbar />
         <App />
       </Provider>
     </BrowserRouter>

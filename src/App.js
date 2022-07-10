@@ -7,22 +7,19 @@ import PostModal from "./components/postModal/PostModal";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              {/* <PostModal /> */}
-              <Cards />
-            </>
-          }
-        ></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signIn" element={<SignIn />}></Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            {/* <PostModal /> */}
+            <Cards />
+          </>
+        }
+      ></Route>
+      <Route path="/login" element={<Login />}></Route>
+      <Route path="/signIn" element={<SignIn />}></Route>
+    </Routes>
   );
 }
 
