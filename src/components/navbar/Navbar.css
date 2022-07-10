@@ -29,6 +29,7 @@ body {
   border: none;
 }
 .nav-title > a {
+  font-family: "Roboto", sans-serif;
   text-decoration-line: none;
   color: yellow;
 }
