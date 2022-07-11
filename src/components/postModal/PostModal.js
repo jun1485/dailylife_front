@@ -10,8 +10,10 @@ function PostModal(props) {
       <div className="container">
         <div
           id="open-modal"
-          onClick={(event) => {
-            window.location.href = "#";
+          onClick={(e) => {
+            window.location.href = "#home";
+
+            e.stopPropagation();
           }}
           className="modal-window"
         >
@@ -29,7 +31,7 @@ function PostModal(props) {
               />
             </div>
             <div className="modal-content-container">
-              <a href="#" title="Close" className="modal-close">
+              <a href="#home" title="Close" className="modal-close">
                 Close
               </a>
               <h1 className="title-in-modal">{currentPostData.text}</h1>

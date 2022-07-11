@@ -1,9 +1,8 @@
 import Cards from "./components/card/card";
 import Login from "./components/login/Login";
-import Navbar from "./components/navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import SignIn from "./components/login/SignIn";
-import PostModal from "./components/postModal/PostModal";
+import Searching from "./components/search/Searching";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
         path="/"
         element={
           <>
-            {/* <PostModal /> */}
+            <Searching />
             <Cards />
           </>
         }

@@ -57,7 +57,7 @@
   }
 
   .modal-content-container {
-    /* margin: 5vh 0 0 5vh; */
+    width: 50%;
   }
   .modal-close {
     color: #aaa;
@@ -81,7 +81,7 @@
   .text-in-modal {
   }
   hr {
-    width: 500px;
+    width: 100%
   }
   html,
   a {
