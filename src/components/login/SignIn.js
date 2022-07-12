@@ -4,26 +4,31 @@ import axios from "axios";
 import { useState } from "react";
 
 function SignIn() {
+  const [userId, setUserId] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    let formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
-    formData.append("email", email);
+    // let formData = new FormData();
+    // formData.append("userId", username);
+    // formData.append("userPassword", password);
+    // formData.append("userEmail", email);
+    // formData.append("userName", "seungsik");
+    // formData.append("userPhoneNumber", "010-0000-0000");
 
     axios
-      // URL은 정확한 경로를 입력할 필요가 있습니다.
-      .post("http://localhost:8080", formData)
-      .then((res) => {
-        console.log(res);
+      .post(`${process.env.REACT_APP_HOST}/api/users/joinTest`, {
+        userId: userId,
+        userPassword: password,
+        userEmail: email,
+        userName: username,
+        userPhoneNumber: phoneNumber,
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -32,19 +37,29 @@ function SignIn() {
         <form action="/signin" method="POST" onSubmit={handleSubmit}>
           <input
             type="text"
+            placeholder="email address"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="text"
             placeholder="id"
+            onChange={(e) => setUserId(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="name"
             onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="phone number"
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
           <input
             type="password"
             placeholder="password"
             autoComplete="on"
             onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="email address"
-            onChange={(e) => setEmail(e.target.value)}
           />
           <button>create</button>
           <p className="message">

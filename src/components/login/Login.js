@@ -9,12 +9,18 @@ function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
+    // let formData = new FormData();
+    // formData.append("userId", username);
+    // formData.append("userPassword", password);
     axios
-      .post("http://localhost:8080", formData)
-      .then((res) => console.log(res))
+      .post(`${process.env.REACT_APP_HOST}/api/users/loginTest`, {
+        userId: username,
+        userPassword: password,
+      })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("accessToken", res.data.accessToken);
+      })
       .catch((err) => console.log(err));
   }
 
