@@ -1,0 +1,74 @@
+.container {
+  width: 700px;
+  margin: 0 auto;
+}
+.post-header {
+  font-size: 55px;
+}
+.post-form {
+  text-align: center;
+}
+.post-container {
+  background-color: white;
+  box-shadow: 0px 0px 5px -1px #000000;
+  border-radius: 10px;
+  padding: 20px 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.post-data {
+  width: 100%;
+  font-size: larger;
+  margin: 5px 0;
+  resize: none;
+}
+.post-submit {
+  border: 0;
+  background-color: dodgerblue;
+  color: white;
+  border-radius: 5px;
+  width: 50%;
+  margin: 20px 0;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 0px 5px -1px #000000;
+}
+.post-submit:hover {
+  cursor: pointer;
+  background-color: rgb(0, 114, 227);
+}
+.post-file-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#post-upload-name {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  border: 1px solid #dddddd;
+  width: 78%;
+  color: #999999;
+}
+.post-file-container > label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+}
+.post-file-container > input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
