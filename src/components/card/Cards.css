@@ -11,6 +11,13 @@ h1 {
   font-size: 4vw;
 }
 
+h2 {
+  color: rgb(26, 26, 26);
+  text-align: center;
+  font-size: 4vw;
+  margin-bottom: 5vw;
+}
+
 .cards__container {
   display: flex;
   flex-flow: column;

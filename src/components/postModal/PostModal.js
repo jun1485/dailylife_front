@@ -1,9 +1,21 @@
 import "./PostModal.css";
 import { useSelector } from "react-redux/es/exports";
+import { useEffect } from "react";
 
 function PostModal(props) {
   const currentPostData = useSelector((state) => state.selectedPostData);
   const modal = document.querySelector(".modal-inside");
+
+    // create localStorage for recentlyViewd items
+    useEffect(()=>{
+      if(localStorage.watched === undefined) {
+        localStorage.setItem('watched', JSON.stringify([]));
+      }
+      let watched = JSON.parse(localStorage.getItem('watched'));
+      watched.unshift(currentPostData)
+      watched = [... new Set(watched)].slice(0,3)
+      localStorage.setItem('watched',JSON.stringify(watched))
+    },[currentPostData])
 
   return (
     <>

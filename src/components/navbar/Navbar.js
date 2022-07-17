@@ -22,7 +22,7 @@ function Navbar() {
         <div className="nav-links">
           <Link to="/post">✏️</Link>
           <Link to="">🚀</Link>
-          <Link to="">🌞</Link>
+          <Link to="/recentlyViewed">🌞</Link>
           <Link to="/login">🧑</Link>
         </div>
       </div>
