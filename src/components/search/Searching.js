@@ -7,6 +7,7 @@ function Searching() {
       <div id="wrap">
         <form action="" autoComplete="on">
           <input
+            className="searchBar"
             id="search"
             name="search"
             type="text"
