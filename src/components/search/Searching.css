@@ -14,7 +14,7 @@ body {
   position: relative;
 }
 
-input[type="text"] {
+.searchBar{
   height: 60px;
   font-size: 55px;
   display: inline-block;
@@ -35,11 +35,11 @@ input[type="text"] {
   cursor: pointer;
 }
 
-input[type="text"]:focus:hover {
+.searchBar:focus:hover {
   border-bottom: 1px solid #BBB;
 }
 
-input[type="text"]:focus {
+.searchBar:focus {
   width: 700px;
   z-index: 1;
   border-bottom: 1px solid #BBB;
