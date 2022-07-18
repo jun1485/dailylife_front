@@ -13,7 +13,7 @@ function App() {
         path="/"
         element={
           <>
-            <Searching />
+            {/* <Searching /> */}
             <Cards />
           </>
         }

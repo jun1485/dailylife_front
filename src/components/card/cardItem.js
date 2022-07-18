@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { postActions } from "../store/selectedPostData";
 
 function CardItem(props) {
-  
   const dispatch = useDispatch();
 
   const postData = useSelector((state) => state.selectedPostData);
@@ -21,14 +20,14 @@ function CardItem(props) {
 
   const Emptyheart = "/assets/empty.png";
 
-  const HandleLike = (event)=>{
+  const HandleLike = (event) => {
     event.stopPropagation();
-    if (like === 0){
-      setLike(1)
+    if (like === 0) {
+      setLike(1);
     } else {
-      setLike(0)
+      setLike(0);
     }
-  }
+  };
 
   // like end
 
@@ -53,7 +52,12 @@ function CardItem(props) {
         <div className="cards__item__info">
           <h5 className="cards__item__text">{props.text}</h5>
           {/* like */}
-          <span onClick={HandleLike}><img className="cards__item__like" src= {like? Fullheart:Emptyheart}/></span>
+          <span onClick={HandleLike}>
+            <img
+              className="cards__item__like"
+              src={like ? Fullheart : Emptyheart}
+            />
+          </span>
           <p className="cards__item__underInfo">{props.underInfo}</p>
         </div>
       </li>
