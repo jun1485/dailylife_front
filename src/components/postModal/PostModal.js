@@ -3,7 +3,6 @@ import { useSelector } from "react-redux/es/exports";
 
 function PostModal(props) {
   const currentPostData = useSelector((state) => state.selectedPostData);
-  const modal = document.querySelector(".modal-inside");
 
   return (
     <>
@@ -12,8 +11,6 @@ function PostModal(props) {
           id="open-modal"
           onClick={(e) => {
             window.location.href = "#home";
-
-            e.stopPropagation();
           }}
           className="modal-window"
         >
