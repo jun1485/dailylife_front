@@ -10,9 +10,9 @@ function PostModal(props) {
           localStorage.setItem('watched', JSON.stringify([]));
         }
         let watched = JSON.parse(localStorage.getItem('watched'));
-        watched.unshift(currentPostData)
-        watched = [... new Set(watched)].slice(0,3)
-        localStorage.setItem('watched',JSON.stringify(watched))
+        watched.unshift(currentPostData);
+        watched = [... new Set(watched.map(JSON.stringify))].map(JSON.parse).slice(0,6);
+        localStorage.setItem('watched',JSON.stringify(watched));
       },[currentPostData])
   
 

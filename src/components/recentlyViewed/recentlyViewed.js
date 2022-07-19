@@ -13,21 +13,19 @@ function RecentlyViewed() {
                 <div className="cards__container">
                     <div className="cards__wrapper">
                         <div className="cards__items">
-                            {watched.map((data, i) => {
+                            {watched.map((data,i) => {
                                 return (
-                                    <>
-                                        <RecentlyItem
-                                            key={i}
-                                            id={data.id}
-                                            src={data.src}
-                                            text={data.text}
-                                            underInfo={data.underInfo}
-                                            path={data.path}
-                                        />
-                                        <PostModal />
-                                    </>
+                                    <RecentlyItem
+                                        key={i}
+                                        id={data.id}
+                                        src={data.src}
+                                        text={data.text}
+                                        underInfo={data.underInfo}
+                                        path={data.path}
+                                     />
                                 );
                             })}
+                            <PostModal />
                         </div>
                     </div>
                 </div>
