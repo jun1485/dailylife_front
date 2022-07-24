@@ -7,27 +7,24 @@ import { postActions } from "../store/post";
 
 function Searching(props) {
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.post);
+  const { post } = useSelector((state) => state);
   const [searched, setSearched] = useState("");
   const getData = Object.values(props);
   const data = getData[0];
-  const searchSpace = (e) => {
-    setSearched(e.target.value);
-  };
+  const searchSpace = (e) => setSearched(e.target.value);
 
-  const searchedData = data.myValues.filter((data) => {
-    return data.text.toLowerCase().includes(searched.toLowerCase());
-  });
+  const searchedData = data.myValues.filter((data) =>
+    data.text.toLowerCase().includes(searched.toLowerCase())
+  );
 
   useEffect(() => {
-    if (Array.isArray(searchedData) !== true) {
+    if (!Array.isArray(searchedData)) {
       console.log("배열이 아님;");
     } else {
       dispatch(postActions.updateItems(searchedData));
-
       console.log(post);
     }
-  }, searchedData);
+  }, []);
 
   return (
     <>
