@@ -15,7 +15,7 @@ function Cards(props) {
       <div className="cards__container">
         <div className="cards__wrapper">
           <div className="cards__items">
-            {cardData.map((data, i) => {
+            {cardData.myValues.map((data, i) => {
               return (
                 <CardItem
                   key={data.id}
