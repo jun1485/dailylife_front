@@ -3,42 +3,38 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { useSelector } from "react-redux/es/exports";
 import "./Searching.css";
 import { searchedDataActions } from "../store/searchResult";
-import CardItem from "../card/cardItem";
+import { postActions } from "../store/post";
 
 function Searching(props) {
+  const store = useSelector((state) => state);
   const dispatch = useDispatch();
-  const searchResult = useSelector((state) => state.searchResult);
   const [searched, setSearched] = useState("");
+  const [filteredData, setFilteredData] = useState("");
   const getData = Object.values(props);
   const data = getData[0];
-  const searchSpace = (e) => {
-    setSearched(e.target.value);
-  };
+  const searchSpace = (e) => setSearched(e.target.value);
 
-  const searchedData = data.filter((data) => {
-    return data.text.toLowerCase().includes(searched.toLowerCase());
-  });
+  const searchedData = data.myValues.filter((data) =>
+    data.text.toLowerCase().includes(searched.toLowerCase())
+  );
 
   useEffect(() => {
-    if (Array.isArray(searchedData) !== true) {
+    setFilteredData(store.post.myValues);
+    console.log(filteredData);
+  }, []);
+
+  useEffect(() => {
+    if (!Array.isArray(searchedData)) {
       console.log("배열이 아님;");
     } else {
+      dispatch(postActions.updateItems(searchedData));
+      if (searchedData.length === 0) {
+        dispatch(postActions.updateItems(filteredData));
+      }
+      console.log(searched);
       console.log(searchedData);
-      // dispatch(
-      //   searchedDataActions.updateItems({
-      //     src: searchedData.src,
-      //     text: searchedData.text,
-      //     underInfo: searchedData.underInfo,
-      //   })
-      // );
     }
-    searchedData.map((data, i) => {
-      return (
-        <CardItem src={data.src} text={data.text} underInfo={data.underInfo} />
-      );
-    });
-    // console.log(searchResult);
-  }, [searchedData]);
+  }, [searched]);
 
   return (
     <>
