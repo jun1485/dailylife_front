@@ -6,9 +6,10 @@ import { searchedDataActions } from "../store/searchResult";
 import { postActions } from "../store/post";
 
 function Searching(props) {
+  const store = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { post } = useSelector((state) => state);
   const [searched, setSearched] = useState("");
+  const [filteredData, setFilteredData] = useState("");
   const getData = Object.values(props);
   const data = getData[0];
   const searchSpace = (e) => setSearched(e.target.value);
@@ -18,13 +19,22 @@ function Searching(props) {
   );
 
   useEffect(() => {
+    setFilteredData(store.post.myValues);
+    console.log(filteredData);
+  }, []);
+
+  useEffect(() => {
     if (!Array.isArray(searchedData)) {
       console.log("배열이 아님;");
     } else {
       dispatch(postActions.updateItems(searchedData));
-      console.log(post);
+      if (searchedData.length === 0) {
+        dispatch(postActions.updateItems(filteredData));
+      }
+      console.log(searched);
+      console.log(searchedData);
     }
-  }, []);
+  }, [searched]);
 
   return (
     <>
