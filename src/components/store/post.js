@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const post = createSlice({
   name: "post",
@@ -50,7 +50,9 @@ const post = createSlice({
   },
   reducers: {
     updateItems(state, action) {
-      state.myValues = action.payload;
+      // let copiedData = current(state.myValues);
+      // state.myValues = action.payload;
+      // if (state.myValues.length === 0);
     },
   },
 });
