@@ -5,16 +5,14 @@ import "./Searching.css";
 import { searchedDataActions } from "../store/searchResult";
 import { postActions } from "../store/post";
 
-function Searching(props) {
+function Searching({ cardData }) {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [searched, setSearched] = useState("");
   const [filteredData, setFilteredData] = useState("");
-  const getData = Object.values(props);
-  const data = getData[0];
   const searchSpace = (e) => setSearched(e.target.value);
 
-  const searchedData = data.myValues.filter((data) =>
+  const searchedData = cardData.myValues.filter((data) =>
     data.text.toLowerCase().includes(searched.toLowerCase())
   );
 
