@@ -43,7 +43,7 @@ function Searching({ cardData }) {
             id="search"
             name="search"
             type="text"
-            placeholder="looking for ..."
+            placeholder="Looking for ..."
             onChange={searchSpace}
           />
           <input id="search_submit" value="Researcher" type="submit" />

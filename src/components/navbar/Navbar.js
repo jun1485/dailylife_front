@@ -18,12 +18,11 @@ function Navbar() {
             <span></span>
           </label>
         </div>
-
         <div className="nav-links">
-          <Link to="/post">✏️</Link>
-          <Link to="">🚀</Link>
-          <Link to="/recentlyViewed">🌞</Link>
-          <Link to="/login">🧑</Link>
+          <Link to="" className="link link1"></Link>
+          <Link to="" className="link link2"></Link>
+          <Link to="/recentlyViewed"  className="link link3"></Link>
+          <Link to="/login"  className="link link4"></Link>
         </div>
       </div>
     </>
