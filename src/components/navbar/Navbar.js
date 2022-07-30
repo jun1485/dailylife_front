@@ -11,13 +11,6 @@ function Navbar() {
             <Link to="/">Daily Life</Link>
           </button>
         </div>
-        <div className="nav-btn">
-          <label>
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        </div>
 
         <div className="nav-links">
           <Link to="/post">✏️</Link>
