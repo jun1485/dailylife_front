@@ -31,17 +31,17 @@ export default function UserPost() {
   }
 
   return (
-    <div className="container">
-      <h1 className="post-header">게시물 업로드</h1>
+    <div className="post-container">
+      <h1 className="post-header">Post</h1>
       <form
         className="post-form"
         action="/"
         method="post"
         onSubmit={handleSubmit}
       >
-        <div className="post-container">
+        <div className="post-input-container">
           <input
-            className="post-data"
+            className="post-data post-data-title"
             type="text"
             placeholder="title"
             name="title"
@@ -49,9 +49,8 @@ export default function UserPost() {
           />
           <textarea
             className="post-data"
-            placeholder="content"
             name="content"
-            rows="10"
+            rows="20"
             onChange={(e) => setContent(e.target.value)}
           />
           <div className="post-file-container">

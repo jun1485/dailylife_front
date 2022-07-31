@@ -8,10 +8,15 @@ body {
 }
 
 .nav {
-  height: 50px;
+  height: 70px;
   width: 100%;
-  background-color: #4d4d4d;
+  background-color: #2a2e35;
   position: relative;
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
 }
 
 .nav > .nav-header {
@@ -29,9 +34,11 @@ body {
   border: none;
 }
 .nav-title > a {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Viga', sans-serif;
   text-decoration-line: none;
-  color: yellow;
+  color: rgb(255, 247, 0);
+  font-size: 27px;
+  letter-spacing: 4px;
 }
 
 .nav > .nav-btn {
@@ -40,9 +47,40 @@ body {
 
 .nav > .nav-links {
   margin-right: 20px;
-  display: inline;
+  display: flex;
   float: right;
   font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav > .nav-links > .link {
+  display: inline-block;
+  padding: 10px 40px;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: auto;
+}
+
+.link1 {
+  background: url(../../../public/assets/star.png);
+  transition: all 0.1s ease-out;
+}
+
+.link2 {
+  background: url(../../../public/assets/message.png);
+  transition: all 0.1s ease-out;
+}
+
+.link3 {
+  background: url(../../../public/assets/viewed.png);
+  transition: all 0.1s ease-out;
+}
+
+.link4 {
+  background: url(../../../public/assets/profil.png);
+  transition: all 0.1s ease-out;
 }
 
 .navbar-btn {
@@ -51,27 +89,71 @@ body {
   border: none;
 }
 
-.nav > .nav-links > a {
-  display: inline-block;
-  padding: 13px 10px 13px 10px;
-  text-decoration: none;
-  color: #efefef;
-}
 
-.nav > .nav-links > a:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+@media (hover: hover) {
+	.nav > .nav-links > .link1:hover {
+    background: url(../../../public/assets/hoverstar.png);
+    display: inline-block;
+    padding: 10px 40px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: auto;
+  }
+  
+  .nav > .nav-links > .link2:hover {
+    background: url(../../../public/assets/hovermessage.png);
+    display: inline-block;
+    padding: 10px 40px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: auto;
+  }
+  
+  .nav > .nav-links > .link3:hover {
+    background: url(../../../public/assets/hoverviewed.png);
+    display: inline-block;
+    padding: 10px 40px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: auto;
+  }
+  
+  .nav > .nav-links > .link4:hover {
+    background: url(../../../public/assets/hoverprofil.png);
+    display: inline-block;
+    padding: 10px 40px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: auto;
+  }
 }
 
 .nav > #nav-check {
   display: none;
 }
 
+@media (max-width:1200px) {
+  .nav > .nav-links > .link {
+    padding: 10px 30px;
+  }
+}
+
 @media (max-width:600px) {
+
+  .nav > .nav-header > .nav-title {
+    margin-left: 0;
+  }
+
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
     right: 0px;
     top: 0px;
+    margin: 10px 13px 0 0;
   }
   .nav > .nav-btn > label {
     display: inline-block;
@@ -86,7 +168,7 @@ body {
     display: block;
     width: 25px;
     height: 10px;
-    border-top: 2px solid #eee;
+    border-top: 3px solid rgb(255, 247, 0);
   }
   .nav > .nav-links {
     display: flex;

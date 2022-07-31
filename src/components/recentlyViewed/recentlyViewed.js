@@ -13,7 +13,7 @@ function RecentlyViewed() {
                 <div className="cards__container">
                     <div className="cards__wrapper">
                         <div className="cards__items">
-                            {watched.map((data,i) => {
+                            {watched.map((data, i) => {
                                 return (
                                     <RecentlyItem
                                         key={i}
@@ -22,7 +22,7 @@ function RecentlyViewed() {
                                         text={data.text}
                                         underInfo={data.underInfo}
                                         path={data.path}
-                                     />
+                                    />
                                 );
                             })}
                             <PostModal />
