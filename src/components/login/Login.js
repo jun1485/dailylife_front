@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import "./login.css";
 import axios from "axios";
 import { useState } from "react";
+import { SET_TOKEN } from "../store/authToken";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 
 function Login() {
+  const dispatch = useDispatch();
+  const tokenInfo = useSelector((state) => state.tokenSlice);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +28,9 @@ function Login() {
       )
       .then((res) => {
         console.log(res);
-        localStorage.setItem("accessToken", res.data.accessToken);
+        dispatch(SET_TOKEN(res.data.data.accessToken));
+        console.log("token: " + JSON.stringify(tokenInfo));
+        // window.location.href = "/#";
       })
       .catch((err) => console.log(err));
   }

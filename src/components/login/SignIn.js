@@ -20,7 +20,7 @@ function SignIn() {
     // formData.append("userPhoneNumber", "010-0000-0000");
 
     axios
-      .post(`${process.env.REACT_APP_HOST}/api/users/joinTest`, {
+      .post(`${process.env.REACT_APP_HOST}/api/users/join`, {
         userId: userId,
         userPassword: password,
         userEmail: email,
