@@ -93,8 +93,6 @@ body {
 @media (hover: hover) {
 	.nav > .nav-links > .link1:hover {
     background: url(../../../public/assets/hoverstar.png);
-    display: inline-block;
-    padding: 10px 40px;
     background-size: 30px;
     background-repeat: no-repeat;
     height: 30px;
@@ -103,8 +101,6 @@ body {
   
   .nav > .nav-links > .link2:hover {
     background: url(../../../public/assets/hovermessage.png);
-    display: inline-block;
-    padding: 10px 40px;
     background-size: 30px;
     background-repeat: no-repeat;
     height: 30px;
@@ -113,8 +109,6 @@ body {
   
   .nav > .nav-links > .link3:hover {
     background: url(../../../public/assets/hoverviewed.png);
-    display: inline-block;
-    padding: 10px 40px;
     background-size: 30px;
     background-repeat: no-repeat;
     height: 30px;
@@ -123,8 +117,6 @@ body {
   
   .nav > .nav-links > .link4:hover {
     background: url(../../../public/assets/hoverprofil.png);
-    display: inline-block;
-    padding: 10px 40px;
     background-size: 30px;
     background-repeat: no-repeat;
     height: 30px;
