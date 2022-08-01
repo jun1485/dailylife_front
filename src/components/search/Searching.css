@@ -14,7 +14,7 @@
   width: 35vw;
   height: 3.2vw;
   padding: 10px 2.5vw;
-  border: 3px solid rgb(255, 234, 0);
+  border: 3px solid rgb(255, 221, 0);
   background-color: rgb(255, 255, 237);
   border-radius: 3vw;
   outline: none;
@@ -68,7 +68,7 @@
 }
 
 #wrap input[type="text"]{
-  color: rgb(255, 203, 30);
+  color: rgb(255, 165, 30);
   font-size: 1.2vw;
   position: absolute;
   top: 50%;
@@ -78,7 +78,7 @@
 }
 
 #wrap input::placeholder { 
-  color: rgb(255, 203, 30);
+  color: rgb(255, 165, 30);
   font-size: 1.2vw;
   position: absolute;
   top: 50%;

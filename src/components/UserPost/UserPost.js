@@ -74,7 +74,7 @@ export default function UserPost() {
           </div>
         </div>
         <button type="submit" className="post-submit">
-          업로드
+          Upload
         </button>
       </form>
     </div>
