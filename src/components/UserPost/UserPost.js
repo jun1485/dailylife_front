@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./UserPost.css";
 
@@ -13,7 +13,7 @@ export default function UserPost() {
     const accessToken = localStorage.getItem("accessToken");
     axios
       .post(
-        `${process.env.REACT_APP_HOST}/board/create`,
+        `${process.env.REACT_APP_HOST}/api/board/create`,
         {
           title,
           content,
@@ -29,6 +29,15 @@ export default function UserPost() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
+
+  // 상태 값 업데이트되는 것을 콘솔에서 확인하기 위한 코드
+  // 실제 서비스 작동 로직과는 관련이 없는 코드입니다.
+  useEffect(() => {
+    console.log(`
+    title: ${title},
+    content: ${content}
+    `);
+  }, [title, content]);
 
   return (
     <div className="post-container">
