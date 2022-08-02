@@ -5,11 +5,18 @@ import "./UserPost.css";
 export default function UserPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [thumbnail, setThumbnail] = useState("string");
+  const [thumbNail, setThumbNail] = useState("string");
   const [imageName, setImageName] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    // const formData = new FormData();
+    // formData.append("title", title);
+    // formData.append("content", content);
+    // formData.append("thumbNail", thumbNail);
+    // formData.append("imageName", imageName);
+
     const accessToken = localStorage.getItem("accessToken");
     axios
       .post(
@@ -18,11 +25,13 @@ export default function UserPost() {
           title,
           content,
           imageName,
-          thumbnail,
+          thumbNail,
         },
+        // formData,
         {
           headers: {
             "X-ACCESS-TOKEN": accessToken,
+            "Content-Type": "multipart/form-data",
           },
         }
       )
@@ -35,9 +44,11 @@ export default function UserPost() {
   useEffect(() => {
     console.log(`
     title: ${title},
-    content: ${content}
+    content: ${content},
+    imageName: ${JSON.stringify(imageName)},
+    imageName: ${imageName}
     `);
-  }, [title, content]);
+  }, [title, content, imageName]);
 
   return (
     <div className="post-container">
@@ -77,7 +88,7 @@ export default function UserPost() {
               onChange={(e) => {
                 document.querySelector("#post-upload-name").value =
                   e.target.value;
-                setImageName(e.target.value);
+                setImageName([...imageName, e.target.files[0]]);
               }}
             />
           </div>
