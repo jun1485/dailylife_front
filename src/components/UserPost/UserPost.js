@@ -5,7 +5,6 @@ import "./UserPost.css";
 
 export default function UserPost() {
   const tokenInfo = useSelector((state) => state.authToken);
-  const func = console.log(tokenInfo);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [thumbNail, setThumbNail] = useState("string");
@@ -33,7 +32,7 @@ export default function UserPost() {
         // formData,
         {
           headers: {
-            "X-ACCESS-TOKEN": JSON.stringify(tokenInfo),
+            "X-ACCESS-TOKEN": JSON.stringify(tokenInfo.accessToken),
             "Content-Type": "multipart/form-data",
           },
         }
