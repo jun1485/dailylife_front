@@ -10,27 +10,33 @@ export default function UserPost() {
   const [content, setContent] = useState("");
   const [thumbNail, setThumbNail] = useState("st");
   const [imageName, setImageName] = useState([]);
+  const [file, setFile] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    // const formData = new FormData();
-    // formData.append("title", title);
-    // formData.append("content", content);
-    // formData.append("thumbNail", thumbNail);
-    // formData.append("imageName", imageName);
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("thumbNail", thumbNail);
+    imageName.forEach((file) => {
+      console.log(file);
+      formData.append("imageName", file);
+    });
+
+    console.log(imageName);
 
     const accessToken = localStorage.getItem("accessToken");
     axios
       .post(
         `${process.env.REACT_APP_HOST}/api/board/create`,
-        {
-          title,
-          content,
-          imageName,
-          thumbNail,
-        },
-        // formData,
+        // {
+        //   title,
+        //   content,
+        //   imageName,
+        //   thumbNail,
+        // },
+        formData,
         {
           headers: {
             "X-ACCESS-TOKEN": tokenInfo.accessToken,
@@ -79,7 +85,7 @@ export default function UserPost() {
           <div className="post-file-container">
             <input
               id="post-upload-name"
-              value="첨부파일"
+              value={file}
               placeholder="첨부파일"
               readOnly
             />
@@ -88,10 +94,11 @@ export default function UserPost() {
               type="file"
               name="file"
               id="file"
+              multiple
               onChange={(e) => {
-                document.querySelector("#post-upload-name").value =
-                  e.target.value;
-                setImageName(e.target.files[0]);
+                for (let i = 0; i < e.target.files.length; i++)
+                  setFile(file + " " + e.target.files[i].name);
+                setImageName([...imageName, ...e.target.files]);
               }}
             />
           </div>
