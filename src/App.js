@@ -6,9 +6,11 @@ import Searching from "./components/search/Searching";
 import RecentlyViewed from "./components/recentlyViewed/recentlyViewed";
 import UserPost from "./components/UserPost/UserPost";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function App() {
   const cardData = useSelector((state) => state.post);
+  const tokenInfo = useSelector((state) => state.authToken);
 
   return (
     <Routes>
@@ -16,6 +18,24 @@ function App() {
         path="/"
         element={
           <>
+            <button
+              onClick={() => {
+                axios
+                  .get(`${process.env.REACT_APP_HOST}/api/board/getBoard/1`, {
+                    headers: {
+                      "X-ACCESS-TOKEN": tokenInfo.accessToken,
+                    },
+                  })
+                  .then((res) => {
+                    console.log(res);
+                  })
+                  .catch((res) => {
+                    console.log(res);
+                  });
+              }}
+            >
+              데이터받아오기
+            </button>
             <Cards />
           </>
         }

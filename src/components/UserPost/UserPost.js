@@ -5,9 +5,10 @@ import "./UserPost.css";
 
 export default function UserPost() {
   const tokenInfo = useSelector((state) => state.authToken);
+  console.log(tokenInfo.accessToken);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [thumbNail, setThumbNail] = useState("string");
+  const [thumbNail, setThumbNail] = useState("st");
   const [imageName, setImageName] = useState([]);
 
   function handleSubmit(e) {
@@ -32,7 +33,7 @@ export default function UserPost() {
         // formData,
         {
           headers: {
-            "X-ACCESS-TOKEN": JSON.stringify(tokenInfo.accessToken),
+            "X-ACCESS-TOKEN": tokenInfo.accessToken,
             "Content-Type": "multipart/form-data",
           },
         }
@@ -90,7 +91,7 @@ export default function UserPost() {
               onChange={(e) => {
                 document.querySelector("#post-upload-name").value =
                   e.target.value;
-                setImageName([...imageName, e.target.files[0]]);
+                setImageName(e.target.files[0]);
               }}
             />
           </div>
@@ -99,7 +100,7 @@ export default function UserPost() {
           type="submit"
           className="post-submit"
           onClick={() => {
-            console.log(tokenInfo);
+            console.log(tokenInfo.accessToken);
           }}
         >
           Upload
