@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux/es/exports";
 import axios from "axios";
 import "./UserPost.css";
 
 export default function UserPost() {
+  const tokenInfo = useSelector((state) => state.authToken);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [thumbNail, setThumbNail] = useState("string");
@@ -36,7 +38,7 @@ export default function UserPost() {
         formData,
         {
           headers: {
-            "X-ACCESS-TOKEN": accessToken,
+            "X-ACCESS-TOKEN": JSON.stringify(tokenInfo.accessToken),
             "Content-Type": "multipart/form-data",
           },
         }
@@ -100,7 +102,13 @@ export default function UserPost() {
             />
           </div>
         </div>
-        <button type="submit" className="post-submit">
+        <button
+          type="submit"
+          className="post-submit"
+          onClick={() => {
+            console.log(tokenInfo);
+          }}
+        >
           Upload
         </button>
       </form>

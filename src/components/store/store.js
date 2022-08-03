@@ -9,6 +9,6 @@ export default configureStore({
     post: post.reducer,
     selectedPostData: selectedPostData.reducer,
     searchResult: searchResult.reducer,
-    tokenSlice: tokenSlice.reducer,
+    authToken: tokenSlice.reducer,
   },
 });

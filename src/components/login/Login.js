@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 
 function Login() {
   const dispatch = useDispatch();
-  const tokenInfo = useSelector((state) => state.tokenSlice);
+  const tokenInfo = useSelector((state) => state.authToken);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
