@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
@@ -5,6 +6,8 @@ import { postActions } from "../store/selectedPostData";
 
 function CardItem(props) {
   const dispatch = useDispatch();
+  // axios.get(`${process.env.REACT_APP_HOST}/api/board/getBoard/{1}`);
+  // .then((res) => console.log(res));
 
   const postData = useSelector((state) => state.selectedPostData);
 
