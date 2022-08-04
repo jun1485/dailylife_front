@@ -1,7 +1,12 @@
+import { useSelector } from "react-redux/es/exports";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const tokenInfo = useSelector((state) => state.authToken);
+
+  console.log("info:", tokenInfo.accessToken);
+
   return (
     <>
       <div className="nav">
@@ -13,7 +18,19 @@ function Navbar() {
         </div>
         <div className="nav-links">
           <Link to="" className="link link1"></Link>
-          <Link to="/post" className="link link2"></Link>
+
+          {tokenInfo.accessToken ? (
+            <Link to="/post" className="link link2"></Link>
+          ) : (
+            <Link
+              to="/login"
+              className="link link2"
+              onClick={(e) => {
+                e.preventDefault();
+                alert("로그인후 이용 가능합니다.");
+              }}
+            ></Link>
+          )}
           <Link to="/recentlyViewed" className="link link3"></Link>
           <Link to="/login" className="link link4"></Link>
         </div>
