@@ -14,7 +14,7 @@ function Searching(props) {
   const searchSpace = (e) => setSearched(e.target.value);
   const [filteredData, setFilteredData] = useState(data.myValues);
   const searchedData = data.myValues.filter((data) =>
-    data.text.toLowerCase().includes(searched.toLowerCase())
+    data.title.toLowerCase().includes(searched.toLowerCase())
   );
 
   useEffect(() => {

@@ -26,7 +26,6 @@ export default function UserPost() {
 
     console.log(imageName);
 
-    const accessToken = localStorage.getItem("accessToken");
     axios
       .post(
         `${process.env.REACT_APP_HOST}/api/board/create`,
@@ -39,7 +38,7 @@ export default function UserPost() {
         formData,
         {
           headers: {
-            "X-ACCESS-TOKEN": tokenInfo.accessToken,
+            "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
             "Content-Type": "multipart/form-data",
           },
         }

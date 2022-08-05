@@ -6,8 +6,6 @@ import { postActions } from "../store/selectedPostData";
 
 function CardItem(props) {
   const dispatch = useDispatch();
-  // axios.get(`${process.env.REACT_APP_HOST}/api/board/getBoard/{1}`);
-  // .then((res) => console.log(res));
 
   const postData = useSelector((state) => state.selectedPostData);
 
@@ -43,8 +41,8 @@ function CardItem(props) {
           dispatch(
             postActions.updateData({
               src: props.src,
-              text: props.text,
-              underInfo: props.underInfo,
+              title: props.title,
+              content: props.content,
             })
           );
         }}
@@ -53,7 +51,7 @@ function CardItem(props) {
           <img className="cards__item__img" alt="img" src={props.src} />
         </figure>
         <div className="cards__item__info">
-          <h5 className="cards__item__text">{props.text}</h5>
+          <h5 className="cards__item__text">{props.title}</h5>
           {/* like */}
           <span onClick={HandleLike}>
             <img
@@ -61,7 +59,7 @@ function CardItem(props) {
               src={like ? Fullheart : Emptyheart}
             />
           </span>
-          <p className="cards__item__underInfo">{props.underInfo}</p>
+          <p className="cards__item__underInfo">{props.content}</p>
         </div>
       </li>
     </>

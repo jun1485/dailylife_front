@@ -8,7 +8,14 @@ function Navbar() {
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
           <button className="nav-title">
-            <Link to="/">Daily Life</Link>
+            <Link
+              to="/"
+              onClick={() => {
+                window.location.href = "/#";
+              }}
+            >
+              Daily Life
+            </Link>
           </button>
         </div>
         <div className="nav-links">

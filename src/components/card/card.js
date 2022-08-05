@@ -19,9 +19,9 @@ function Cards(props) {
                 <CardItem
                   key={data.id}
                   id={data.id}
-                  src={data.src}
-                  text={data.text}
-                  underInfo={data.underInfo}
+                  src={data.serverFileUrl}
+                  title={data.title}
+                  content={data.content}
                   path={data.path}
                 />
               );

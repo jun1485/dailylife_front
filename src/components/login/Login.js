@@ -27,10 +27,11 @@ function Login() {
         }
       )
       .then((res) => {
+        localStorage.setItem("accessToken", res.data.data.accessToken);
         console.log(res);
         dispatch(SET_TOKEN(res.data.data.accessToken));
         console.log("token: " + JSON.stringify(tokenInfo));
-        // window.location.href = "/#";
+        window.location.href = "/#";
       })
       .catch((err) => console.log(err));
   }

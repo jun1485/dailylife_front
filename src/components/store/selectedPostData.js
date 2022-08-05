@@ -4,14 +4,14 @@ const selectedPostData = createSlice({
   name: "selectedPostData",
   initialState: {
     src: "",
-    text: "",
-    underInfo: "",
+    title: "",
+    content: "",
   },
   reducers: {
     updateData(state, action) {
       state.src = action.payload.src;
-      state.text = action.payload.text;
-      state.underInfo = action.payload.underInfo;
+      state.title = action.payload.title;
+      state.content = action.payload.content;
     },
   },
 });

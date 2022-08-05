@@ -4,17 +4,19 @@ import { useEffect } from "react";
 
 function PostModal(props) {
   const currentPostData = useSelector((state) => state.selectedPostData);
-      // create localStorage for recentlyViewd items
-      useEffect(()=>{
-        if(localStorage.watched === undefined) {
-          localStorage.setItem('watched', JSON.stringify([]));
-        }
-        let watched = JSON.parse(localStorage.getItem('watched'));
-        watched.unshift(currentPostData);
-        watched = [... new Set(watched.map(JSON.stringify))].map(JSON.parse).slice(0,6);
-        localStorage.setItem('watched',JSON.stringify(watched));
-      },[currentPostData])
-  
+  const store = useSelector((state) => state);
+
+  useEffect(() => {
+    if (localStorage.watched === undefined) {
+      localStorage.setItem("watched", JSON.stringify([]));
+    }
+    let watched = JSON.parse(localStorage.getItem("watched"));
+    watched.unshift(currentPostData);
+    watched = [...new Set(watched.map(JSON.stringify))]
+      .map(JSON.parse)
+      .slice(0, 6);
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [currentPostData]);
 
   return (
     <>
@@ -43,9 +45,9 @@ function PostModal(props) {
               <a href="#home" title="Close" className="modal-close">
                 Close
               </a>
-              <h1 className="title-in-modal">{currentPostData.text}</h1>
+              <h1 className="title-in-modal">{currentPostData.title}</h1>
               <hr />
-              <div className="text-in-modal">{currentPostData.underInfo}</div>
+              <div className="text-in-modal">{currentPostData.content}</div>
             </div>
             <br />
           </div>

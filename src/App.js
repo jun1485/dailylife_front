@@ -5,12 +5,18 @@ import SignIn from "./components/login/SignIn";
 import Searching from "./components/search/Searching";
 import RecentlyViewed from "./components/recentlyViewed/recentlyViewed";
 import UserPost from "./components/UserPost/UserPost";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { postActions } from "./components/store/post";
 
 function App() {
+  const dispatch = useDispatch();
+
+  const store = useSelector((state) => state);
   const cardData = useSelector((state) => state.post);
   const tokenInfo = useSelector((state) => state.authToken);
+  const [loadedData, setLoadedData] = useState("");
 
   return (
     <Routes>
@@ -18,24 +24,22 @@ function App() {
         path="/"
         element={
           <>
-            <button
-              onClick={() => {
-                axios
-                  .get(`${process.env.REACT_APP_HOST}/api/board/getBoard/1`, {
-                    headers: {
-                      "X-ACCESS-TOKEN": tokenInfo.accessToken,
-                    },
-                  })
-                  .then((res) => {
-                    console.log(res);
-                  })
-                  .catch((res) => {
-                    console.log(res);
-                  });
-              }}
-            >
-              데이터받아오기
-            </button>
+            {useEffect(() => {
+              axios
+                .get(`${process.env.REACT_APP_HOST}/api/board/getBoard/1`, {
+                  headers: {
+                    "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+                  },
+                })
+                .then((res) => {
+                  console.log(res.data);
+                  dispatch(postActions.updateItems(res.data));
+                  console.log(store.post);
+                })
+                .catch((res) => {
+                  console.log(res);
+                });
+            }, [])}
             <Cards />
           </>
         }
