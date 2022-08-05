@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
-  const tokenInfo = useSelector((state) => state.authToken);
-
-  console.log("info:", tokenInfo.accessToken);
+  // const tokenInfo = useSelector((state) => state.authToken);
+  // console.log("info:", tokenInfo.accessToken);
+  const accessToken = localStorage.getItem("accessToken");
 
   return (
     <>
@@ -26,7 +26,7 @@ function Navbar() {
         <div className="nav-links">
           <Link to="" className="link link1"></Link>
 
-          {tokenInfo.accessToken ? (
+          {accessToken ? (
             <Link to="/post" className="link link2"></Link>
           ) : (
             <Link
@@ -34,7 +34,7 @@ function Navbar() {
               className="link link2"
               onClick={(e) => {
                 e.preventDefault();
-                alert("로그인후 이용 가능합니다.");
+                alert("로그인후 이용 가능합니다. 토큰값:", accessToken);
               }}
             ></Link>
           )}
