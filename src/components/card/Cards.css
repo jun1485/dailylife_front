@@ -90,6 +90,9 @@ h2 {
   margin: 3vw 0 2vw 1vw;
   line-height:0px;
   display: inline-flex;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
 }
 
 .cards__item__underInfo {

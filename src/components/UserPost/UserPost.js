@@ -99,7 +99,7 @@ export default function UserPost() {
           onClick={() => {
             console.log(tokenInfo.accessToken);
           }}
-          disabled={tokenInfo.accessToken ? false : true}
+          // disabled={tokenInfo.accessToken ? false : true}
         >
           Upload
         </button>
