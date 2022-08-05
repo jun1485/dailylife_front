@@ -15,6 +15,8 @@ export default function UserPost() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    if (!tokenInfo.accessToken) return alert("로그인 후 이용 가능합니다.");
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
@@ -24,25 +26,14 @@ export default function UserPost() {
       formData.append("imageName", file);
     });
 
-    console.log(imageName);
-
+    const accessToken = localStorage.getItem("accessToken");
     axios
-      .post(
-        `${process.env.REACT_APP_HOST}/api/board/create`,
-        // {
-        //   title,
-        //   content,
-        //   imageName,
-        //   thumbNail,
-        // },
-        formData,
-        {
-          headers: {
-            "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      .post(`${process.env.REACT_APP_HOST}/api/board/create`, formData, {
+        headers: {
+          "X-ACCESS-TOKEN": tokenInfo.accessToken,
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
@@ -108,6 +99,7 @@ export default function UserPost() {
           onClick={() => {
             console.log(tokenInfo.accessToken);
           }}
+          // disabled={tokenInfo.accessToken ? false : true}
         >
           Upload
         </button>
