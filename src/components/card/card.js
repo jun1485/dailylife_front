@@ -14,11 +14,11 @@ function Cards(props) {
       <div className="cards__container">
         <div className="cards__wrapper">
           <div className="cards__items">
-            {renderData.map((data, i) => {
+            {renderData.map((data, index) => {
               return (
                 <CardItem
-                  key={data.id}
-                  id={data.id}
+                  key={index}
+                  id={index}
                   src={data.serverFileUrl}
                   title={data.title}
                   content={data.content}
