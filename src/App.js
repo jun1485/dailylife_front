@@ -34,9 +34,16 @@ function App() {
                 .then((res) => {
                   console.log(res.data);
                   dispatch(postActions.updateItems(res.data));
-                  console.log(store.post);
                 })
                 .catch((res) => {
+                  console.log(res);
+                });
+              axios
+                .get(
+                  `${process.env.REACT_APP_HOST}/api/board/getBoardCount`,
+                  {}
+                )
+                .then((res) => {
                   console.log(res);
                 });
             }, [])}
