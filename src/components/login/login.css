@@ -1,60 +1,98 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+
 .login-page {
-    width: 360px;
-    padding: 8% 0 0;
-    margin: auto;
-  }
-  .form {
-    position: relative;
-    z-index: 1;
-    background: #FFFFFF;
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-  .form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-  .form button {
-    font-family: 'Viga', sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: #2a2e35;
-    width: 100%;
-    border: 0;
-    padding: 13px;
-    color: rgb(255, 247, 0);
-    font-size: 18px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.1s ease-out;
-    cursor: pointer;
-  }
-  .form button:hover,.form button:active,.form button:focus {
-    background-color: rgb(252, 65, 96);
-  }
-  .form .message {
-    margin: 15px 0 0;
-    color: #b3b3b3;
-    font-size: 12px;
-  }
-  .form .message a {
-    color:  rgb(255, 145, 0);
-    text-decoration: none;
-  }
-  .form .register-form {
-    display: none;
-  }
-  body {
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;      
-  }
+  width: 360px;
+  margin: auto;
+}
+.form {
+  max-width: 320px;
+  margin-top: 200px;
+  text-align: center;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  line-height: 19px;
+}
+.form input {
+  width: 100%;
+  padding: 15px;
+  outline: 0;
+  border: 1px #d7d7d7 solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #6a6a6a;
+  font-weight: 400;
+  font-size: 16px;
+
+  letter-spacing: -0.01em;
+}
+.form input:nth-of-type(2) {
+  margin-top: 6px;
+}
+.form button {
+  margin-top: 30px;
+  padding: 13px;
+  width: 100%;
+  text-transform: uppercase;
+  outline: 0;
+  background: linear-gradient(91.5deg, #fcc400 0%, #f1a027 100%);
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.1s ease-out;
+  cursor: pointer;
+
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.03em;
+}
+.form button:hover,
+.form button:active,
+.form button:focus {
+  background-color: rgb(252, 65, 96);
+}
+
+.support {
+  margin-top: 16px;
+  text-align: start;
+}
+
+.support .find_user {
+  font-weight: 400;
+  font-size: 16px;
+
+  color: #6a6a6a;
+}
+
+.support .signup {
+  float: right;
+  font-weight: 600;
+  font-size: 16px;
+  color: #6a6a6a;
+}
+
+.support .separate {
+  margin-top: 50px;
+  border: 1px #d7d7d7 solid;
+}
+
+.support .third_party {
+  margin-top: 20.25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.support .third_party .kakao {
+  border-radius: 50%;
+}
+
+.form .register-form {
+  display: none;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
