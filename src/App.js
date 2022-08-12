@@ -9,14 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { postActions } from "./components/store/post";
+import Paging from "./components/Pagination/Pagination";
 
 function App() {
   const dispatch = useDispatch();
 
   const store = useSelector((state) => state);
   const cardData = useSelector((state) => state.post);
-  const tokenInfo = useSelector((state) => state.authToken);
   const [loadedData, setLoadedData] = useState("");
+  const [totalPostCount, setTotalPostCount] = useState("");
+  const [currentPageNum, setCurrentPageNum] = useState("");
 
   return (
     <Routes>
@@ -26,21 +28,16 @@ function App() {
           <>
             {useEffect(() => {
               axios
-                .get(`${process.env.REACT_APP_HOST}/api/board/getBoard/1`, {
-                  headers: {
-                    "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-                  },
-                })
+                .get(
+                  `${process.env.REACT_APP_HOST}/api/board/getBoardCount`,
+                  {}
+                )
                 .then((res) => {
-                  console.log(res.data);
-                  dispatch(postActions.updateItems(res.data));
-                  console.log(store.post);
-                })
-                .catch((res) => {
-                  console.log(res);
+                  setTotalPostCount(res.data);
                 });
-            }, [])}
+            }, [totalPostCount])}
             <Cards />
+            <Paging totalPostCount={totalPostCount} />
           </>
         }
       ></Route>
