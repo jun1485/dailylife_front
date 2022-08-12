@@ -72,9 +72,11 @@ function Login() {
             Not registered? <Link to="/SignIn">Create an account</Link>
           </p> */}
           <div className="support">
-            <span className="find_user">아이디 · 비밀번호 찾기</span>
+            <span className="find_user">
+              <Link to="">아이디 · 비밀번호 찾기</Link>
+            </span>
             <span className="signup">
-              <Link to="/signin">회원가입</Link>
+              <Link to="/signup">회원가입</Link>
             </span>
             <div className="separate"></div>
             <div className="third_party">
