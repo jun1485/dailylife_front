@@ -18,7 +18,6 @@ function App() {
   const cardData = useSelector((state) => state.post);
   const [loadedData, setLoadedData] = useState("");
   const [totalPostCount, setTotalPostCount] = useState("");
-  const [currentPageNum, setCurrentPageNum] = useState("");
 
   return (
     <Routes>
@@ -29,10 +28,23 @@ function App() {
             {useEffect(() => {
               axios
                 .get(
+                  `${process.env.REACT_APP_HOST}/api/board/getBoard/${cardData.pageNum}`,
+                  {}
+                )
+                .then((res) => {
+                  console.log(res.data);
+                  dispatch(postActions.updateItems(res.data));
+                })
+                .catch((res) => {
+                  console.log(res);
+                });
+              axios
+                .get(
                   `${process.env.REACT_APP_HOST}/api/board/getBoardCount`,
                   {}
                 )
                 .then((res) => {
+                  console.log(res);
                   setTotalPostCount(res.data);
                 });
             }, [totalPostCount])}

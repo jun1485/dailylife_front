@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux/es/exports";
 import { Link } from "react-router-dom";
+import Searching from "../search/Searching";
 import "./Navbar.css";
 
 function Navbar() {
@@ -19,9 +20,12 @@ function Navbar() {
                 window.location.href = "/#";
               }}
             >
-              Daily Life
+              <img className="logo" src="/assets/Logo_light.png" />
             </Link>
           </button>
+        </div>
+        <div className="nav-searchBar">
+          <Searching />
         </div>
         <div className="nav-links">
           <Link to="" className="link link1"></Link>

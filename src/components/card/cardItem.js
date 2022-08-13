@@ -7,8 +7,6 @@ import { postActions } from "../store/selectedPostData";
 function CardItem(props) {
   const dispatch = useDispatch();
 
-  const postData = useSelector((state) => state.selectedPostData);
-
   const openModal = (to) => {
     window.location.href = "/#open-modal";
   };
