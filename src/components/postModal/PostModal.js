@@ -30,6 +30,7 @@ const tempComment = [
 
 function PostModal(props) {
   const currentPostData = useSelector((state) => state.selectedPostData);
+  console.log(currentPostData);
 
   useEffect(() => {
     if (localStorage.watched === undefined) {
@@ -112,10 +113,10 @@ function PostModal(props) {
                 <h1 className="title-in-modal">{currentPostData.title}</h1>
                 <div className="text-in-modal">
                   {currentPostData.content
-                    ? Array.from({ length: 4 }).map((item, index) => (
+                    ? currentPostData.content
+                    : Array.from({ length: 4 }).map((item, index) => (
                         <div key={index}>여기는 내용부분의 영역입니다.</div>
-                      ))
-                    : null}
+                      ))}
                 </div>
                 {/* <div className="text-in-modal">{currentPostData.content}</div> */}
               </div>
