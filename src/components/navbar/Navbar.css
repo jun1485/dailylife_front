@@ -1,10 +1,12 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0px;
-  font-family: 'segoe ui';
+  font-family: 'Pretendard';
   overflow-y: scroll;
 }
 

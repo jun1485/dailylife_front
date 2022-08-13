@@ -1,3 +1,4 @@
+import "./index.css";
 import Cards from "./components/card/card";
 import Login from "./components/login/Login";
 import SignUp from "./components/login/SignUp";
@@ -27,10 +28,7 @@ function App() {
           <>
             {useEffect(() => {
               axios
-                .get(
-                  `${process.env.REACT_APP_HOST}/api/board/getBoard/${cardData.pageNum}`,
-                  {}
-                )
+                .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {})
                 .then((res) => {
                   console.log(res.data);
                   dispatch(postActions.updateItems(res.data));
