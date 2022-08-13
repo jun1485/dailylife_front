@@ -21,7 +21,7 @@ const Paging = (props) => {
     useEffect(() => {
         axios
             .get(
-                `${process.env.REACT_APP_HOST}/api/board/getBoard/${store.post.pageNum}`,
+                `${process.env.REACT_APP_HOST}/api/board/getBoard/${store.post}`,
             )
             .then((res) => {
                 dispatch(postActions.updateItems(res.data));

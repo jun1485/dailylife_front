@@ -28,10 +28,7 @@ function App() {
           <>
             {useEffect(() => {
               axios
-                .get(
-                  `${process.env.REACT_APP_HOST}/api/board/getBoard/${cardData.pageNum}`,
-                  {}
-                )
+                .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {})
                 .then((res) => {
                   console.log(res.data);
                   dispatch(postActions.updateItems(res.data));
