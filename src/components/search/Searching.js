@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { useSelector } from "react-redux/es/exports";
 import "./Searching.css";
 import { searchedDataActions } from "../store/searchResult";
-import { postActions } from "../store/post";
 
 function Searching(props) {
   const store = useSelector((state) => state);
@@ -11,20 +10,20 @@ function Searching(props) {
   const [searched, setSearched] = useState("");
   const getData = Object.values(props);
   const data = getData[0];
-  const searchSpace = (e) => setSearched(e.target.value);
-  const [filteredData, setFilteredData] = useState(data.myValues);
-  const searchedData = data.myValues.filter((data) =>
-    data.title.toLowerCase().includes(searched.toLowerCase())
-  );
+  // const [filteredData, setFilteredData] = useState(data.myValues);
+  // const searchedData = data.myValues.filter((data) =>
+  //   data.title.toLowerCase().includes(searched.toLowerCase())
+  // );
 
-  useEffect(() => {
-    if (!Array.isArray(searchedData)) {
-      console.log("배열이 아님");
-    } else {
-      setFilteredData(searchedData);
-      dispatch(searchedDataActions.bringItems(filteredData));
-    }
-  }, [searchedData]);
+  // useEffect(() => {
+  //   console.log(searchedData);
+  //   if (!Array.isArray(searchedData)) {
+  //     console.log("배열이 아님");
+  //   } else {
+  //     dispatch(searchedDataActions.bringItems(filteredData));
+  //     console.log(store.searchResult);
+  //   }
+  // }, [searched]);
 
   return (
     <>
@@ -36,7 +35,10 @@ function Searching(props) {
             name="search"
             type="text"
             placeholder="Looking for ..."
-            onChange={searchSpace}
+            onChange={(e) => {
+              // setSearched(e.target.value);
+              // setFilteredData(searchedData);
+            }}
           />
           <input id="search_submit" value="Researcher" type="submit" />
         </form>

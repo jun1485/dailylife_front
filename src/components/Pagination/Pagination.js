@@ -22,21 +22,16 @@ const Paging = (props) => {
         axios
             .get(
                 `${process.env.REACT_APP_HOST}/api/board/getBoard/${store.post.pageNum}`,
-                {
-                    headers: {
-                        "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-                    },
-                }
             )
             .then((res) => {
-                // console.log(res.data);
                 dispatch(postActions.updateItems(res.data));
                 dispatch(postActions.updatePageNum(page))
+                setRerender('');
             })
             .catch((res) => {
                 console.log(res);
             });
-    }, [store.post])
+    }, [rerender])
     return (
         <Pagination
             activePage={page}
