@@ -1,3 +1,4 @@
+import "./index.css";
 import Cards from "./components/card/card";
 import Login from "./components/login/Login";
 import { Route, Routes } from "react-router-dom";

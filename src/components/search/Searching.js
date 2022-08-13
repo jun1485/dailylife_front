@@ -34,7 +34,7 @@ function Searching(props) {
             id="search"
             name="search"
             type="text"
-            placeholder="Looking for ..."
+            placeholder="검색"
             onChange={(e) => {
               // setSearched(e.target.value);
               // setFilteredData(searchedData);

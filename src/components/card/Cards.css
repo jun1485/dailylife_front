@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
 .cards {
   padding: 4rem;
   background: rgb(255, 255, 255);
@@ -97,6 +98,7 @@ h2 {
 
 .cards__item__text {
   color: #252e48;
+  font-family: 'pretendard';
   font-size: 2.5vw;
   margin: 3vw 0 2vw 1vw;
   line-height: 0px;
@@ -108,6 +110,7 @@ h2 {
 
 .cards__item__underInfo {
   cursor: pointer;
+  font-family: 'pretendard';
   margin: 0vw 0vw 0vw 1vw;
 }
 
