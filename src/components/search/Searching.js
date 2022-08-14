@@ -34,12 +34,12 @@ function Searching(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setRerender(1);
+    // setRerender(1);
   };
 
   useEffect(() => {
-    setRerender(1);
-  }, [dispatch]);
+    setRerender(1 + 1);
+  }, [typedKeyword]);
 
   return (
     <>
@@ -53,15 +53,15 @@ function Searching(props) {
             placeholder="검색"
             onKeyUp={(e) => {
               if (window.event.keyCode === 13) {
-                setTypedKeyword(e.target.value);
                 axios
                   .get(
-                    `${process.env.REACT_APP_HOST}/api/board/getBoard?keyword=${typedKeyword}&pg=1`,
+                    `${process.env.REACT_APP_HOST}/api/board/getBoard?keyword=${e.target.value}&pg=1`,
                     {}
                   )
                   .then((res) => {
                     // console.log(res);
                     dispatch(postActions.updateItems(res.data));
+                    setTypedKeyword(e.target.value);
                     // console.log(store.post);
                   })
                   .catch((res) => {
