@@ -30,7 +30,6 @@ function App() {
               axios
                 .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {})
                 .then((res) => {
-                  console.log(res.data);
                   dispatch(postActions.updateItems(res.data));
                 })
                 .catch((res) => {
@@ -42,9 +41,9 @@ function App() {
                   {}
                 )
                 .then((res) => {
-                  console.log(res);
                   setTotalPostCount(res.data);
                 });
+              console.log(store.post);
             }, [totalPostCount])}
             <Cards />
             <Paging totalPostCount={totalPostCount} />
