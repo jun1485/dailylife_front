@@ -18,20 +18,21 @@ const Paging = (props) => {
             return page;
         });
     };
-    useEffect(() => {
-        axios
-            .get(
-                `${process.env.REACT_APP_HOST}/api/board/getBoard/${store.post}`,
-            )
-            .then((res) => {
-                dispatch(postActions.updateItems(res.data));
-                dispatch(postActions.updatePageNum(page))
-                setRerender('');
-            })
-            .catch((res) => {
-                console.log(res);
-            });
-    }, [rerender])
+    // useEffect(() => {
+
+    //     axios
+    //         .get(
+    //             `${process.env.REACT_APP_HOST}/api/board/getBoard`,
+    //         )
+    //         .then((res) => {
+    //             dispatch(postActions.updateItems(res.data));
+    //             dispatch(postActions.updatePageNum(page))
+    //             setRerender('');
+    //         })
+    //         .catch((res) => {
+    //             console.log(res);
+    //         });
+    // }, [rerender])
     return (
         <Pagination
             activePage={page}
