@@ -263,7 +263,6 @@ function PostModal(props) {
       .slice(0, 6);
     localStorage.setItem("watched", JSON.stringify(watched));
   }, [currentPostData]);
-  console.log(currentPostData);
 
   return (
     <>
