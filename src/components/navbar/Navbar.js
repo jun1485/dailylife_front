@@ -4,8 +4,6 @@ import Searching from "../search/Searching";
 import "./Navbar.css";
 
 function Navbar() {
-  // const tokenInfo = useSelector((state) => state.authToken);
-  // console.log("info:", tokenInfo.accessToken);
   const accessToken = localStorage.getItem("accessToken");
 
   return (
@@ -20,7 +18,13 @@ function Navbar() {
                 window.location.href = "/#";
               }}
             >
-              <img className="logo" src="/assets/Logo_light.png" />
+              <img
+                className="logo"
+                src="/assets/Logo_light.png"
+                onClick={() => {
+                  window.location.reload();
+                }}
+              />
             </Link>
           </button>
         </div>
