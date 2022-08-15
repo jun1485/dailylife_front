@@ -68,18 +68,7 @@ const ModalBody = styled.div`
   background: white;
   visibility: visible;
 `;
-const ModalImageContainer = styled.div`
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: pink;
-  border-radius: 10px;
-  background-position: center;
-  background-size: cover;
-  background-image: url(https://velog.velcdn.com/images/nearworld/post/f7eaaabf-8e80-4326-a85a-c8789c8ec68a/image.png);
-`;
+
 const ModalContentContainer = styled.div`
   position: relative;
   width: 50%;
@@ -247,6 +236,19 @@ const CommentCreate = styled.div.attrs({ className: "comment-create" })`
     font-size: 16px;
   }
 `;
+const ModalImageContainer = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: pink;
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
+  background-image: url(${(props) => props.data.src});
+`;
+
 function PostModal(props) {
   const currentPostData = useSelector((state) => state.selectedPostData);
 
@@ -261,6 +263,7 @@ function PostModal(props) {
       .slice(0, 6);
     localStorage.setItem("watched", JSON.stringify(watched));
   }, [currentPostData]);
+  console.log(currentPostData);
 
   return (
     <>
@@ -271,7 +274,7 @@ function PostModal(props) {
         >
           <ModalBody onClick={(e) => e.stopPropagation()}>
             {/* 이미지는 Carousel로 교체 예정 */}
-            <ModalImageContainer />
+            <ModalImageContainer data={currentPostData} />
             <ModalContentContainer>
               <WriterInfoContainer>
                 <WriterInfo>
