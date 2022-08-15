@@ -63,10 +63,18 @@ function PostModal(props) {
             {/* 이미지는 Carousel로 교체 예정 */}
             <div
               className="modal-src-container"
-              style={{
-                backgroundImage: `url(https://velog.velcdn.com/images/nearworld/post/f7eaaabf-8e80-4326-a85a-c8789c8ec68a/image.png)`,
-              }}
-            ></div>
+              // style={{
+              //   backgroundImage: currentPostData.src,
+              // }}
+            >
+              <div className="modal-img">
+                <img
+                  className="modal-inside-img"
+                  src={currentPostData.src}
+                  alt="modal-img"
+                />
+              </div>
+            </div>
             <div className="modal-content-container">
               <div className="writer-info-container">
                 <div className="writer-info">

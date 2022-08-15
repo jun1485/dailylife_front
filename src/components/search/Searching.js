@@ -13,33 +13,12 @@ function Searching(props) {
   const getData = Object.values(props);
   const data = getData[0];
 
-  // const [filteredData, setFilteredData] = useState(data.myValues);
-  // const searchedData = data.myValues.filter((data) =>
-  //   data.title.toLowerCase().includes(searched.toLowerCase())
-  // );
-
-  // useEffect(() => {
-  //   console.log(searchedData);
-  //   if (!Array.isArray(searchedData)) {
-  //     console.log("배열이 아님");
-  //   } else {
-  //     dispatch(searchedDataActions.bringItems(filteredData));
-  //     console.log(store.searchResult);
-  //   }
-  // }, [searched]);
-
   const [page, setPage] = useState(1);
   const [typedKeyword, setTypedKeyword] = useState();
-  const [rerender, setRerender] = useState();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // setRerender(1);
   };
-
-  useEffect(() => {
-    setRerender(1 + 1);
-  }, [typedKeyword]);
 
   return (
     <>
@@ -59,10 +38,8 @@ function Searching(props) {
                     {}
                   )
                   .then((res) => {
-                    // console.log(res);
                     dispatch(postActions.updateItems(res.data));
                     setTypedKeyword(e.target.value);
-                    // console.log(store.post);
                   })
                   .catch((res) => {
                     console.log(res);
