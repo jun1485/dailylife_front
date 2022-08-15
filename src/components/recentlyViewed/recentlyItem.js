@@ -3,7 +3,6 @@ import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { postActions } from "../store/selectedPostData";
 import "../card/Cards.css";
-import "../postModal/PostModal.css";
 
 function RecentlyItem(props) {
   const dispatch = useDispatch();
