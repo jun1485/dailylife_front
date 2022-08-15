@@ -16,9 +16,8 @@ function CardItem(props) {
 
   const [like, setLike] = useState(0);
 
-  const Fullheart = "/assets/full.png";
-
-  const Emptyheart = "/assets/empty.png";
+  const Fullheart = "/assets/fullHeart.png";
+  const Emptyheart = "/assets/heart.png";
 
   const HandleLike = (event) => {
     event.stopPropagation();
@@ -52,7 +51,7 @@ function CardItem(props) {
         <div className="cards__item__info">
           <h5 className="cards__item__text">{props.title}</h5>
           {/* like */}
-          <span onClick={HandleLike}>
+          <span className="cards__like__container" onClick={HandleLike}>
             <img
               className="cards__item__like"
               src={like ? Fullheart : Emptyheart}
