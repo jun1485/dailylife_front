@@ -20,7 +20,7 @@ function Navbar() {
             >
               <img
                 className="logo"
-                src="/assets/Logo_light.png"
+                src="/assets/logo.png"
                 onClick={() => {
                   window.location.reload();
                 }}
