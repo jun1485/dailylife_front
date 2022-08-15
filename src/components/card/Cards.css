@@ -26,14 +26,11 @@ h2 {
 }
 
 .cards__wrapper {
-  position: relative;
   margin: 50px 0 45px;
   width: 100%;
 }
 
 .cards__items {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-flow: dense;
@@ -45,11 +42,13 @@ h2 {
 }
 
 .cards__item {
+  position: relative;
   /* margin: 0 2rem 3rem 0; */
   border-radius: 10px;
   width: 100%;
   /* height: 28vw; */
   aspect-ratio: 1;
+  overflow: hidden;
   /* grid-area: item; */
   background-color: rgb(247, 247, 247);
   box-shadow: rgba(79, 79, 117, 0.25) 0px 6px 12px -2px,
@@ -64,17 +63,15 @@ h2 {
 }
 
 .cards__item__pic-wrap {
-  position: relative;
-  margin: 1vw auto 0 auto;
-  width: 90%;
-  padding-top: 75%;
+  margin: 0 auto 0 auto;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .cards__item__img {
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -93,30 +90,44 @@ h2 {
 }
 
 .cards__item__info {
+  font-family: 'pretendard';
+  color: #ffffff;
   cursor: pointer;
+  width: 100%;
 }
 
 .cards__item__text {
-  color: #252e48;
   font-family: 'pretendard';
-  font-size: 2.5vw;
-  margin: 3vw 0 2vw 1vw;
+  position: absolute;
+  color: #ffffff;
+  font-size: 1.3vw;
+  margin: 3vw 0 1.5vw 1vw;
   line-height: 0px;
   display: inline-flex;
   text-overflow: ellipsis;
   word-break: break-all;
   white-space: nowrap;
+  bottom: 2vw;
 }
 
 .cards__item__underInfo {
+  position: absolute;
   cursor: pointer;
   font-family: 'pretendard';
   margin: 0vw 0vw 0vw 1vw;
+  line-height: 0px;
+  display: inline-flex;
+  bottom: 1.6vw;
 }
-
+.cards__like__container {
+  width: 100%;
+}
 .cards__item__like {
-  width: 50px;
-  height: 50px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 2.7vw;
+  right: 0.75vw;
 }
 
 /* @media only screen and (min-width: 1200px) {
