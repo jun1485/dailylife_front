@@ -21,7 +21,7 @@ h2 {
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: 70%;
+  width: 55%;
   margin: 0 auto;
 }
 
@@ -88,15 +88,10 @@ h2 {
 .cards__item__gradientBar {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 50%;
   bottom: 0;
   opacity: 0.6;
-  background: linear-gradient(
-    rgba(20, 20, 20, 0) 20%,
-            rgba(20, 20, 20, 0.01) 25%,
-            rgba(20, 20, 20, 0.1) 50%,
-            rgba(20, 20, 20, 0.25) 70%,
-            rgba(20, 20, 20, 0.45) 100%
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 91.15%
   );
 }
 
@@ -110,36 +105,42 @@ h2 {
 .cards__item__text {
   font-family: 'pretendard';
   position: absolute;
+  width: 75%;
   color: #ffffff;
-  font-size: 1.5vw;
+  font-size: 1.1vw;
   margin: 3vw 0 1.5vw 1vw;
-  line-height: 0px;
-  display: inline-flex;
+  line-height: 30px;
+  display: block;
   text-overflow: ellipsis;
   word-break: break-all;
   white-space: nowrap;
-  bottom: 2vw;
+  overflow: hidden;
+  bottom: 1vw;
 }
 
 .cards__item__underInfo {
   position: absolute;
   color: #ffffff;
-  font-size: 1.3vw;
+  width: 80%;
+  font-size: 0.9vw;
   cursor: pointer;
   font-family: 'pretendard';
   margin: 0vw 0vw 0vw 1vw;
-  line-height: 0px;
-  display: inline-flex;
-  bottom: 1.6vw;
+  line-height: 30px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  bottom: 0.7vw;
 }
 .cards__like__container {
   width: 100%;
 }
 .cards__item__like {
   position: absolute;
-  width: 25px;
-  height: 25px;
-  bottom: 2.7vw;
+  width: 1.4vw;
+  height: 1.4vw;
+  bottom: 2.8vw;
   right: 0.75vw;
 }
 
