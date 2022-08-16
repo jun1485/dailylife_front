@@ -238,6 +238,7 @@ const CommentCreate = styled.div.attrs({ className: "comment-create" })`
 `;
 const ModalImageContainer = styled.div`
   width: 50%;
+  max-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
