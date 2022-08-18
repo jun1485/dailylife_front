@@ -243,10 +243,11 @@ const ModalImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: pink;
+  // background-color: pink;
   border-radius: 10px;
   background-position: center;
-  background-size: cover;
+  background-size: contain, cover;
+  background-repeat: no-repeat;
   background-image: url(${(props) => props.data.src});
 `;
 
