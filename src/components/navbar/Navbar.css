@@ -18,6 +18,9 @@ body {
 }
 
 .nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   height: 52px;
   width: 100%;
   position: relative;
@@ -31,7 +34,7 @@ body {
 
 .nav > .nav-header {
   display: inline;
-  margin-left: 10%;
+  margin-left: 15%;
 }
 
 .nav > .nav-header > .nav-title {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { postActions } from "../store/selectedPostData";
+import { selectedPostActions } from "../store/selectedPostData";
 import "../card/Cards.css";
 
 function RecentlyItem(props) {
@@ -42,7 +42,7 @@ function RecentlyItem(props) {
           onClick={() => {
             openModal();
             dispatch(
-              postActions.updateData({
+              selectedPostActions.updateData({
                 src: props.src,
                 text: props.text,
                 underInfo: props.underInfo,

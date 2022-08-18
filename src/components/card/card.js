@@ -15,6 +15,7 @@ function Cards(props) {
 
   useEffect(() => {
     setGetPostDataFromStore(cardData.myValues);
+    console.log(getPostDataFromStore);
   }, [cardData.myValues]);
   return (
     <div className="cards">
