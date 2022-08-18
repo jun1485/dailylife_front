@@ -4,13 +4,13 @@ import { useState } from "react";
 import Pagination from "react-js-pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { postActions } from "../store/post";
-import './Pagination.css'
+import "./Pagination.css";
 
 const Paging = (props) => {
-    const store = useSelector(state => state);
+    const store = useSelector((state) => state);
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
-    const [rerender, setRerender] = useState('');
+    const [rerender, setRerender] = useState("");
 
     const pageChangeHandler = (page) => {
         setPage((prevState) => {
@@ -19,24 +19,21 @@ const Paging = (props) => {
         });
     };
     useEffect(() => {
-
         axios
-            .get(
-                `${process.env.REACT_APP_HOST}/api/board/getBoard`,
-            )
+            .get(`${process.env.REACT_APP_HOST}/api/board/getBoard?pg=${page}`)
             .then((res) => {
                 dispatch(postActions.updateItems(res.data));
-                dispatch(postActions.updatePageNum(page))
-                setRerender('');
+                dispatch(postActions.updatePageNum(page));
+                setRerender("");
             })
             .catch((res) => {
                 console.log(res);
             });
-    }, [rerender])
+    }, [rerender]);
     return (
         <Pagination
             activePage={page}
-            itemsCountPerPage={2}
+            itemsCountPerPage={15}
             totalItemsCount={Number(props.totalPostCount)}
             pageRangeDisplayed={5}
             prevPageText={"<"}
@@ -46,4 +43,4 @@ const Paging = (props) => {
     );
 };
 
-export default Paging
+export default Paging;
