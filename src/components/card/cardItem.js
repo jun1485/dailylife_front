@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import styled from "styled-components";
-import { postActions } from "../store/selectedPostData";
+import { selectedPostActions } from "../store/selectedPostData";
 
 const CardItemText = styled.p``;
 
@@ -40,7 +40,7 @@ function CardItem(props) {
         onClick={() => {
           openModal();
           dispatch(
-            postActions.updateData({
+            selectedPostActions.updateData({
               src: props.src,
               title: props.title,
               content: props.content,

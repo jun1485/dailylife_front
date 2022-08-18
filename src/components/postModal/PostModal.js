@@ -274,7 +274,9 @@ function PostModal(props) {
         >
           <ModalBody onClick={(e) => e.stopPropagation()}>
             {/* 이미지는 Carousel로 교체 예정 */}
-            <ModalImageContainer data={currentPostData} />
+            <div>
+              <ModalImageContainer data={currentPostData} />
+            </div>
             <ModalContentContainer>
               <WriterInfoContainer>
                 <WriterInfo>

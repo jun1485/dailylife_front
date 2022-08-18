@@ -16,5 +16,5 @@ const selectedPostData = createSlice({
   },
 });
 
-export const postActions = selectedPostData.actions;
+export const selectedPostActions = selectedPostData.actions;
 export default selectedPostData;
