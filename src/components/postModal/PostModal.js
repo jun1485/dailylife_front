@@ -375,7 +375,7 @@ function PostModal(props) {
               {/* 댓글 창 시작 */}
               <CommentSection>
                 {tempComment.map((item, index) => (
-                  <CommentContainer>
+                  <CommentContainer key={index}>
                     <CommentMain>
                       <Avatar />
                       <div className="username">홍길동</div>
