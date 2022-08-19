@@ -35,6 +35,12 @@ function App() {
                 .catch((res) => {
                   console.log(res);
                 });
+
+              axios
+                .get(`${process.env.REACT_APP_HOST}/api/users/getAllUser`, {})
+                .then((res) => {
+                  console.log(res);
+                });
               axios
                 .get(
                   `${process.env.REACT_APP_HOST}/api/board/getBoardCount`,

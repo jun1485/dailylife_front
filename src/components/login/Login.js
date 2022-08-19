@@ -33,7 +33,16 @@ function Login() {
         console.log("token: " + JSON.stringify(tokenInfo));
         window.location.href = "/#";
       })
-      .catch((err) => console.log(err));
+      .catch((errStatus) => {
+        console.log(errStatus);
+        if (errStatus.response.status === 400)
+          alert("아이디와 비밀번호를 입력해주세요 !");
+        else if (errStatus.response.status === 500)
+          alert(
+            `아이디 또는 비밀번호를 잘못 입력했습니다.
+            입력하신 내용을 다시 확인해주세요.`
+          );
+      });
   }
 
   return (

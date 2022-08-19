@@ -46,7 +46,7 @@ function Searching(props) {
                   });
               }
             }}
-          />
+          ></input>
           <input id="search_submit" value="Researcher" type="submit" />
         </form>
       </div>
