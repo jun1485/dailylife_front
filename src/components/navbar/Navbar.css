@@ -59,7 +59,7 @@ body {
 }
 
 .nav > .nav-links {
-  margin-right: 20px;
+  margin-right: 45%;
   display: flex;
   float: right;
   font-size: 18px;
