@@ -11,6 +11,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { postActions } from "./components/store/post";
 import Paging from "./components/Pagination/Pagination";
+import MyInfo from "./components/myInfo/MyInfo"
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ function App() {
       <Route path="/recentlyViewed" element={<RecentlyViewed />}></Route>
       <Route path="/search" element={<Searching cardData={cardData} />}></Route>
       <Route path="/post" element={<UserPost />} />
+      <Route path="/myInfo" element={<MyInfo />}></Route>
     </Routes>
   );
 }

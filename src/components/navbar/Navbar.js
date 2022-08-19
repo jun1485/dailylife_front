@@ -47,7 +47,12 @@ function Navbar() {
             ></Link>
           )}
           <Link to="/recentlyViewed" className="link link3"></Link>
-          <Link to="/login" className="link link4"></Link>
+          
+          {accessToken ? (
+            <Link to="/myInfo" className="link link4"></Link>
+          ) : (
+            <Link to="/login" className="link link4"></Link>
+          )}
         </div>
       </div>
     </>
