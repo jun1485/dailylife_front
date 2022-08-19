@@ -56,7 +56,7 @@ function App() {
       <Route path="/recentlyViewed" element={<RecentlyViewed />}></Route>
       <Route path="/search" element={<Searching cardData={cardData} />}></Route>
       <Route path="/post" element={<UserPost />} />
-      <Route path="/myInfo" element={<MyInfo></MyInfo>}></Route>
+      <Route path="/myInfo" element={<MyInfo />}></Route>
     </Routes>
   );
 }
