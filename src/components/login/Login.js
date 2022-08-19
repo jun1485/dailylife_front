@@ -4,15 +4,19 @@ import axios from "axios";
 import { useState } from "react";
 import { SET_TOKEN } from "../store/authToken";
 import { useDispatch, useSelector } from "react-redux/es/exports";
+import { LoadingSpinner } from "../styledComponents/Loading";
 
 function Login() {
   const dispatch = useDispatch();
   const tokenInfo = useSelector((state) => state.authToken);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState();
 
   function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
+
     axios
       .post(
         `${process.env.REACT_APP_HOST}/api/users/login`,
@@ -27,6 +31,7 @@ function Login() {
         }
       )
       .then((res) => {
+        setLoading(false);
         localStorage.setItem("accessToken", res.data.data.accessToken);
         console.log(res);
         dispatch(SET_TOKEN(res.data.data.accessToken));
@@ -34,13 +39,13 @@ function Login() {
         window.location.href = "/#";
       })
       .catch((errStatus) => {
+        setLoading(false);
         console.log(errStatus);
         if (errStatus.response.status === 400)
           alert("아이디와 비밀번호를 입력해주세요 !");
         else if (errStatus.response.status === 500)
           alert(
-            `아이디 또는 비밀번호를 잘못 입력했습니다.
-            입력하신 내용을 다시 확인해주세요.`
+            `아이디 또는 비밀번호를 잘못 입력했습니다. \n입력하신 내용을 다시 확인해주세요.`
           );
       });
   }
@@ -54,6 +59,7 @@ function Login() {
           method="POST"
           onSubmit={handleSubmit}
         >
+          {loading ? <LoadingSpinner /> : null}
           <input
             type="text"
             placeholder="아이디"

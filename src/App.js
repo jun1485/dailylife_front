@@ -11,14 +11,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { postActions } from "./components/store/post";
 import Paging from "./components/Pagination/Pagination";
-import MyInfo from "./components/myInfo/MyInfo"
+import MyInfo from "./components/myInfo/MyInfo";
+import { LoadingSpinner } from "./components/styledComponents/Loading";
 
 function App() {
   const dispatch = useDispatch();
 
   const store = useSelector((state) => state);
   const cardData = useSelector((state) => state.post);
-  const [loadedData, setLoadedData] = useState("");
   const [totalPostCount, setTotalPostCount] = useState("");
 
   return (
