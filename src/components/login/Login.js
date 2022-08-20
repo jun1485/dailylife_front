@@ -59,7 +59,7 @@ function Login() {
           method="POST"
           onSubmit={handleSubmit}
         >
-          {loading ? <LoadingSpinner /> : null}
+          {loading && <LoadingSpinner />}
           <input
             type="text"
             placeholder="아이디"

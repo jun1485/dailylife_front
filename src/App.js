@@ -50,7 +50,6 @@ function App() {
                 .then((res) => {
                   setTotalPostCount(res.data);
                 });
-              console.log(store.post);
             }, [totalPostCount])}
             <Cards />
             <Paging totalPostCount={totalPostCount} />
