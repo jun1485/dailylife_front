@@ -36,8 +36,8 @@ const Paging = (props) => {
             itemsCountPerPage={15}
             totalItemsCount={Number(props.totalPostCount)}
             pageRangeDisplayed={5}
-            prevPageText={"<"}
-            nextPageText={">"}
+            prevPageText={<img src="/assets/prevPage.png" />}
+            nextPageText={<img src="/assets/nextPage.png" />}
             onChange={pageChangeHandler}
         />
     );

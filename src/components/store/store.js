@@ -3,6 +3,7 @@ import post from "./post";
 import selectedPostData from "./selectedPostData";
 import searchResult from "./searchResult";
 import tokenSlice from "./authToken";
+import myInfo from "./myInfo";
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     selectedPostData: selectedPostData.reducer,
     searchResult: searchResult.reducer,
     authToken: tokenSlice.reducer,
+    myInfo: myInfo.reducer,
   },
 });
