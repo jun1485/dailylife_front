@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux/es/exports";
 import { Link } from "react-router-dom";
 import Searching from "../search/Searching";
 import "./Navbar.css";
@@ -12,18 +11,14 @@ function Navbar() {
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
           <button className="nav-title">
-            <Link
-              to="/"
-              onClick={() => {
-                window.location.href = "/#";
-              }}
-            >
+            <Link to="/">
               <img
                 className="logo"
                 src="/assets/logo.png"
                 onClick={() => {
                   window.location.reload();
                 }}
+                alt="logo"
               />
             </Link>
           </button>
@@ -47,7 +42,7 @@ function Navbar() {
             ></Link>
           )}
           <Link to="/recentlyViewed" className="link link3"></Link>
-          
+
           {accessToken ? (
             <Link to="/myInfo" className="link link4"></Link>
           ) : (
