@@ -38,7 +38,7 @@ function Login() {
         dispatch(SET_TOKEN(res.data.data.accessToken));
         console.log("token: " + JSON.stringify(tokenInfo));
         dispatch(myInfoActions.updateUserNum(res.data.data.userNum));
-        // window.location.href = "/#";
+        window.location.href = "/";
       })
       .catch((errStatus) => {
         setLoading(false);
