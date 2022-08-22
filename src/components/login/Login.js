@@ -5,6 +5,7 @@ import { useState } from "react";
 import { SET_TOKEN } from "../store/authToken";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { LoadingSpinner } from "../styledComponents/Loading";
+import { myInfoActions } from "../store/myInfo";
 
 function Login() {
   const dispatch = useDispatch();
@@ -36,7 +37,8 @@ function Login() {
         console.log(res);
         dispatch(SET_TOKEN(res.data.data.accessToken));
         console.log("token: " + JSON.stringify(tokenInfo));
-        window.location.href = "/#";
+        dispatch(myInfoActions.updateUserNum(res.data.data.userNum));
+        // window.location.href = "/#";
       })
       .catch((errStatus) => {
         setLoading(false);
