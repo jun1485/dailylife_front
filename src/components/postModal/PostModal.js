@@ -156,7 +156,6 @@ const ModalSocial = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 `;
 const SocialIconsContainer = styled.div`
   display: flex;

@@ -13,7 +13,7 @@ import { postActions } from "./components/store/post";
 import Paging from "./components/Pagination/Pagination";
 import MyInfo from "./components/myInfo/MyInfo";
 import { LoadingSpinner } from "./components/styledComponents/Loading";
-import { myInfoActions } from "./components/store/myInfo"
+import { myInfoActions } from "./components/store/myInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,22 +22,21 @@ function App() {
   const cardData = useSelector((state) => state.post);
   const [totalPostCount, setTotalPostCount] = useState("");
   const userData = useSelector((state) => state.myInfo);
-  
-  useEffect(()=>{
-    if (!userData.userNum && localStorage.getItem("accessToken")){
-      axios
-        .post(`${process.env.REACT_APP_HOST}/api/users/getUserNum` ,null, {
-          headers:{
-              "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-          }
-        })
-        .then(res=>{
-          dispatch(myInfoActions.updateUserNum(res.data.data))
-        })
-        .catch(err=>console.log(err))
-    }
-  },[])
 
+  useEffect(() => {
+    if (!userData.userNum && localStorage.getItem("accessToken")) {
+      axios
+        .post(`${process.env.REACT_APP_HOST}/api/users/getUserNum`, null, {
+          headers: {
+            "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+          },
+        })
+        .then((res) => {
+          dispatch(myInfoActions.updateUserNum(res.data.data));
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
 
   return (
     <Routes>
@@ -52,12 +51,6 @@ function App() {
                   dispatch(postActions.updateItems(res.data));
                 })
                 .catch((res) => {
-                  console.log(res);
-                });
-
-              axios
-                .get(`${process.env.REACT_APP_HOST}/api/users/getAllUser`, {})
-                .then((res) => {
                   console.log(res);
                 });
               axios
