@@ -12,27 +12,12 @@ import MyInfo from "./components/myInfo/MyInfo";
 import axios from "axios";
 import { useEffect } from "react";
 import { myInfoActions } from "./components/store/myInfo";
+import { LoadingSpinner } from "./components/styledComponents/Loading";
 
 function App() {
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
   const cardData = useSelector((state) => state.post);
-  const userData = useSelector((state) => state.myInfo);
-
-  useEffect(() => {
-    if (!userData.userNum && localStorage.getItem("accessToken")) {
-      axios
-        .post(`${process.env.REACT_APP_HOST}/api/users/getUserNum`, null, {
-          headers: {
-            "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-          },
-        })
-        .then((res) => {
-          dispatch(myInfoActions.updateUserNum(res.data.data));
-        })
-        .catch((err) => console.log(err));
-    }
-  }, []);
 
   return (
     <BrowserRouter>

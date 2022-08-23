@@ -35,6 +35,9 @@ function CardItem(props) {
         `${process.env.REACT_APP_HOST}/api/heart/boardHeartPlus`,
         {
           boardNum: 1,
+          heartState: 0,
+          replyNum: 0,
+          userNum: 0,
         },
         {
           headers: {
