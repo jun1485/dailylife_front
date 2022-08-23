@@ -17,6 +17,7 @@ export default function Main() {
         },
       })
       .then((res) => {
+        console.log(res);
         dispatch(postActions.updateItems(res.data));
       })
       .catch((res) => {
