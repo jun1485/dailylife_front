@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import styled from "styled-components";
@@ -28,13 +29,24 @@ function CardItem(props) {
   const Fullheart = "/assets/fullHeart.png";
   const Emptyheart = "/assets/heart.png";
 
-  const HandleLike = (event) => {
-    event.stopPropagation();
-    if (like === 0) {
-      setLike(1);
-    } else {
-      setLike(0);
-    }
+  const likeClickHandler = (event) => {
+    axios
+      .post(
+        `${process.env.REACT_APP_HOST}/api/heart/boardHeartPlus`,
+        {
+          boardNum: 1,
+          heartState: 0,
+          replyNum: 0,
+          userNum: 0,
+        },
+        {
+          headers: {
+            "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+          },
+        }
+      )
+      .then((res) => console.log(res))
+      .catch((res) => console.log(res));
   };
 
   // like end
@@ -49,7 +61,7 @@ function CardItem(props) {
         <div className="cards__item__info">
           <h5 className="cards__item__text">{props.title}</h5>
           {/* like */}
-          <span className="cards__like__container" onClick={HandleLike}>
+          <span className="cards__like__container" onClick={likeClickHandler}>
             <img
               className="cards__item__like"
               src={like ? Fullheart : Emptyheart}

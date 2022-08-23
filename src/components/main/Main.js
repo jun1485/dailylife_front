@@ -11,7 +11,11 @@ export default function Main() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {})
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
+        headers: {
+          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        },
+      })
       .then((res) => {
         dispatch(postActions.updateItems(res.data));
       })
@@ -19,11 +23,6 @@ export default function Main() {
         console.log(res);
       });
 
-    axios
-      .get(`${process.env.REACT_APP_HOST}/api/users/getAllUser`, {})
-      .then((res) => {
-        console.log(res);
-      });
     axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoardCount`, {})
       .then((res) => {
