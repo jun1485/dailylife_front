@@ -11,7 +11,6 @@ import UserPost from "./components/UserPost/UserPost";
 import MyInfo from "./components/myInfo/MyInfo";
 import axios from "axios";
 import { useEffect } from "react";
-import { LoadingSpinner } from "./components/styledComponents/Loading";
 import { myInfoActions } from "./components/store/myInfo";
 
 function App() {
