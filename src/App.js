@@ -9,10 +9,6 @@ import Searching from "./components/search/Searching";
 import RecentlyViewed from "./components/recentlyViewed/recentlyViewed";
 import UserPost from "./components/UserPost/UserPost";
 import MyInfo from "./components/myInfo/MyInfo";
-import axios from "axios";
-import { useEffect } from "react";
-import { myInfoActions } from "./components/store/myInfo";
-import { LoadingSpinner } from "./components/styledComponents/Loading";
 
 function App() {
   const dispatch = useDispatch();

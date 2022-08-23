@@ -24,7 +24,7 @@ function CardItem(props) {
 
   // like start
 
-  const [like, setLike] = useState(0);
+  const [like, setLike] = useState(false);
 
   const Fullheart = "/assets/fullHeart.png";
   const Emptyheart = "/assets/heart.png";
@@ -35,9 +35,6 @@ function CardItem(props) {
         `${process.env.REACT_APP_HOST}/api/heart/boardHeartPlus`,
         {
           boardNum: 1,
-          heartState: 0,
-          replyNum: 0,
-          userNum: 0,
         },
         {
           headers: {
@@ -45,7 +42,11 @@ function CardItem(props) {
           },
         }
       )
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        if (res.data === true) setLike(true);
+        else setLike(false);
+      })
       .catch((res) => console.log(res));
   };
 
