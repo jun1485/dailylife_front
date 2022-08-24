@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import axios from "axios";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import { LoadingSpinner } from "../styledComponents/Loading";
 import { myInfoActions } from "../store/myInfo";
 
 function Login() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const tokenInfo = useSelector((state) => state.authToken);
   const [username, setUsername] = useState("");
@@ -38,7 +39,7 @@ function Login() {
         dispatch(SET_TOKEN(res.data.data.accessToken));
         console.log("token: " + JSON.stringify(tokenInfo));
         dispatch(myInfoActions.updateUserNum(res.data.data.userNum));
-        window.location.href = "/";
+        navigate("/");
       })
       .catch((errStatus) => {
         setLoading(false);
