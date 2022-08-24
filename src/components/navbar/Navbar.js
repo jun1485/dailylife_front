@@ -12,14 +12,7 @@ function Navbar() {
         <div className="nav-header">
           <button className="nav-title">
             <Link to="/">
-              <img
-                className="logo"
-                src="/assets/logo.png"
-                onClick={() => {
-                  window.location.reload();
-                }}
-                alt="logo"
-              />
+              <img className="logo" src="/assets/logo.png" alt="logo" />
             </Link>
           </button>
         </div>
