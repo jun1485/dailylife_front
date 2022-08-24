@@ -30,6 +30,7 @@ function CardItem(props) {
   const Emptyheart = "/assets/heart.png";
 
   const likeClickHandler = (event) => {
+    event.stopPropagation();
     axios
       .post(
         `${process.env.REACT_APP_HOST}/api/heart/boardHeartPlus`,
@@ -44,8 +45,8 @@ function CardItem(props) {
       )
       .then((res) => {
         console.log(res);
-        if (res.data === true) setLike(true);
-        else setLike(false);
+        if (res.data === true) setLike(false);
+        else setLike(true);
       })
       .catch((res) => console.log(res));
   };
