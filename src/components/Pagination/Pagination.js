@@ -20,7 +20,7 @@ const Paging = (props) => {
     };
     useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_HOST}/api/board/getBoard?pg=${page}`)
+            .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?pg=${page}`)
             .then((res) => {
                 dispatch(postActions.updateItems(res.data));
                 dispatch(postActions.updatePageNum(page));
