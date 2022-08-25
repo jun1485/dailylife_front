@@ -10,7 +10,8 @@ function CardItem(props) {
   // console.log(props);
   const dispatch = useDispatch();
   const openModal = (to) => {
-    window.location.href = "/#open-modal";
+    // window.location.href = "/#open-modal";
+    props.setModalOpacity(1);
   };
   function handleClick() {
     openModal();

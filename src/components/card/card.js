@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import PostModal from "../postModal/PostModal";
 import CardItem from "./cardItem";
@@ -5,6 +6,8 @@ import "./Cards.css";
 
 function Cards(props) {
   const cardData = useSelector((state) => state.post);
+
+  console.log("modalOpacity", props.modalOpacity);
 
   return (
     <div className="cards">
@@ -22,10 +25,14 @@ function Cards(props) {
                   content={data.content}
                   heartState={data.heart}
                   path={data.path}
+                  setModalOpacity={props.setModalOpacity}
                 />
               );
             })}
-            <PostModal />
+            <PostModal
+              setModalOpacity={props.setModalOpacity}
+              modalOpacity={props.modalOpacity}
+            />
           </div>
         </div>
       </div>
