@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 function Navbar() {
   const accessToken = localStorage.getItem("accessToken");
-
+  console.log("accessToken:", accessToken);
   return (
     <>
       <div className="nav">

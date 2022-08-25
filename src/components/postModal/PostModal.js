@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./postModal.css";
 
 const tempComment = [
   {
@@ -66,23 +67,6 @@ const ModalBody = styled.div`
   visibility: visible;
 `;
 
-const ModalContentContainer = styled.div`
-  position: relative;
-  width: 50%;
-  margin-left: 20px;
-
-  & > .comment-create {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-
-    display: flex;
-  }
-`;
-const WriterInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
 const WriterInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
@@ -109,11 +93,7 @@ const Follow = styled.button`
   line-height: 23px;
 `;
 const Username = styled.div``;
-const ModalCloseContainer = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-`;
+
 const ModalClose = styled.div`
   position: relative;
   margin-left: auto;
@@ -134,54 +114,10 @@ const ModalClose = styled.div`
     cursor: pointer;
   }
 `;
-const ModalContent = styled.div`
-  text-align: start;
-  margin-top: 12px;
-
-  & > .title-in-modal {
-    text-align: start;
-    font-size: xx-large;
-  }
-  & > .text-in-modal {
-    margin-bottom: 25px;
-  }
-  & hr {
-    background-color: #eaeaea;
-    height: 1px;
-    border: 0;
-  }
-`;
 const ModalSocial = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-const SocialIconsContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  & > .comments-icon {
-    margin-left: 10px;
-  }
-`;
-const SocialCountContainer = styled.div`
-  & > .comments-count {
-    margin-left: 10px;
-  }
-`;
-const CommentSection = styled.div`
-  height: 260px;
-  overflow-y: auto;
-
-  & > .comment-container {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-  }
-  & > .comment-container > .comment-main {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
 `;
 const CommentContainer = styled.div.attrs({
   className: "comment-container",
@@ -234,24 +170,9 @@ const CommentCreate = styled.div.attrs({ className: "comment-create" })`
     font-size: 16px;
   }
 `;
-const ModalImageContainer = styled.div`
-  width: 50%;
-  max-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  // background-color: pink;
-  border-radius: 10px;
-  background-position: center;
-  background-size: contain, cover;
-  background-repeat: no-repeat;
-  background-image: url(${(props) => props.data.src});
-`;
-
 function PostModal({ modalOpacity, setModalOpacity }) {
   const currentPostData = useSelector((state) => state.selectedPostData);
-  const [replyList, setReplyList] = useState([])
+  const [replyList, setReplyList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -274,14 +195,14 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   //   boardDelete();
   // }, []);
 
-  
-  function replyInsertHandler(e){
-    if ( localStorage.getItem("accessToken") ) {
+  function replyInsertHandler(e) {
+    if (localStorage.getItem("accessToken")) {
       axios
-        .post(`${process.env.REACT_APP_HOST}/api/reply/insert`, 
+        .post(
+          `${process.env.REACT_APP_HOST}/api/reply/insert`,
           {
-            "boardNum": currentPostData.boardNum,
-            "replyContext": e.target.value
+            boardNum: currentPostData.boardNum,
+            replyContext: e.target.value,
           },
           {
             headers: {
@@ -289,36 +210,36 @@ function PostModal({ modalOpacity, setModalOpacity }) {
             },
           }
         )
-        .then((res)=>{
-          e.target.value=""
-          setReplyList([...replyList, res.data])
+        .then((res) => {
+          e.target.value = "";
+          setReplyList([...replyList, res.data]);
         })
-        .catch((err)=>console.log(err))
-    }
-    else{
-      e.target.value=""
-      alert('로그인 후 이용해주세요.')
+        .catch((err) => console.log(err));
+    } else {
+      e.target.value = "";
+      alert("로그인 후 이용해주세요.");
     }
   }
 
-
-  useEffect(()=>{
+  useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_HOST}/api/reply/getReply/${currentPostData.boardNum}`,{
-        headers: {
-          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-        },
+      .get(
+        `${process.env.REACT_APP_HOST}/api/reply/getReply/${currentPostData.boardNum}`,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+          },
+        }
+      )
+      .then((res) => {
+        setReplyList(res.data);
       })
-      .then((res)=>{
-        setReplyList(res.data)
-      })
-      .catch(err=>console.log(err))
+      .catch((err) => console.log(err));
 
-    return()=>{
-      setReplyList([])
-    }
-  }, [currentPostData.boardNum])
-
+    return () => {
+      setReplyList([]);
+    };
+  }, [currentPostData.boardNum]);
 
   console.log("postModal: ", modalOpacity);
   return (
@@ -327,15 +248,20 @@ function PostModal({ modalOpacity, setModalOpacity }) {
         <ModalWindow modalOpacity={modalOpacity} id="open-modal">
           <ModalBody onClick={(e) => e.stopPropagation()}>
             {/* 이미지는 Carousel로 교체 예정 */}
-            <ModalImageContainer data={currentPostData} />
-            <ModalContentContainer>
-              <WriterInfoContainer>
+            <div
+              className="modal-image"
+              style={{
+                backgroundImage: `url(${currentPostData.src})`,
+              }}
+            ></div>
+            <div className="modal-content-container">
+              <div className="writer-info-container">
                 <WriterInfo>
                   <Avatar />
                   <Username>작성자닉네임</Username>
                   <Follow>팔로우</Follow>
                 </WriterInfo>
-                <ModalCloseContainer>
+                <div className="modal-close-container">
                   <ModalClose
                     title="title"
                     onClick={(e) => {
@@ -374,9 +300,9 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                       />
                     </svg>
                   </ModalClose>
-                </ModalCloseContainer>
-              </WriterInfoContainer>
-              <ModalContent>
+                </div>
+              </div>
+              <div className="modal-content">
                 <h1 className="title-in-modal">{currentPostData.title}</h1>
                 <div className="text-in-modal">
                   {currentPostData.content
@@ -384,7 +310,6 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     : Array.from({ length: 4 }).map((item, index) => (
                         <div key={index}>여기는 내용부분의 영역입니다.</div>
                       ))}
-
                   <button
                     className="delete-board"
                     onClick={() => {
@@ -412,10 +337,10 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                   </button>
                 </div>
                 {/* <div className="text-in-modal">{currentPostData.content}</div> */}
-              </ModalContent>
+              </div>
               {/* 좋아요 댓글 갯수 출력하는 코드 */}
               <ModalSocial>
-                <SocialIconsContainer>
+                <div className="social-icons-container">
                   <span className="likes-icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -449,15 +374,17 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                       />
                     </svg>
                   </span>
-                </SocialIconsContainer>
-                <SocialCountContainer>
+                </div>
+                <div className="social-count-container">
                   <span className="likes-count">좋아요 {10}개</span>
-                  <span className="comments-count">댓글 {replyList.length}개</span>
-                </SocialCountContainer>
+                  <span className="comments-count">
+                    댓글 {replyList.length}개
+                  </span>
+                </div>
               </ModalSocial>
               <hr />
               {/* 댓글 창 시작 */}
-              <CommentSection>
+              <div className="comment-section">
                 {replyList.map((item, index) => (
                   <CommentContainer key={index}>
                     <CommentMain>
@@ -510,7 +437,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     </CommentDateContainer>
                   </CommentContainer>
                 ))}
-              </CommentSection>
+              </div>
               {/* 댓글 작성칸 */}
               <CommentCreate>
                 <Avatar />
@@ -518,10 +445,13 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                   type="text"
                   className="comment-create-text"
                   placeholder="댓글 달기"
-                  onKeyUp={ (e)=>{ if (window.event.keyCode === 13 && e.target.value!=="") replyInsertHandler(e) } }
+                  onKeyUp={(e) => {
+                    if (window.event.keyCode === 13 && e.target.value !== "")
+                      replyInsertHandler(e);
+                  }}
                 ></input>
               </CommentCreate>
-            </ModalContentContainer>
+            </div>
           </ModalBody>
         </ModalWindow>
       </div>

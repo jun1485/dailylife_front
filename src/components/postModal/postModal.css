@@ -1,0 +1,76 @@
+.modal-image {
+  width: 50%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* background-color: pink; */
+  border-radius: 10px;
+  background-position: center;
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+}
+.modal-close-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.modal-content-container {
+  position: relative;
+  width: 50%;
+  margin-left: 20px;
+}
+
+.modal-content-container > .comment-create {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+}
+.writer-info-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-content {
+  text-align: start;
+  margin-top: 12px;
+}
+
+.modal-content > .title-in-modal {
+  text-align: start;
+  font-size: xx-large;
+}
+.modal-content > .text-in-modal {
+  margin-bottom: 25px;
+}
+.modal-content hr {
+  background-color: #eaeaea;
+  height: 1px;
+  border: 0;
+}
+.social-icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons-container > .comments-icon {
+  margin-left: 10px;
+}
+.social-counter-container > .comments-count {
+  margin-left: 10px;
+}
+.comment-section {
+  height: 260px;
+  overflow-y: auto;
+}
+.comment-section > .comment-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.comment-section > .comment-container > .comment-main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

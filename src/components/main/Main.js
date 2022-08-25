@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { postActions } from "../store/post";
+import { postActions } from "../../reducers/post";
 import Cards from "../card/card";
 import Paging from "../Pagination/Pagination";
 
