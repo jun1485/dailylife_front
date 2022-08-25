@@ -6,7 +6,6 @@ import "./Cards.css";
 
 function Cards(props) {
   const cardData = useSelector((state) => state.post);
-
   console.log("modalOpacity", props.modalOpacity);
 
   return (

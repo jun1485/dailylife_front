@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { useSelector } from "react-redux/es/exports";
 import "./Searching.css";
-import { searchedDataActions } from "../store/searchResult";
+import { searchedDataActions } from "../../reducers/searchResult";
 import axios from "axios";
-import { postActions } from "../store/post";
+import { postActions } from "../../reducers/post";
 
 function Searching(props) {
   const store = useSelector((state) => state);

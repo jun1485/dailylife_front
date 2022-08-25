@@ -2,10 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import axios from "axios";
 import { useState } from "react";
-import { SET_TOKEN } from "../store/authToken";
+import { SET_TOKEN } from "../../reducers/authToken";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { LoadingSpinner } from "../styledComponents/Loading";
-import { myInfoActions } from "../store/myInfo";
+import { myInfoActions } from "../../reducers/myInfo";
 
 function Login() {
   const navigate = useNavigate();

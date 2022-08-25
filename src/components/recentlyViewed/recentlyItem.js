@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { selectedPostActions } from "../store/selectedPostData";
+import { selectedPostActions } from "../../reducers/selectedPostData";
 import "../card/Cards.css";
 
 function RecentlyItem(props) {
