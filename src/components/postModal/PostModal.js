@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux/es/exports";
 import { useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const tempComment = [
   {
@@ -252,6 +254,7 @@ const ModalImageContainer = styled.div`
 
 function PostModal(props) {
   const currentPostData = useSelector((state) => state.selectedPostData);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.watched === undefined) {
@@ -265,6 +268,13 @@ function PostModal(props) {
     localStorage.setItem("watched", JSON.stringify(watched));
   }, [currentPostData]);
 
+  const boardDelete = () => {
+    navigate("/");
+  };
+
+  // useEffect(() => {
+  //   boardDelete();
+  // }, []);
   return (
     <>
       <div className="container">
@@ -325,6 +335,32 @@ function PostModal(props) {
                     : Array.from({ length: 4 }).map((item, index) => (
                         <div key={index}>여기는 내용부분의 영역입니다.</div>
                       ))}
+
+                  <button
+                    className="delete-board"
+                    onClick={() => {
+                      console.log(currentPostData);
+                      axios
+                        .delete(
+                          `${process.env.REACT_APP_HOST}/api/board/delete/${currentPostData.boardNum}`,
+                          {
+                            headers: {
+                              "X-ACCESS-TOKEN":
+                                localStorage.getItem("accessToken"),
+                            },
+                          }
+                        )
+                        .then((res) => {
+                          console.log(res);
+                          alert("게시글이 성공적으로 삭제되었습니다.");
+                          boardDelete();
+                          // window.location.href = "/";
+                        })
+                        .catch((res) => console.log(res));
+                    }}
+                  >
+                    글 삭제
+                  </button>
                 </div>
                 {/* <div className="text-in-modal">{currentPostData.content}</div> */}
               </ModalContent>

@@ -7,6 +7,7 @@ import { selectedPostActions } from "../store/selectedPostData";
 const CardItemText = styled.p``;
 
 function CardItem(props) {
+  // console.log(props);
   const dispatch = useDispatch();
   const openModal = (to) => {
     window.location.href = "/#open-modal";
@@ -15,6 +16,7 @@ function CardItem(props) {
     openModal();
     dispatch(
       selectedPostActions.updateData({
+        boardNum: props.boardNum,
         src: props.src,
         title: props.title,
         content: props.content,
@@ -35,7 +37,7 @@ function CardItem(props) {
       .post(
         `${process.env.REACT_APP_HOST}/api/heart/boardHeartPlus`,
         {
-          boardNum: 1,
+          boardNum: props.boardNum,
         },
         {
           headers: {
@@ -45,8 +47,6 @@ function CardItem(props) {
       )
       .then((res) => {
         console.log(res);
-        if (res.data === true) setLike(false);
-        else setLike(true);
       })
       .catch((res) => console.log(res));
   };
@@ -66,7 +66,8 @@ function CardItem(props) {
           <span className="cards__like__container" onClick={likeClickHandler}>
             <img
               className="cards__item__like"
-              src={like ? Fullheart : Emptyheart}
+              // src={props.heartState ? Fullheart : Emptyheart}
+              src={props.heartState ? Emptyheart : Fullheart}
               alt="like"
             />
           </span>

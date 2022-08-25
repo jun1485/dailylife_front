@@ -9,6 +9,7 @@ const selectedPostData = createSlice({
   },
   reducers: {
     updateData(state, action) {
+      state.boardNum = action.payload.boardNum;
       state.src = action.payload.src;
       state.title = action.payload.title;
       state.content = action.payload.content;

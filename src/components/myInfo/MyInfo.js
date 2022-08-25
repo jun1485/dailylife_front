@@ -7,6 +7,8 @@ import { myInfoActions } from "../store/myInfo";
 export default function MyInfo() {
     const userData = useSelector((state) => state.myInfo);
     const dispatch = useDispatch();
+
+    console.log(userData);
     useEffect(() => {
         if (!userData.userInfo) {
             axios
