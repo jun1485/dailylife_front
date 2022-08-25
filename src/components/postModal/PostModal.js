@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux/es/exports";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -251,6 +251,7 @@ const ModalImageContainer = styled.div`
 
 function PostModal({ modalOpacity, setModalOpacity }) {
   const currentPostData = useSelector((state) => state.selectedPostData);
+  const [replyList, setReplyList] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -272,6 +273,52 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   // useEffect(() => {
   //   boardDelete();
   // }, []);
+
+  
+  function replyInsertHandler(e){
+    if ( localStorage.getItem("accessToken") ) {
+      axios
+        .post(`${process.env.REACT_APP_HOST}/api/reply/insert`, 
+          {
+            "boardNum": currentPostData.boardNum,
+            "replyContext": e.target.value
+          },
+          {
+            headers: {
+              "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+            },
+          }
+        )
+        .then((res)=>{
+          e.target.value=""
+          setReplyList([...replyList, res.data])
+        })
+        .catch((err)=>console.log(err))
+    }
+    else{
+      e.target.value=""
+      alert('로그인 후 이용해주세요.')
+    }
+  }
+
+
+  useEffect(()=>{
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/reply/getReply/${currentPostData.boardNum}`,{
+        headers: {
+          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        },
+      })
+      .then((res)=>{
+        setReplyList(res.data)
+      })
+      .catch(err=>console.log(err))
+
+    return()=>{
+      setReplyList([])
+    }
+  }, [currentPostData.boardNum])
+
 
   console.log("postModal: ", modalOpacity);
   return (
@@ -405,18 +452,18 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                 </SocialIconsContainer>
                 <SocialCountContainer>
                   <span className="likes-count">좋아요 {10}개</span>
-                  <span className="comments-count">댓글 {3}개</span>
+                  <span className="comments-count">댓글 {replyList.length}개</span>
                 </SocialCountContainer>
               </ModalSocial>
               <hr />
               {/* 댓글 창 시작 */}
               <CommentSection>
-                {tempComment.map((item, index) => (
+                {replyList.map((item, index) => (
                   <CommentContainer key={index}>
                     <CommentMain>
                       <Avatar />
                       <div className="username">홍길동</div>
-                      <div className="comment-content">댓글입니다!</div>
+                      <div className="comment-content">{item.replyContext}</div>
                       <span className="comment-like">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -471,6 +518,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                   type="text"
                   className="comment-create-text"
                   placeholder="댓글 달기"
+                  onKeyUp={ (e)=>{ if (window.event.keyCode === 13 && e.target.value!=="") replyInsertHandler(e) } }
                 ></input>
               </CommentCreate>
             </ModalContentContainer>
