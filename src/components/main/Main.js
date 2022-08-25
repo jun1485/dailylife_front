@@ -8,7 +8,7 @@ import Paging from "../Pagination/Pagination";
 export default function Main() {
   const [totalPostCount, setTotalPostCount] = useState("");
   const dispatch = useDispatch();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpacity, setModalOpacity] = useState(0);
 
   useEffect(() => {
     axios
@@ -30,11 +30,11 @@ export default function Main() {
       .then((res) => {
         setTotalPostCount(res.data);
       });
-  }, [totalPostCount]);
+  }, [totalPostCount, modalOpacity]);
 
   return (
     <>
-      <Cards setIsModalOpen={setIsModalOpen} />
+      <Cards setModalOpacity={setModalOpacity} modalOpacity={modalOpacity} />
       <Paging totalPostCount={totalPostCount} />
     </>
   );

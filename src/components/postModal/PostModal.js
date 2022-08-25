@@ -30,7 +30,7 @@ const tempComment = [
   },
 ];
 
-const ModalWindow = styled.div`
+const ModalWindow = styled.div.attrs({ className: "ModalWindow" })`
   position: fixed;
   background-color: rgba(0, 0, 0, 0.25);
   top: 0;
@@ -39,8 +39,8 @@ const ModalWindow = styled.div`
   left: 0;
   z-index: 999;
   visibility: visible;
-  opacity: 0;
-  pointer-events: none;
+  opacity: ${(props) => props.modalOpacity};
+  pointer-events: ${(props) => (props.modalOpacity === 0 ? "none" : "auto")};
   transition: all 0.3s;
 
   font-family: "Pretendard";
@@ -51,11 +51,6 @@ const ModalWindow = styled.div`
 
   & > div {
     border-radius: 1rem;
-  }
-  &:target {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
   }
 `;
 const ModalBody = styled.div`
@@ -119,13 +114,14 @@ const ModalCloseContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const ModalClose = styled.a`
+const ModalClose = styled.div`
   position: relative;
   margin-left: auto;
   width: 18px;
   aspect-ratio: 1;
   color: #aaa;
   text-decoration: none;
+  border: 1px red solid;
 
   & svg {
     position: absolute;
@@ -135,6 +131,7 @@ const ModalClose = styled.a`
   }
   &:hover {
     color: black;
+    cursor: pointer;
   }
 `;
 const ModalContent = styled.div`
@@ -252,7 +249,7 @@ const ModalImageContainer = styled.div`
   background-image: url(${(props) => props.data.src});
 `;
 
-function PostModal({ setIsModalOpen }) {
+function PostModal({ modalOpacity, setModalOpacity }) {
   const currentPostData = useSelector((state) => state.selectedPostData);
   const navigate = useNavigate();
 
@@ -275,10 +272,12 @@ function PostModal({ setIsModalOpen }) {
   // useEffect(() => {
   //   boardDelete();
   // }, []);
+
+  console.log("postModal: ", modalOpacity);
   return (
     <>
       <div className="container">
-        <ModalWindow id="open-modal" onClick={(e) => setIsModalOpen(true)}>
+        <ModalWindow modalOpacity={modalOpacity} id="open-modal">
           <ModalBody onClick={(e) => e.stopPropagation()}>
             {/* 이미지는 Carousel로 교체 예정 */}
             <ModalImageContainer data={currentPostData} />
@@ -292,10 +291,9 @@ function PostModal({ setIsModalOpen }) {
                 <ModalCloseContainer>
                   <ModalClose
                     title="title"
-                    href="#"
                     onClick={(e) => {
-                      e.preventDefault();
-                      setIsModalOpen(false);
+                      setModalOpacity(0);
+                      console.log("x clicked");
                     }}
                   >
                     <svg
