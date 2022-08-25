@@ -15,11 +15,12 @@ function Cards(props) {
             {cardData.myValues.map((data, index) => {
               return (
                 <CardItem
-                  key={index}
-                  id={index}
+                  key={data.boardNum}
+                  boardNum={data.boardNum}
                   src={data.serverFileUrl}
                   title={data.title}
                   content={data.content}
+                  heartState={data.heart}
                   path={data.path}
                 />
               );
