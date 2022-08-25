@@ -25,7 +25,7 @@ function Cards(props) {
                 />
               );
             })}
-            <PostModal />
+            <PostModal setIsModalOpen={props.setIsModalOpen} />
           </div>
         </div>
       </div>

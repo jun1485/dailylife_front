@@ -8,6 +8,7 @@ import Paging from "../Pagination/Pagination";
 export default function Main() {
   const [totalPostCount, setTotalPostCount] = useState("");
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -33,7 +34,7 @@ export default function Main() {
 
   return (
     <>
-      <Cards />
+      <Cards setIsModalOpen={setIsModalOpen} />
       <Paging totalPostCount={totalPostCount} />
     </>
   );

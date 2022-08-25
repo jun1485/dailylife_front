@@ -252,7 +252,7 @@ const ModalImageContainer = styled.div`
   background-image: url(${(props) => props.data.src});
 `;
 
-function PostModal(props) {
+function PostModal({ setIsModalOpen }) {
   const currentPostData = useSelector((state) => state.selectedPostData);
   const navigate = useNavigate();
 
@@ -278,10 +278,7 @@ function PostModal(props) {
   return (
     <>
       <div className="container">
-        <ModalWindow
-          id="open-modal"
-          onClick={(e) => (window.location.href = "#home")}
-        >
+        <ModalWindow id="open-modal" onClick={(e) => setIsModalOpen(true)}>
           <ModalBody onClick={(e) => e.stopPropagation()}>
             {/* 이미지는 Carousel로 교체 예정 */}
             <ModalImageContainer data={currentPostData} />
@@ -293,7 +290,14 @@ function PostModal(props) {
                   <Follow>팔로우</Follow>
                 </WriterInfo>
                 <ModalCloseContainer>
-                  <ModalClose href="#home" title="title">
+                  <ModalClose
+                    title="title"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsModalOpen(false);
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
