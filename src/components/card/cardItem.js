@@ -27,7 +27,7 @@ function CardItem(props) {
 
   // like start
 
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState(props.heartState);
 
   const Fullheart = "/assets/fullHeart.png";
   const Emptyheart = "/assets/heart.png";
@@ -52,6 +52,11 @@ function CardItem(props) {
       .catch((res) => console.log(res));
   };
 
+  const clickHeartEvent = () => {
+    const likeState = !like;
+    setLike(likeState);
+  };
+
   // like end
 
   return (
@@ -67,8 +72,8 @@ function CardItem(props) {
           <span className="cards__like__container" onClick={likeClickHandler}>
             <img
               className="cards__item__like"
-              // src={props.heartState ? Fullheart : Emptyheart}
-              src={props.heartState ? Emptyheart : Fullheart}
+              onClick={clickHeartEvent}
+              src={props.heartState ? Fullheart : Emptyheart}
               alt="like"
             />
           </span>

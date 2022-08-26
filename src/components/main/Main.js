@@ -12,7 +12,7 @@ export default function Main() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`, {
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
         headers: {
           "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
         },
