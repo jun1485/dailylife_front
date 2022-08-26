@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useInsertionEffect, useState } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import styled from "styled-components";
+import { postActions } from "../../reducers/post";
 import { selectedPostActions } from "../../reducers/selectedPostData";
 
 const CardItemText = styled.p``;
@@ -27,7 +28,7 @@ function CardItem(props) {
 
   // like start
 
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState(props.heartState);
 
   const Fullheart = "/assets/fullHeart.png";
   const Emptyheart = "/assets/heart.png";
@@ -52,6 +53,24 @@ function CardItem(props) {
       .catch((res) => console.log(res));
   };
 
+  useEffect(() => {});
+  const clickHeartEvent = () => {
+    setLike(!like);
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
+        headers: {
+          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(postActions.updateItems(res.data));
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  };
+
   // like end
 
   return (
@@ -67,8 +86,8 @@ function CardItem(props) {
           <span className="cards__like__container" onClick={likeClickHandler}>
             <img
               className="cards__item__like"
-              // src={props.heartState ? Fullheart : Emptyheart}
-              src={props.heartState ? Emptyheart : Fullheart}
+              onClick={clickHeartEvent}
+              src={props.heartState ? Fullheart : Emptyheart}
               alt="like"
             />
           </span>
