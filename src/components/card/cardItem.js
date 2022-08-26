@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useInsertionEffect, useState } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import styled from "styled-components";
+import { postActions } from "../../reducers/post";
 import { selectedPostActions } from "../../reducers/selectedPostData";
 
 const CardItemText = styled.p``;
@@ -52,9 +53,22 @@ function CardItem(props) {
       .catch((res) => console.log(res));
   };
 
+  useEffect(() => {});
   const clickHeartEvent = () => {
-    const likeState = !like;
-    setLike(likeState);
+    setLike(!like);
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
+        headers: {
+          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(postActions.updateItems(res.data));
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   };
 
   // like end
