@@ -1,12 +1,31 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postActions } from "../../reducers/post";
 import PostModal from "../postModal/PostModal";
 import CardItem from "./cardItem";
 import "./Cards.css";
 
 function Cards(props) {
+  const dispatch = useDispatch();
   const cardData = useSelector((state) => state.post);
   console.log("modalOpacity", props.modalOpacity);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
+        headers: {
+          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(postActions.updateItems(res.data));
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  });
 
   return (
     <div className="cards">
