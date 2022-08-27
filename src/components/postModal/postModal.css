@@ -11,23 +11,26 @@
   background-size: contain, cover;
   background-repeat: no-repeat;
 }
+
 .modal-close-container {
   flex: 1;
   display: flex;
   align-items: center;
 }
+
 .modal-content-container {
   position: relative;
   width: 50%;
   margin-left: 20px;
 }
 
-.modal-content-container > .comment-create {
+.modal-content-container>.comment-create {
   position: absolute;
   bottom: 0;
   width: 100%;
   display: flex;
 }
+
 .writer-info-container {
   display: flex;
   justify-content: space-around;
@@ -38,78 +41,91 @@
   margin-top: 12px;
 }
 
-.modal-content > .title-in-modal {
+.modal-content>.title-in-modal {
   text-align: start;
   font-size: xx-large;
 }
-.modal-content > .text-in-modal {
+
+.modal-content>.text-in-modal {
   margin-bottom: 25px;
 }
+
 .modal-content hr {
   background-color: #eaeaea;
   height: 1px;
   border: 0;
 }
+
 .social-icons-container {
   display: flex;
   align-items: center;
 }
 
-.social-icons-container > .comments-icon {
+.social-icons-container>.comments-icon {
   margin-left: 10px;
 }
-.social-counter-container > .comments-count {
+
+.social-counter-container>.comments-count {
   margin-left: 10px;
 }
+
 .comment-section {
   height: 330px;
   overflow-y: auto;
 }
-.comment-section > .comment-container {
+
+.comment-section>.comment-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
-.comment-section > .comment-container > .comment-main {
+
+.comment-section>.comment-container>.comment-main {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.comments-count{
+
+.comments-count {
   margin-left: 10px;
 }
 
-.reply-option{
+.reply-option {
   background: none;
   border: none;
   vertical-align: top;
   cursor: pointer;
   margin-left: 5px;
 }
-.reply-delete-modal{
+
+.reply-delete-modal {
   width: 100%;
   height: 100%;
   /* background-color: black;
   opacity: 0.7; */
   background-color: rgba(0, 0, 0, 0.5);
 }
-.reply-delete-container{
+
+.reply-delete-container {
   top: 50%;
   left: 50%;
   position: absolute;
   width: 300px;
   height: 100px;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border: 1px solid #c7c7c7;
 }
-.reply-delete-box{
+
+.reply-delete-box {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.reply-delete-box > div{
+
+.reply-delete-box>div {
   height: 50%;
 }
-.reply-delete-box > div > button{
+
+.reply-delete-box>div>button {
   border: none;
   display: block;
   width: 100%;
@@ -118,6 +134,7 @@
   background-color: rgb(231, 231, 231);
   color: black;
 }
-.reply-delete-box > div:first-of-type > button{
+
+.reply-delete-box>div:first-of-type>button {
   border-bottom: 1px solid rgb(0, 0, 0);
 }

@@ -25,7 +25,7 @@ function Cards(props) {
       .catch((res) => {
         console.log(res);
       });
-  });
+  }, []);
 
   return (
     <div className="cards">

@@ -46,7 +46,15 @@ function NewUserPost(props) {
           <section className="newPost-boarding">
             <div className="newPost-title">게시글 작성</div>
             <section className="newPost-body">
-              <div className="newPost-body-pic"></div>
+              <div className="newPost-body-pic">
+                <p className="newPost-body-pic-explain">
+                  마우스로 클릭하여 이미지를 추가해주세요.
+                </p>
+                <img
+                  className="newPost-body-pic-cloudPic"
+                  src="/assets/cloud-upload.png"
+                />
+              </div>
             </section>
             <img
               className="newPost-modal-close"

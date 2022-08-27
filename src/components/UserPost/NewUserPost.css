@@ -28,10 +28,10 @@ body {
 
 .newPost-boarding {
     position: absolute;
-    width: 60%;
+    width: 100%;
     max-width: 990px;
     height: 650px;
-    padding: 2em;
+    padding: 1.5em;
     display: flex;
     top: 50%;
     left: 50%;
@@ -43,7 +43,7 @@ body {
 
 .newPost-body {
     position: relative;
-    top: 4vh;
+    top: 5vh;
     width: 90vh;
     height: 58vh;
 }
@@ -68,16 +68,42 @@ body {
 
 .newPost-body-pic {
     position: absolute;
+    display: flex;
     left: 0;
     width: 58vh;
     max-width: 560px;
     height: 58vh;
     max-height: 520px;
+    align-items: center;
 
     background: #F4F4F4;
     border: 1.5px solid #EAEAEA;
     border-radius: 12px;
     box-sizing: border-box;
+}
+
+.newPost-body-pic-cloudPic {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+}
+
+.newPost-body-pic-explain {
+    position: absolute;
+    width: 100%;
+    height: 46px;
+    top: 50%;
+    margin: auto;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+
+    color: #909090;
 }
 
 .newPost-modal-close {
