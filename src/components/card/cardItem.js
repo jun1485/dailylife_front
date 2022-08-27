@@ -33,8 +33,24 @@ function CardItem(props) {
   const Fullheart = "/assets/fullHeart.png";
   const Emptyheart = "/assets/heart.png";
 
-  const likeClickHandler = (event) => {
-    event.stopPropagation();
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
+        headers: {
+          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(postActions.updateItems(res.data));
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  }, [like]);
+  const clickHeartEvent = (e) => {
+    e.stopPropagation();
+    setLike(!like);
     axios
       .post(
         `${process.env.REACT_APP_HOST}/api/heart/boardHeartPlus`,
@@ -53,25 +69,6 @@ function CardItem(props) {
       .catch((res) => console.log(res));
   };
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
-        headers: {
-          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        dispatch(postActions.updateItems(res.data));
-      })
-      .catch((res) => {
-        console.log(res);
-      });
-  }, [like]);
-  const clickHeartEvent = () => {
-    setLike(!like);
-  };
-
   // like end
 
   return (
@@ -84,7 +81,7 @@ function CardItem(props) {
         <div className="cards__item__info">
           <h5 className="cards__item__text">{props.title}</h5>
           {/* like */}
-          <span className="cards__like__container" onClick={likeClickHandler}>
+          <span className="cards__like__container">
             <img
               className="cards__item__like"
               onClick={clickHeartEvent}
