@@ -7,11 +7,13 @@ import CardItem from "./cardItem";
 import "./Cards.css";
 
 function Cards(props) {
+  console.log("executes Cards");
   const dispatch = useDispatch();
   const cardData = useSelector((state) => state.post);
-  console.log("modalOpacity", props.modalOpacity);
+  // console.log("modalOpacity", props.modalOpacity);
 
   useEffect(() => {
+    console.log("rendered Cards", cardData);
     axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
         headers: {
@@ -19,13 +21,13 @@ function Cards(props) {
         },
       })
       .then((res) => {
-        console.log(res);
+        console.log("AJAX in Cards");
         dispatch(postActions.updateItems(res.data));
       })
       .catch((res) => {
         console.log(res);
       });
-  });
+  }, []);
 
   return (
     <div className="cards">

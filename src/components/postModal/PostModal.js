@@ -171,11 +171,13 @@ const CommentCreate = styled.div.attrs({ className: "comment-create" })`
   }
 `;
 function PostModal({ modalOpacity, setModalOpacity }) {
+  console.log("executes PostModal");
   const currentPostData = useSelector((state) => state.selectedPostData);
   const [replyList, setReplyList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("rendered PostModal");
     if (localStorage.watched === undefined) {
       localStorage.setItem("watched", JSON.stringify([]));
     }
@@ -241,7 +243,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
     };
   }, [currentPostData.boardNum]);
 
-  console.log("postModal: ", modalOpacity);
+  // console.log("postModal: ", modalOpacity);
   return (
     <>
       <div className="container">

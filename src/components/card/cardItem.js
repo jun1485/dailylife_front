@@ -8,6 +8,7 @@ import { selectedPostActions } from "../../reducers/selectedPostData";
 const CardItemText = styled.p``;
 
 function CardItem(props) {
+  console.log("executes CardItem");
   // console.log(props);
   const dispatch = useDispatch();
   const openModal = (to) => {
@@ -34,6 +35,7 @@ function CardItem(props) {
   const Emptyheart = "/assets/heart.png";
 
   useEffect(() => {
+    console.log("rendered CardItem");
     axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
         headers: {
@@ -41,7 +43,7 @@ function CardItem(props) {
         },
       })
       .then((res) => {
-        console.log(res);
+        console.log("AJAX1 in CardItem");
         dispatch(postActions.updateItems(res.data));
       })
       .catch((res) => {
@@ -65,7 +67,7 @@ function CardItem(props) {
         }
       )
       .then((res) => {
-        console.log(res);
+        console.log("AJAX2 in CardItem");
       })
       .catch((res) => console.log(res));
   };
