@@ -1,10 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Searching from "../search/Searching";
+import NewUserPost from "../UserPost/NewUserPost";
 import "./Navbar.css";
 
 function Navbar() {
   const accessToken = localStorage.getItem("accessToken");
-  console.log("accessToken:", accessToken);
+  const [openPostModal, setOpenPostModal] = useState(false);
+
+  useEffect(() => {
+    console.log(openPostModal);
+  }, [openPostModal]);
+
+  const changeOpenPostModal = (e) => {
+    setOpenPostModal(false);
+  };
+
   return (
     <>
       <div className="nav">
@@ -34,7 +45,16 @@ function Navbar() {
               }}
             ></Link>
           )}
-          <Link to="/recentlyViewed" className="link link3"></Link>
+          <div
+            className="link link3"
+            onClick={() => {
+              setOpenPostModal(true);
+            }}
+          >
+            {openPostModal && (
+              <NewUserPost changeOpenPostModal={changeOpenPostModal} />
+            )}
+          </div>
 
           {accessToken ? (
             <Link to="/myInfo" className="link link4"></Link>

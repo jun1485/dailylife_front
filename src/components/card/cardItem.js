@@ -53,9 +53,7 @@ function CardItem(props) {
       .catch((res) => console.log(res));
   };
 
-  useEffect(() => {});
-  const clickHeartEvent = () => {
-    setLike(!like);
+  useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
         headers: {
@@ -69,6 +67,9 @@ function CardItem(props) {
       .catch((res) => {
         console.log(res);
       });
+  }, [like]);
+  const clickHeartEvent = () => {
+    setLike(!like);
   };
 
   // like end
