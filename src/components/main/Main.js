@@ -12,20 +12,6 @@ export default function Main() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
-        headers: {
-          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        dispatch(postActions.updateItems(res.data));
-      })
-      .catch((res) => {
-        console.log(res);
-      });
-
-    axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoardCount`, {})
       .then((res) => {
         setTotalPostCount(res.data);

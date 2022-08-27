@@ -47,6 +47,7 @@ function CardItem(props) {
       .catch((res) => {
         console.log(res);
       });
+    console.log("props.heartState:", props.heartState);
   }, [like]);
   const clickHeartEvent = (e) => {
     e.stopPropagation();
@@ -85,7 +86,7 @@ function CardItem(props) {
             <img
               className="cards__item__like"
               onClick={clickHeartEvent}
-              src={props.heartState ? Fullheart : Emptyheart}
+              src={like ? Fullheart : Emptyheart}
               alt="like"
             />
           </span>
