@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/exports";
 import axios from "axios";
-import "./NewUserPost.css";
+import "./NewUserPost.scss";
 
 function NewUserPost(props) {
   const tokenInfo = useSelector((state) => state.authToken);
@@ -53,7 +53,19 @@ function NewUserPost(props) {
                 <img
                   className="newPost-body-pic-cloudPic"
                   src="/assets/cloud-upload.png"
+                  alt=""
                 />
+              </div>
+              <div className="newPost-body-content-container">
+                <input
+                  className="newPost-body-title"
+                  placeholder="제목을 입력해주세요"
+                />
+                <textarea
+                  className="newPost-body-content"
+                  placeholder="내용을 입력해주세요"
+                />
+                <button className="submit-btn">게시물 등록</button>
               </div>
             </section>
             <img

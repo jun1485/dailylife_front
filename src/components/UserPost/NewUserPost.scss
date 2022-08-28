@@ -39,12 +39,14 @@ body {
     background: white;
     visibility: visible;
     transition: all 0.3s;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
 }
 
 .newPost-body {
     position: relative;
     top: 5vh;
-    width: 90vh;
+    width: 100vh;
     height: 58vh;
 }
 
@@ -96,7 +98,6 @@ body {
     top: 50%;
     margin: auto;
 
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -105,6 +106,88 @@ body {
 
     color: #909090;
 }
+
+.newPost-body-title {
+    position: absolute;
+    width: 100%;
+    right: 0.2vh;
+    top: 4px;
+    border: 0;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+
+    &::placeholder {
+        color: #BCBCBC;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.newPost-body-content-container {
+    position: absolute;
+    float: left;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    max-height: 520px;
+}
+
+.newPost-body-content {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    right: 1px;
+    top: 5vh;
+    border: none;
+    resize: none;
+    border-bottom: 1px solid #EAEAEA;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    /* line-height: 23px; */
+
+    letter-spacing: -0.01em;
+
+    &::placeholder {
+        color: #BCBCBC;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+.submit-btn {
+    position: absolute;
+    width: 102px;
+    height: 34px;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-size: 17px;
+    line-height: 20px;
+    color: #FFFFFF;
+    background: #FF9500;
+    border-radius: 6px;
+    border: none;
+
+    &:hover {
+        color: #000000;
+    }
+}
+
 
 .newPost-modal-close {
     position: absolute;
