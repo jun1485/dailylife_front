@@ -183,6 +183,7 @@ const ReplyOption = styled.span.attrs({ className: "reply-option" })`
 `;
 
 function PostModal({ modalOpacity, setModalOpacity }) {
+  console.log("executes PostModal");
   const currentPostData = useSelector((state) => state.selectedPostData);
   const [replyList, setReplyList] = useState([]);
   const [replyHover, setReplyHover] = useState(-1);
@@ -190,6 +191,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("rendered PostModal");
     if (localStorage.watched === undefined) {
       localStorage.setItem("watched", JSON.stringify([]));
     }
@@ -209,7 +211,6 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   //   boardDelete();
   // }, []);
 
-
   /** 댓글 작성 api 통신 함수 */
   function replyInsertHandler(e) {
     if (localStorage.getItem("accessToken")) {
@@ -228,7 +229,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
         )
         .then((res) => {
           e.target.value = "";
-          res.data.time=dateHandler(res.data.replyTime)
+          res.data.time = dateHandler(res.data.replyTime);
           setReplyList([...replyList, res.data]);
         })
         .catch((err) => console.log(err));
@@ -237,7 +238,6 @@ function PostModal({ modalOpacity, setModalOpacity }) {
       alert("로그인 후 이용해주세요.");
     }
   }
-
 
   /** 게시글 선택 시 replyList(댓글 정보 state) 업데이트 */
   useEffect(() => {
@@ -251,12 +251,11 @@ function PostModal({ modalOpacity, setModalOpacity }) {
         }
       )
       .then((res) => {
-        console.log(res.data)
-        res.data.map((item,idx)=>{
-          item.time=dateHandler(item.replyTime)
-        })
+        console.log(res.data);
+        res.data.map((item, idx) => {
+          item.time = dateHandler(item.replyTime);
+        });
         setReplyList(res.data);
-
       })
       .catch((err) => console.log(err));
 
@@ -265,54 +264,65 @@ function PostModal({ modalOpacity, setModalOpacity }) {
     };
   }, [currentPostData.boardNum]);
 
-
   /** 댓글이 작성된 날짜 계산 */
   const dateHandler = (replyDate) => {
-    const [sec, min, hour, day, week, month, year] = [1, 60, 3600, 86400, 86400*7, 2592000, 2592000*12]
+    const [sec, min, hour, day, week, month, year] = [
+      1,
+      60,
+      3600,
+      86400,
+      86400 * 7,
+      2592000,
+      2592000 * 12,
+    ];
 
     const today = new Date();
-    replyDate = new Date(`${replyDate[0]}-${replyDate[1]}-${replyDate[2]} ${(replyDate[3]+9)%24}:${replyDate[4]}:${replyDate[5]}`)
-    const elapsedTime = Math.trunc((today.getTime() - replyDate.getTime()) / 1000);
-    let elapsedText = ""
+    replyDate = new Date(
+      `${replyDate[0]}-${replyDate[1]}-${replyDate[2]} ${
+        (replyDate[3] + 9) % 24
+      }:${replyDate[4]}:${replyDate[5]}`
+    );
+    const elapsedTime = Math.trunc(
+      (today.getTime() - replyDate.getTime()) / 1000
+    );
+    let elapsedText = "";
 
-    if (elapsedTime < sec)
-      elapsedText = "지금"
-    else if (elapsedTime < min)
-      elapsedText = `${elapsedTime}초`
+    if (elapsedTime < sec) elapsedText = "지금";
+    else if (elapsedTime < min) elapsedText = `${elapsedTime}초`;
     else if (elapsedTime < hour)
-      elapsedText = `${Math.trunc(elapsedTime/min)}분`
+      elapsedText = `${Math.trunc(elapsedTime / min)}분`;
     else if (elapsedTime < day)
-      elapsedText = `${Math.trunc(elapsedTime/hour)}시간`
+      elapsedText = `${Math.trunc(elapsedTime / hour)}시간`;
     else if (elapsedTime < week)
-      elapsedText = `${Math.trunc(elapsedTime/day)}일`
-    else elapsedText = `${Math.trunc(elapsedTime/week)}주`
+      elapsedText = `${Math.trunc(elapsedTime / day)}일`;
+    else elapsedText = `${Math.trunc(elapsedTime / week)}주`;
 
-    return elapsedText
-  }
+    return elapsedText;
+  };
 
   /** 댓글 좋아요 개수 불러오는 api 통신 함수 */
   const getReplyHeart = (replyNum) => {
-    let replyHeart = 1
+    let replyHeart = 1;
     axios
-    .get(
-      `${process.env.REACT_APP_HOST}/api/heart/countHeartReply/${replyNum}`,
-      {
-        headers: {
-          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-        },
-      }
-    )
-    .then((res) => {
-      replyHeart = res.data
-    })
-    .catch((err) => console.log(err));
+      .get(
+        `${process.env.REACT_APP_HOST}/api/heart/countHeartReply/${replyNum}`,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+          },
+        }
+      )
+      .then((res) => {
+        replyHeart = res.data;
+      })
+      .catch((err) => console.log(err));
 
-    if (replyHeart===0) return null
-    return ('좋아요 '+replyHeart)
-  }
-
+    if (replyHeart === 0) return null;
+    return "좋아요 " + replyHeart;
+  };
 
   console.log("postModal: ", modalOpacity);
+  // console.log("postModal: ", modalOpacity);
   return (
     <>
       <div className="container">
@@ -457,7 +467,15 @@ function PostModal({ modalOpacity, setModalOpacity }) {
               {/* 댓글 창 시작 */}
               <div className="comment-section">
                 {replyList.map((item, index) => (
-                  <CommentContainer key={index} onMouseOver={() => {setReplyHover(item.replyNum)}} onMouseOut={() => {setReplyHover(-1);}} >
+                  <CommentContainer
+                    key={index}
+                    onMouseOver={() => {
+                      setReplyHover(item.replyNum);
+                    }}
+                    onMouseOut={() => {
+                      setReplyHover(-1);
+                    }}
+                  >
                     <CommentMain>
                       <Avatar />
                       <div className="username">{item.userName}</div>
@@ -483,8 +501,8 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     <CommentDateContainer>
                       <span className="empty"></span>
                       <span className="comment-date">
-                        { item.time } ·{" "}
-                        { getReplyHeart(item.replyNum) ?? '' }{" · "}
+                        {item.time} · {getReplyHeart(item.replyNum) ?? ""}
+                        {" · "}
                         답글 달기
                         {item.subCommentCount ? (
                           <>
@@ -496,17 +514,30 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                         ) : (
                           ""
                         )}
-                        { replyHover===item.replyNum ? 
-                          <ReplyOption onClick={ ()=>{ setReplyDeleteFlag(item.replyNum) } }>
-                            <svg aria-label="댓글 옵션" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" width="24" height="24" role="img" viewBox="0 0 24 24">
+                        {replyHover === item.replyNum ? (
+                          <ReplyOption
+                            onClick={() => {
+                              setReplyDeleteFlag(item.replyNum);
+                            }}
+                          >
+                            <svg
+                              aria-label="댓글 옵션"
+                              className="_ab6-"
+                              color="#8e8e8e"
+                              fill="#8e8e8e"
+                              width="24"
+                              height="24"
+                              role="img"
+                              viewBox="0 0 24 24"
+                            >
                               <circle cx="12" cy="12" r="1.5"></circle>
                               <circle cx="6" cy="12" r="1.5"></circle>
                               <circle cx="18" cy="12" r="1.5"></circle>
                             </svg>
                           </ReplyOption>
-                          :
+                        ) : (
                           ""
-                        }
+                        )}
                       </span>
                       {/* 댓글 답변목록 */}
                       {/* <ul className="comment-sub-list">
@@ -533,38 +564,58 @@ function PostModal({ modalOpacity, setModalOpacity }) {
               </CommentCreate>
             </div>
           </ModalBody>
-          {replyDeleteFlag!==-1 ? <ReplyDeleteModal replyDeleteNum={replyDeleteFlag} setReplyDeleteFlag={setReplyDeleteFlag}/> : ""}
+          {replyDeleteFlag !== -1 ? (
+            <ReplyDeleteModal
+              replyDeleteNum={replyDeleteFlag}
+              setReplyDeleteFlag={setReplyDeleteFlag}
+            />
+          ) : (
+            ""
+          )}
         </ModalWindow>
       </div>
     </>
   );
 }
 
-function ReplyDeleteModal(props){
-  
-
-  const replyDeleteHandler = (replyNum)=>{
+function ReplyDeleteModal(props) {
+  const replyDeleteHandler = (replyNum) => {
     axios
-      .delete(`${process.env.REACT_APP_HOST}/api/reply/delete/${replyNum}`,
-      {
+      .delete(`${process.env.REACT_APP_HOST}/api/reply/delete/${replyNum}`, {
         headers: {
           "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
         },
       })
-      .then((res)=>console.log(res))
-      .catch((err)=>console.log(err))
-  }
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
-  return(
-    <div className="reply-delete-modal" >
+  return (
+    <div className="reply-delete-modal">
       <div className="reply-delete-container">
         <div className="reply-delete-box">
-          <div><button onClick={ ()=>{ replyDeleteHandler(props.replyDeleteNum) } }>삭제</button></div>
-          <div><button onClick={()=>{ props.setReplyDeleteFlag(-1) }}>취소</button></div>
+          <div>
+            <button
+              onClick={() => {
+                replyDeleteHandler(props.replyDeleteNum);
+              }}
+            >
+              삭제
+            </button>
+          </div>
+          <div>
+            <button
+              onClick={() => {
+                props.setReplyDeleteFlag(-1);
+              }}
+            >
+              취소
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default PostModal;
