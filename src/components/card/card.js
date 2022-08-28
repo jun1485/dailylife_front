@@ -11,8 +11,6 @@ function Cards(props) {
   const dispatch = useDispatch();
   const cardData = useSelector((state) => state.post);
   const [modalOpacity, setModalOpacity] = useState(0);
-  // console.log("modalOpacity", props.modalOpacity);
-
   useEffect(() => {
     console.log("rendered Cards");
     axios

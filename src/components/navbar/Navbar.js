@@ -9,7 +9,8 @@ function Navbar() {
   const [openPostModal, setOpenPostModal] = useState(false);
 
   useEffect(() => {
-    // console.log(openPostModal);
+    if (openPostModal === true) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "unset";
   }, [openPostModal]);
 
   const changeOpenPostModal = (e) => {
@@ -19,7 +20,6 @@ function Navbar() {
   return (
     <>
       <div className="nav">
-        <input type="checkbox" id="nav-check" />
         <div className="nav-header">
           <button className="nav-title">
             <Link to="/">

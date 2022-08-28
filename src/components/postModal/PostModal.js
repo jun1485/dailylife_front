@@ -305,8 +305,6 @@ function PostModal({ modalOpacity, setModalOpacity }) {
     if (replyHeart === 0) return null;
     return "좋아요 " + replyHeart;
   };
-
-  // console.log("postModal: ", modalOpacity);
   return (
     <>
       <div className="container">
