@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cards from "../card/card";
 import Paging from "../Pagination/Pagination";
 
 export default function Main() {
-  const [modalOpacity, setModalOpacity] = useState(0);
-
+  console.log("executes Main");
+  useEffect(() => {
+    console.log("rendered Main");
+  });
   return (
     <>
-      <Cards setModalOpacity={setModalOpacity} modalOpacity={modalOpacity} />
+      <Cards />
       <Paging />
     </>
   );

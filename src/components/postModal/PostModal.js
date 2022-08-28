@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./postModal.css";
+import { postActions } from "../../reducers/post";
 
 const tempComment = [
   {
@@ -189,6 +190,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   const [replyHover, setReplyHover] = useState(-1);
   const [replyDeleteFlag, setReplyDeleteFlag] = useState(-1);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const boardDelete = () => {
     navigate("/");
@@ -386,9 +388,12 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                           }
                         )
                         .then((res) => {
-                          console.log(res);
+                          // console.log(res);
                           alert("게시글이 성공적으로 삭제되었습니다.");
-                          boardDelete();
+                          setModalOpacity(0);
+                          console.log("게시글이 성공적으로 삭제되었습니다.");
+                          // boardDelete();
+
                           // window.location.href = "/";
                         })
                         .catch((res) => console.log(res));

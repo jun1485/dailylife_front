@@ -10,8 +10,9 @@ function Cards(props) {
   console.log("executes Cards");
   const dispatch = useDispatch();
   const cardData = useSelector((state) => state.post);
+  const [modalOpacity, setModalOpacity] = useState(0);
   useEffect(() => {
-    console.log("rendered Cards", cardData);
+    console.log("rendered Cards");
     axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
         headers: {
@@ -26,7 +27,7 @@ function Cards(props) {
       .catch((res) => {
         console.log(res);
       });
-  }, []);
+  }, [modalOpacity]);
 
   return (
     <div className="cards">
@@ -44,13 +45,13 @@ function Cards(props) {
                   content={data.content}
                   heartState={data.heart}
                   path={data.path}
-                  setModalOpacity={props.setModalOpacity}
+                  setModalOpacity={setModalOpacity}
                 />
               );
             })}
             <PostModal
-              setModalOpacity={props.setModalOpacity}
-              modalOpacity={props.modalOpacity}
+              setModalOpacity={setModalOpacity}
+              modalOpacity={modalOpacity}
             />
           </div>
         </div>
