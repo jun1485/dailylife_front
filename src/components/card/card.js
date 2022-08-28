@@ -21,7 +21,8 @@ function Cards(props) {
         },
       })
       .then((res) => {
-        console.log("AJAX in Cards");
+        console.log("postActions.updateIems: Card");
+        console.log(res.data);
         dispatch(postActions.updateItems(res.data));
       })
       .catch((res) => {

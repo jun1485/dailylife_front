@@ -190,26 +190,9 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   const [replyDeleteFlag, setReplyDeleteFlag] = useState(-1);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("rendered PostModal");
-    if (localStorage.watched === undefined) {
-      localStorage.setItem("watched", JSON.stringify([]));
-    }
-    let watched = JSON.parse(localStorage.getItem("watched"));
-    watched.unshift(currentPostData);
-    watched = [...new Set(watched.map(JSON.stringify))]
-      .map(JSON.parse)
-      .slice(0, 6);
-    localStorage.setItem("watched", JSON.stringify(watched));
-  }, [currentPostData]);
-
   const boardDelete = () => {
     navigate("/");
   };
-
-  // useEffect(() => {
-  //   boardDelete();
-  // }, []);
 
   /** 댓글 작성 api 통신 함수 */
   function replyInsertHandler(e) {
@@ -321,7 +304,6 @@ function PostModal({ modalOpacity, setModalOpacity }) {
     return "좋아요 " + replyHeart;
   };
 
-  console.log("postModal: ", modalOpacity);
   // console.log("postModal: ", modalOpacity);
   return (
     <>
