@@ -9,11 +9,16 @@ import Searching from "./components/search/Searching";
 import RecentlyViewed from "./components/recentlyViewed/recentlyViewed";
 import UserPost from "./components/UserPost/UserPost";
 import MyInfo from "./components/myInfo/MyInfo";
+import { useEffect } from "react";
 
 function App() {
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
   const cardData = useSelector((state) => state.post);
+
+  useEffect(() => {
+    console.log("rendered App");
+  }, []);
 
   return (
     <BrowserRouter>
@@ -23,7 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/recentlyViewed" element={<RecentlyViewed />} />
-        <Route path="/search" element={<Searching cardData={cardData} />} />
+        <Route path="/search" element={<Searching />} />
         <Route path="/post" element={<UserPost />} />
         <Route path="/myInfo" element={<MyInfo />} />
       </Routes>

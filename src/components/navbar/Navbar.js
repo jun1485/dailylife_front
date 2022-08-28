@@ -9,7 +9,7 @@ function Navbar() {
   const [openPostModal, setOpenPostModal] = useState(false);
 
   useEffect(() => {
-    console.log(openPostModal);
+    // console.log(openPostModal);
   }, [openPostModal]);
 
   const changeOpenPostModal = (e) => {
