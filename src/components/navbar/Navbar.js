@@ -34,7 +34,10 @@ function Navbar() {
           <Link to="" className="link link1"></Link>
 
           {accessToken ? (
-            <Link to="/post" className="link link2"></Link>
+            <Link
+              to="/post"
+              // className="link link2"
+            ></Link>
           ) : (
             <Link
               to="/login"
