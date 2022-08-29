@@ -85,13 +85,11 @@ body {
 .link2 {
   background: url(/public/assets/write.png);
   transition: all 0.1s ease-out;
-  cursor: none;
 }
 
 .link3 {
   background: url(/public/assets/write.png);
   transition: all 0.1s ease-out;
-  cursor: pointer;
 }
 
 .link4 {

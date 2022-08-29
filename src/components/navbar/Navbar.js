@@ -31,7 +31,7 @@ function Navbar() {
           <Searching />
         </div>
         <div className="nav-links">
-          <Link to="" className="link link1"></Link>
+          {/* <Link to="" className="link link1"></Link> */}
 
           {accessToken ? (
             <Link
