@@ -4,6 +4,7 @@ const post = createSlice({
   name: "post",
   initialState: {
     pageNum: 1,
+    // isOpenWritePostModal: false,
     myValues: [],
   },
   reducers: {
