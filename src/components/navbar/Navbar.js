@@ -1,16 +1,35 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { postActions } from "../../reducers/post";
 import Searching from "../search/Searching";
 import NewUserPost from "../UserPost/NewUserPost";
 import "./Navbar.css";
 
 function Navbar() {
+  const dispatch = useDispatch();
   const accessToken = localStorage.getItem("accessToken");
   const [openPostModal, setOpenPostModal] = useState(false);
 
   useEffect(() => {
     if (openPostModal === true) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "unset";
+    console.log(`openPostModal: ${openPostModal}`);
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
+        headers: {
+          "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        },
+      })
+      .then((res) => {
+        console.log("postActions.updateIems: Card");
+        console.log(res.data);
+        dispatch(postActions.updateItems(res.data));
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   }, [openPostModal]);
 
   const changeOpenPostModal = (e) => {

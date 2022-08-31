@@ -34,7 +34,7 @@ function Searching(props) {
               if (window.event.keyCode === 13) {
                 axios
                   .get(
-                    `${process.env.REACT_APP_HOST}/api/board/getBoard?keyword=${e.target.value}&pg=1`,
+                    `${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${e.target.value}&pg=1`,
                     {}
                   )
                   .then((res) => {

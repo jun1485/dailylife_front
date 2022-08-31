@@ -31,12 +31,18 @@ function NewUserPost(props) {
       .post(`${process.env.REACT_APP_HOST}/api/board/create`, formData, {
         headers: {
           "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-          "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        props.changeOpenPostModal(false);
+      })
       .catch((err) => console.log(err));
   }
+  const closeModal = (e) => {
+    e.stopPropagation();
+    props.changeOpenPostModal(false);
+  };
   // 상태 값 업데이트되는 것을 콘솔에서 확인하기 위한 코드
   // 실제 서비스 작동 로직과는 관련이 없는 코드입니다.
   useEffect(() => {
@@ -47,11 +53,6 @@ function NewUserPost(props) {
     imageName: ${imageName}
     `);
   }, [title, content, imageName]);
-
-  const closeModal = (e) => {
-    e.stopPropagation();
-    props.changeOpenPostModal(false);
-  };
 
   const [fileImage, setFileImage] = useState("");
 

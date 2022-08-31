@@ -102,7 +102,6 @@ const ModalClose = styled.div`
   aspect-ratio: 1;
   color: #aaa;
   text-decoration: none;
-  border: 1px red solid;
 
   & svg {
     position: absolute;
@@ -201,9 +200,9 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   /** 게시글 선택 시 replyList(댓글 정보 state) 업데이트 */
   useEffect(() => {
     // 마운트, 업데이트 시 대댓글 초기화
-    replyInput.current.value=""
-    
-    if (currentPostData.boardNum !== ""){
+    replyInput.current.value = "";
+
+    if (currentPostData.boardNum !== "") {
       axios
         .get(
           `${process.env.REACT_APP_HOST}/api/reply/getReply/${currentPostData.boardNum}`,
@@ -217,33 +216,35 @@ function PostModal({ modalOpacity, setModalOpacity }) {
           replyRes.data.map((item) => {
             item.time = dateHandler(item.replyTime);
           });
-          replyRes.data.sort((a, b) => a.replyNum - b.replyNum)
+          replyRes.data.sort((a, b) => a.replyNum - b.replyNum);
           setReplyList(replyRes.data);
-          return replyRes.data
+          return replyRes.data;
         })
         .then((replyRes) => {
-            /** 대댓글 불러오기 */
-            if (replyRes.length) {
-              replyRes.map((item, idx) => {
-                axios
-                  .get(
-                    `${process.env.REACT_APP_HOST}/api/replyReply/getReply/${item.replyNum}`,
-                    {
-                      headers: {
-                        "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-                      },
-                    }
-                  )
-                  .then((reReplyRes) => {
-                    if (reReplyRes.data.length) {
-                      let newReplyList = [...replyRes]
-                      newReplyList[idx].reReply = reReplyRes.data
-                      setReplyList(newReplyList)
-                      setReReplyFlag(Array.from({length:replyRes.length}, () => 0));
-                    }
-                  })
-                  .catch(err => console.log(err))
-              })
+          /** 대댓글 불러오기 */
+          if (replyRes.length) {
+            replyRes.map((item, idx) => {
+              axios
+                .get(
+                  `${process.env.REACT_APP_HOST}/api/replyReply/getReply/${item.replyNum}`,
+                  {
+                    headers: {
+                      "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+                    },
+                  }
+                )
+                .then((reReplyRes) => {
+                  if (reReplyRes.data.length) {
+                    let newReplyList = [...replyRes];
+                    newReplyList[idx].reReply = reReplyRes.data;
+                    setReplyList(newReplyList);
+                    setReReplyFlag(
+                      Array.from({ length: replyRes.length }, () => 0)
+                    );
+                  }
+                })
+                .catch((err) => console.log(err));
+            });
           }
         })
         .catch((err) => console.log(err));
@@ -259,13 +260,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
 
   /** 댓글이 작성된 날짜 계산 */
   const dateHandler = (replyDate) => {
-    const [sec, min, hour, day, week] = [
-      1,
-      60,
-      3600,
-      86400,
-      604800
-    ];
+    const [sec, min, hour, day, week] = [1, 60, 3600, 86400, 604800];
 
     const today = new Date();
     replyDate = new Date(
@@ -273,14 +268,12 @@ function PostModal({ modalOpacity, setModalOpacity }) {
       ${replyDate[3]}:${replyDate[4]}:${replyDate[5]}`
     );
     const elapsedTime = Math.trunc(
-      (today.getTime() - replyDate.getTime()-32400000) / 1000
+      (today.getTime() - replyDate.getTime() - 32400000) / 1000
     );
     let elapsedText = "";
 
-    if (elapsedTime < sec)
-      elapsedText = "지금";
-    else if (elapsedTime < min)
-      elapsedText = `${elapsedTime}초`;
+    if (elapsedTime < sec) elapsedText = "지금";
+    else if (elapsedTime < min) elapsedText = `${elapsedTime}초`;
     else if (elapsedTime < hour)
       elapsedText = `${Math.trunc(elapsedTime / min)}분`;
     else if (elapsedTime < day)
@@ -313,47 +306,54 @@ function PostModal({ modalOpacity, setModalOpacity }) {
     return "좋아요 " + replyHeart;
   };
 
-  
   /** 댓글, 대댓글 작성 api 통신 함수 */
   function replyInsertHandler(e) {
     if (localStorage.getItem("accessToken")) {
       if (sessionStorage.getItem("replyInfo") === null) {
-      axios
-        .post(
-          `${process.env.REACT_APP_HOST}/api/reply/insert`,
-          {
-            boardNum: currentPostData.boardNum,
-            replyContext: e.target.value,
-          },
-          {
-            headers: {
-              "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+        axios
+          .post(
+            `${process.env.REACT_APP_HOST}/api/reply/insert`,
+            {
+              boardNum: currentPostData.boardNum,
+              replyContext: e.target.value,
             },
-          }
-        )
-        .then((res) => {
-          e.target.value = "";
-          res.data.time = dateHandler(res.data.replyTime);
-          setReplyList([...replyList, 
-            {"boardNum": res.data.boardNum, 
-            "replyContext": res.data.replyContext, 
-            "replyNum": res.data.replyNum, 
-            "replyTime": res.data.replytime, 
-            "time": res.data.time, 
-            "userName": res.data.user.userName,
-            "userNum": res.data.user.userNum}
-          ]);
-        })
-        .catch((err) => console.log(err));
+            {
+              headers: {
+                "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+              },
+            }
+          )
+          .then((res) => {
+            e.target.value = "";
+            res.data.time = dateHandler(res.data.replyTime);
+            setReplyList([
+              ...replyList,
+              {
+                boardNum: res.data.boardNum,
+                replyContext: res.data.replyContext,
+                replyNum: res.data.replyNum,
+                replyTime: res.data.replytime,
+                time: res.data.time,
+                userName: res.data.user.userName,
+                userNum: res.data.user.userNum,
+              },
+            ]);
+          })
+          .catch((err) => console.log(err));
       } else {
-        const [replyNum, replyUserName] = sessionStorage.getItem("replyInfo").split(',')
-        const replyContext = replyInput.current.value.replace(replyUserName, "")
+        const [replyNum, replyUserName] = sessionStorage
+          .getItem("replyInfo")
+          .split(",");
+        const replyContext = replyInput.current.value.replace(
+          replyUserName,
+          ""
+        );
         axios
           .post(
             `${process.env.REACT_APP_HOST}/api/replyReply/insert`,
             {
-              "replyNum": replyNum,
-              "replyReplyContext": replyContext
+              replyNum: replyNum,
+              replyReplyContext: replyContext,
             },
             {
               headers: {
@@ -372,16 +372,18 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                 }
               )
               .then((reReplyRes) => {
-                  let newReplyList = [...replyList]
-                  let idx = newReplyList.findIndex(item => item.replyNum === res.data.replyNum)
-                  newReplyList[idx].reReply = reReplyRes.data
-                  setReplyList(newReplyList)
-                  replyInput.current.value = ""
-                  sessionStorage.removeItem("replyInfo");
+                let newReplyList = [...replyList];
+                let idx = newReplyList.findIndex(
+                  (item) => item.replyNum === res.data.replyNum
+                );
+                newReplyList[idx].reReply = reReplyRes.data;
+                setReplyList(newReplyList);
+                replyInput.current.value = "";
+                sessionStorage.removeItem("replyInfo");
               })
-              .catch(err => console.log(err))
+              .catch((err) => console.log(err));
           })
-          .catch((err) => console.log(err))
+          .catch((err) => console.log(err));
       }
     } else {
       e.target.value = "";
@@ -391,21 +393,26 @@ function PostModal({ modalOpacity, setModalOpacity }) {
 
   /** 대댓글 작성 */
   const reReplyInsertHandler = (idx) => {
-    replyInput.current.value = `@${replyList[idx].userName} `
+    replyInput.current.value = `@${replyList[idx].userName} `;
     replyInput.current.focus();
-    sessionStorage.setItem("replyInfo", [replyList[idx].replyNum, `@${replyList[idx].userName} `])
+    sessionStorage.setItem("replyInfo", [
+      replyList[idx].replyNum,
+      `@${replyList[idx].userName} `,
+    ]);
   };
   /** 대댓글 작성 해제 */
   const reReplyCheckHandler = (e) => {
-    if (e.target.value === "" && sessionStorage.length) {sessionStorage.removeItem("replyInfo");}
-  }
+    if (e.target.value === "" && sessionStorage.length) {
+      sessionStorage.removeItem("replyInfo");
+    }
+  };
 
   /** 대댓글 열기 */
   const getReReply = (idx) => {
-    let tmp = [...reReplyFlag]
-    tmp[idx] = (1-tmp[idx])
-    setReReplyFlag(tmp)
-  }
+    let tmp = [...reReplyFlag];
+    tmp[idx] = 1 - tmp[idx];
+    setReReplyFlag(tmp);
+  };
 
   return (
     <>
@@ -436,8 +443,8 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
+                      width="19"
+                      height="19"
                       viewBox="0 0 18 18"
                       fill="none"
                     >
@@ -451,8 +458,8 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     </svg>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
+                      width="19"
+                      height="19"
                       viewBox="0 0 18 18"
                       fill="none"
                     >
@@ -590,12 +597,27 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                       <span className="comment-date">
                         {item.time} · {getReplyHeart(item.replyNum) ?? ""}
                         {" · "}
-                        <span className="rereply" onClick={ () => {reReplyInsertHandler(index)} }>답글 달기</span>
+                        <span
+                          className="rereply"
+                          onClick={() => {
+                            reReplyInsertHandler(index);
+                          }}
+                        >
+                          답글 달기
+                        </span>
                         {item.reReply ?? undefined ? (
                           <>
                             <span className="comment-expand">
                               {" "}
-                              · <span className="rereply-get" onClick={ () => {getReReply(index)} }>답글 보기 ({item.reReply.length}개){" "}</span>
+                              ·{" "}
+                              <span
+                                className="rereply-get"
+                                onClick={() => {
+                                  getReReply(index);
+                                }}
+                              >
+                                답글 보기 ({item.reReply.length}개){" "}
+                              </span>
                             </span>
                           </>
                         ) : (
@@ -612,8 +634,8 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                               className="_ab6-"
                               color="#8e8e8e"
                               fill="#8e8e8e"
-                              width="24"
-                              height="24"
+                              width="30"
+                              height="30"
                               role="img"
                               viewBox="0 0 24 24"
                             >
@@ -628,21 +650,18 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                       </span>
                     </CommentDateContainer>
                     {/* 대댓글 목록 */}
-                    { reReplyFlag[index]
-                        ?
-                        item.reReply.map((item, idx) => (
-                          <div style={{ width:"100%", height:"30px"}}>{item.replyReplyContext}</div>
+                    {reReplyFlag[index]
+                      ? item.reReply.map((item, idx) => (
+                          <div style={{ width: "100%", height: "30px" }}>
+                            {item.replyReplyContext}
+                          </div>
                         ))
-                        
-                          // <ul className="comment-sub-list">
-                          //   <li className="comment-sub-item">
-                          //     <div className="avatar"></div>
-                          //   </li>
-                          // </ul>
-                        :
-                          ""
-                        
-                    }
+                      : // <ul className="comment-sub-list">
+                        //   <li className="comment-sub-item">
+                        //     <div className="avatar"></div>
+                        //   </li>
+                        // </ul>
+                        ""}
                   </CommentContainer>
                 ))}
               </div>
@@ -658,17 +677,19 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     if (window.event.keyCode === 13 && e.target.value !== "")
                       replyInsertHandler(e);
                   }}
-                  onChange={ (e) => {reReplyCheckHandler(e)} }
+                  onChange={(e) => {
+                    reReplyCheckHandler(e);
+                  }}
                 ></input>
               </CommentCreate>
             </div>
           </ModalBody>
           {replyDeleteFlag !== -1 ? (
             <ReplyDeleteModal
-              replyList = {replyList}
-              setReplyList = {setReplyList}
-              replyDeleteNum = {replyDeleteFlag}
-              setReplyDeleteFlag = {setReplyDeleteFlag}
+              replyList={replyList}
+              setReplyList={setReplyList}
+              replyDeleteNum={replyDeleteFlag}
+              setReplyDeleteFlag={setReplyDeleteFlag}
             />
           ) : (
             ""
@@ -688,10 +709,12 @@ function ReplyDeleteModal(props) {
         },
       })
       .then((res) => {
-        let idx = props.replyList.findIndex((item) => item.replyNum === replyNum)
-        let newReplyList = [...props.replyList]
-        newReplyList.splice(idx, 1)
-        props.setReplyList(newReplyList)
+        let idx = props.replyList.findIndex(
+          (item) => item.replyNum === replyNum
+        );
+        let newReplyList = [...props.replyList];
+        newReplyList.splice(idx, 1);
+        props.setReplyList(newReplyList);
         props.setReplyDeleteFlag(-1);
       })
       .catch((err) => console.log(err));
