@@ -6,17 +6,18 @@ import styled from 'styled-components';
 
 import { SET_TOKEN } from '../../../reducers/authToken';
 import { myInfoActions } from '../../../reducers/myInfo';
-import { LoadingSpinner } from '../../styledComponents/Loading';
 import LoginBtn from './LoginBtn/index';
 import LoginFind from './LoginFind/index';
 import LoginInput from './LoginInput/index';
+
+import { LoadingSpinner } from 'components/styledComponents/Loading';
 
 function LoginForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const tokenInfo = useSelector((state) => state.authToken);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [userId, setUserId] = useState('');
+  const [userPassword, setUserPassword] = useState('');
   const [loading, setLoading] = useState();
 
   function handleSubmit(event) {
@@ -27,8 +28,8 @@ function LoginForm() {
       .post(
         `${process.env.REACT_APP_HOST}/api/users/login`,
         {
-          userId: username,
-          userPassword: password,
+          userId,
+          userPassword,
         },
         {
           headers: {
@@ -41,7 +42,7 @@ function LoginForm() {
         localStorage.setItem('accessToken', res.data.data.accessToken);
         console.log(res);
         dispatch(SET_TOKEN(res.data.data.accessToken));
-        console.log('token: ' + JSON.stringify(tokenInfo));
+        console.log(`token: ${JSON.stringify(tokenInfo)}`);
         dispatch(myInfoActions.updateUserNum(res.data.data.userNum));
         navigate('/');
       })
@@ -60,7 +61,12 @@ function LoginForm() {
     <FormContainer>
       <form action="/login" method="POST" onSubmit={handleSubmit}>
         {loading && <LoadingSpinner />}
-        <LoginInput username={username} setUsername={setUsername} password={password} setPassword={setPassword} />
+        <LoginInput
+          userId={userId}
+          setUserId={setUserId}
+          userPassword={userPassword}
+          setUserPassword={setUserPassword}
+        />
         <LoginBtn />
         <LoginFind />
         {/* <p className="message">
