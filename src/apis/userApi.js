@@ -13,7 +13,17 @@ const userApi = {
         userPhoneNumber: userInfo.phoneNumber,
       },
     };
-    const response = await client.post(`${process.env.REACT_APP_HOST}/${PATH}/join`, options);
+    const response = await client.post(`/${PATH}/join`, options);
+    console.log(response);
+  }),
+  postUserInfoForLogIn: methodFormat(async ({ userInfo }) => {
+    const options = {
+      params: {
+        userId: userInfo.userId,
+        userPassword: userInfo.userPassword,
+      },
+    };
+    const response = await client.post(`/${PATH}/login`, options);
     console.log(response);
   }),
 };

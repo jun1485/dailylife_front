@@ -12,13 +12,16 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', 'plugin: prettier/recommended'],
         paths: ['src'],
       },
     },
   },
   plugins: ['react'],
   rules: {
+    'no-alert': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'linebreak-style': 0,
     'import/order': [
       'error',
       {

@@ -1,9 +1,9 @@
 import './index.css';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from './components/login/Login';
+import Login from './pages/Login/index';
 import Main from './components/main/Main';
 import MyInfo from './components/myInfo/MyInfo';
 import Navbar from './components/navbar/Navbar';
@@ -11,7 +11,6 @@ import RecentlyViewed from './components/recentlyViewed/recentlyViewed';
 import Searching from './components/search/Searching';
 import SignUp from './components/signUp/SignUp';
 import UserPost from './components/UserPost/UserPost';
-import React from 'react';
 
 function App() {
   // const dispatch = useDispatch();
