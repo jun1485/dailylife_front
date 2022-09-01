@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from './components/login/Login';
+import Login from './pages/Login/index';
 import Main from './components/main/Main';
 import MyInfo from './components/myInfo/MyInfo';
 import Navbar from './components/navbar/Navbar';
