@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'no-alert': 'off',
     'react/react-in-jsx-scope': 'off',
     'linebreak-style': 0,
     'import/order': [
