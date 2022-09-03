@@ -1,19 +1,18 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import LoginThird from '../LoginThird';
-
 function LoginFind() {
   return (
     <LoginFindContainer>
       <FindUser>
-        <Link to="/#">아이디 · 비밀번호 찾기</Link>
+        <Link to="/#">
+          아이디 · 비밀번호 찾기
+        </Link>
       </FindUser>
       <SignUp>
         <Link to="/signup">회원가입</Link>
       </SignUp>
       <Separate />
-      <LoginThird />
     </LoginFindContainer>
   );
 }

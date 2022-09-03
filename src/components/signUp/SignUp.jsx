@@ -1,11 +1,10 @@
 // 에러처리 아직 안했음
-import { React } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import useForm from './useForm';
 
-import loginFormData from 'mocks/loginFormData';
+import signupFormData from 'mocks/signupFormData';
 
 function SignUp() {
   const { handleChange, handleSubmit } = useForm({
@@ -19,8 +18,13 @@ function SignUp() {
   return (
     <SignUpWrapper>
       <LoginForm action="/signin" method="POST" onSubmit={() => handleSubmit()}>
-        {loginFormData.map((data) => (
-          <InputInfo type="text" placeholder={data.placeholder} name={data.name} onChange={handleChange} />
+        {signupFormData.map((data) => (
+          <InputInfo
+            type="text"
+            placeholder={data.placeholder}
+            name={data.name}
+            onChange={handleChange}
+          />
         ))}
         <SubmitBtn type="submit">create</SubmitBtn>
         <Registered>

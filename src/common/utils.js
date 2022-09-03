@@ -1,7 +1,9 @@
 const methodFormat = (callbackfunc) => {
-  const method = async (...args) => {
+  const method = async (args) => {
     try {
-      const data = await callbackfunc(...args);
+      const data = await callbackfunc({
+        ...args,
+      });
       return {
         ok: true,
         data,

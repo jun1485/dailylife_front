@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./postModal.css";
-import { postActions } from "../../reducers/post";
+import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
+import './postModal.css';
+import { postActions } from '../../reducers/post';
 
 const tempComment = [
   {
@@ -202,14 +202,11 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   function replyInsertHandler(e) {
     if (localStorage.getItem('accessToken')) {
       axios
-        .get(
-          `${process.env.REACT_APP_HOST}/api/reply/getReply/${currentPostData.boardNum}`,
-          {
-            headers: {
-              'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-            },
+        .get(`${process.env.REACT_APP_HOST}/api/reply/getReply/${currentPostData.boardNum}`, {
+          headers: {
+            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
           },
-        )
+        })
 
         .then((res) => {
           e.target.value = '';
@@ -240,24 +237,31 @@ function PostModal({ modalOpacity, setModalOpacity }) {
       })
       .catch((err) => console.log(err));
 
-
     /** 댓글 리스트 초기화 */
     return () => {
       setReplyList([]);
       setReReplyFlag([]);
-      sessionStorage.removeItem("replyInfo");
+      sessionStorage.removeItem('replyInfo');
     };
   }, [currentPostData.boardNum]);
 
   /** 댓글이 작성된 날짜 계산 */
   const dateHandler = (replyDate) => {
-
-    const [sec, min, hour, day, week, month, year] = [1, 60, 3600, 86400, 86400 * 7, 2592000, 2592000 * 12];
+    const [sec, min, hour, day, week, month, year] = [
+      1,
+      60,
+      3600,
+      86400,
+      86400 * 7,
+      2592000,
+      2592000 * 12,
+    ];
 
     const today = new Date();
     replyDate = new Date(
-      `${replyDate[0]}-${replyDate[1]}-${replyDate[2]} ${(replyDate[3] + 9) % 24}:${replyDate[4]}:${replyDate[5]}`,
-
+      `${replyDate[0]}-${replyDate[1]}-${replyDate[2]} ${(replyDate[3] + 9) % 24}:${replyDate[4]}:${
+        replyDate[5]
+      }`,
     );
     const elapsedTime = Math.trunc((today.getTime() - replyDate.getTime()) / 1000);
     let elapsedText = '';
@@ -292,8 +296,8 @@ function PostModal({ modalOpacity, setModalOpacity }) {
 
   /** 댓글, 대댓글 작성 api 통신 함수 */
   function replyInsertHandler(e) {
-    if (localStorage.getItem("accessToken")) {
-      if (sessionStorage.getItem("replyInfo") === null) {
+    if (localStorage.getItem('accessToken')) {
+      if (sessionStorage.getItem('replyInfo') === null) {
         axios
           .post(
             `${process.env.REACT_APP_HOST}/api/reply/insert`,
@@ -303,12 +307,12 @@ function PostModal({ modalOpacity, setModalOpacity }) {
             },
             {
               headers: {
-                "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+                'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
               },
-            }
+            },
           )
           .then((res) => {
-            e.target.value = "";
+            e.target.value = '';
             res.data.time = dateHandler(res.data.replyTime);
             setReplyList([
               ...replyList,
@@ -325,13 +329,8 @@ function PostModal({ modalOpacity, setModalOpacity }) {
           })
           .catch((err) => console.log(err));
       } else {
-        const [replyNum, replyUserName] = sessionStorage
-          .getItem("replyInfo")
-          .split(",");
-        const replyContext = replyInput.current.value.replace(
-          replyUserName,
-          ""
-        );
+        const [replyNum, replyUserName] = sessionStorage.getItem('replyInfo').split(',');
+        const replyContext = replyInput.current.value.replace(replyUserName, '');
         axios
           .post(
             `${process.env.REACT_APP_HOST}/api/replyReply/insert`,
@@ -341,37 +340,32 @@ function PostModal({ modalOpacity, setModalOpacity }) {
             },
             {
               headers: {
-                "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
+                'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
               },
-            }
+            },
           )
           .then((res) => {
             axios
-              .get(
-                `${process.env.REACT_APP_HOST}/api/replyReply/getReply/${res.data.replyNum}`,
-                {
-                  headers: {
-                    "X-ACCESS-TOKEN": localStorage.getItem("accessToken"),
-                  },
-                }
-              )
+              .get(`${process.env.REACT_APP_HOST}/api/replyReply/getReply/${res.data.replyNum}`, {
+                headers: {
+                  'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
+                },
+              })
               .then((reReplyRes) => {
                 let newReplyList = [...replyList];
-                let idx = newReplyList.findIndex(
-                  (item) => item.replyNum === res.data.replyNum
-                );
+                let idx = newReplyList.findIndex((item) => item.replyNum === res.data.replyNum);
                 newReplyList[idx].reReply = reReplyRes.data;
                 setReplyList(newReplyList);
-                replyInput.current.value = "";
-                sessionStorage.removeItem("replyInfo");
+                replyInput.current.value = '';
+                sessionStorage.removeItem('replyInfo');
               })
               .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
       }
     } else {
-      e.target.value = "";
-      alert("로그인 후 이용해주세요.");
+      e.target.value = '';
+      alert('로그인 후 이용해주세요.');
     }
   }
 
@@ -379,15 +373,12 @@ function PostModal({ modalOpacity, setModalOpacity }) {
   const reReplyInsertHandler = (idx) => {
     replyInput.current.value = `@${replyList[idx].userName} `;
     replyInput.current.focus();
-    sessionStorage.setItem("replyInfo", [
-      replyList[idx].replyNum,
-      `@${replyList[idx].userName} `,
-    ]);
+    sessionStorage.setItem('replyInfo', [replyList[idx].replyNum, `@${replyList[idx].userName} `]);
   };
   /** 대댓글 작성 해제 */
   const reReplyCheckHandler = (e) => {
-    if (e.target.value === "" && sessionStorage.length) {
-      sessionStorage.removeItem("replyInfo");
+    if (e.target.value === '' && sessionStorage.length) {
+      sessionStorage.removeItem('replyInfo');
     }
   };
 
@@ -425,9 +416,13 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                       console.log('x clicked');
                     }}
                   >
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                    >
                       <path
                         d="M1 1L17 17"
                         stroke="#42413C"
@@ -437,8 +432,13 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                       />
                     </svg>
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                    >
                       <path
                         d="M1 1L17 17"
                         stroke="#42413C"
@@ -463,11 +463,14 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     onClick={() => {
                       console.log(currentPostData);
                       axios
-                        .delete(`${process.env.REACT_APP_HOST}/api/board/delete/${currentPostData.boardNum}`, {
-                          headers: {
-                            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
+                        .delete(
+                          `${process.env.REACT_APP_HOST}/api/board/delete/${currentPostData.boardNum}`,
+                          {
+                            headers: {
+                              'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
+                            },
                           },
-                        })
+                        )
                         .then((res) => {
                           // console.log(res);
                           alert('게시글이 성공적으로 삭제되었습니다.');
@@ -489,7 +492,13 @@ function PostModal({ modalOpacity, setModalOpacity }) {
               <ModalSocial>
                 <div className="social-icons-container">
                   <span className="likes-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="20"
+                      viewBox="0 0 22 20"
+                      fill="none"
+                    >
                       <path
                         d="M3.87499 11.625C8.37499 16.875 11 18.375 11 18.375C11 18.375 13.625 16.875 18.125 11.625C22.625 6.375 19.625 1.125 15.875 1.125C12.125 1.125 11 5.625 11 5.625C11 5.625 9.87499 1.125 6.12499 1.125C2.37499 1.125 -0.625012 6.375 3.87499 11.625Z"
                         stroke="#6A6A6A"
@@ -500,7 +509,13 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     </svg>
                   </span>
                   <span className="comments-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="21"
+                      viewBox="0 0 22 21"
+                      fill="none"
+                    >
                       <path
                         d="M17.6525 14.8626C17.5228 14.9952 17.4233 15.1552 17.3613 15.3314C17.2993 15.5076 17.2762 15.6955 17.2937 15.8818C17.3816 16.7441 17.5482 17.5961 17.7912 18.4268C16.0475 18.0158 14.9825 17.5399 14.4987 17.2905C14.2244 17.149 13.9084 17.1155 13.6112 17.1963C12.7595 17.4275 11.8815 17.5439 11 17.5425C6.005 17.5425 2.25 13.9706 2.25 9.90747C2.25 5.84567 6.005 2.2725 11 2.2725C15.995 2.2725 19.75 5.84567 19.75 9.90747C19.75 11.7755 18.9787 13.5086 17.6525 14.8626ZM18.2687 19.8317C18.5649 19.8914 18.862 19.9462 19.16 19.9958C19.41 20.0365 19.6 19.7719 19.5012 19.5352C19.3903 19.2687 19.2885 18.9984 19.1962 18.7246L19.1925 18.7119C18.8825 17.7957 18.63 16.7421 18.5375 15.761C20.0712 14.1958 21 12.1471 21 9.90747C21 4.988 16.5225 1 11 1C5.4775 1 0.999998 4.988 0.999998 9.90747C0.999998 14.8269 5.4775 18.8149 11 18.8149C11.9904 18.8163 12.9768 18.6854 13.9337 18.4256C14.5837 18.7602 15.9825 19.3698 18.2687 19.8317Z"
                         fill="#6A6A6A"
@@ -533,7 +548,13 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                       <div className="username">{item.userName}</div>
                       <div className="comment-content">{item.replyContext}</div>
                       <span className="comment-like">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="22"
+                          height="20"
+                          viewBox="0 0 22 20"
+                          fill="none"
+                        >
                           <path
                             d="M3.87499 11.625C8.37499 16.875 11 18.375 11 18.375C11 18.375 13.625 16.875 18.125 11.625C22.625 6.375 19.625 1.125 15.875 1.125C12.125 1.125 11 5.625 11 5.625C11 5.625 9.87499 1.125 6.12499 1.125C2.37499 1.125 -0.625012 6.375 3.87499 11.625Z"
                             stroke="#6A6A6A"
@@ -547,14 +568,15 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     <CommentDateContainer>
                       <span className="empty"></span>
                       <span className="comment-date">
-
                         {item.time} · {getReplyHeart(item.replyNum) ?? ''}
                         {' · '}
                         답글 달기
                         {item.subCommentCount ? (
                           <>
-                            <span className="comment-expand"> · 답글 보기 ({item.subCommentCount}개) </span>
-
+                            <span className="comment-expand">
+                              {' '}
+                              · 답글 보기 ({item.subCommentCount}개){' '}
+                            </span>
                           </>
                         ) : (
                           ''
@@ -588,7 +610,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                     {/* 대댓글 목록 */}
                     {reReplyFlag[index]
                       ? item.reReply.map((item, idx) => (
-                          <div style={{ width: "100%", height: "30px" }}>
+                          <div style={{ width: '100%', height: '30px' }}>
                             {item.replyReplyContext}
                           </div>
                         ))
@@ -597,7 +619,7 @@ function PostModal({ modalOpacity, setModalOpacity }) {
                         //     <div className="avatar"></div>
                         //   </li>
                         // </ul>
-                        ""}
+                        ''}
                   </CommentContainer>
                 ))}
               </div>
@@ -620,9 +642,10 @@ function PostModal({ modalOpacity, setModalOpacity }) {
             </div>
           </ModalBody>
           {replyDeleteFlag !== -1 ? (
-
-            <ReplyDeleteModal replyDeleteNum={replyDeleteFlag} setReplyDeleteFlag={setReplyDeleteFlag} />
-
+            <ReplyDeleteModal
+              replyDeleteNum={replyDeleteFlag}
+              setReplyDeleteFlag={setReplyDeleteFlag}
+            />
           ) : (
             ''
           )}
@@ -641,9 +664,7 @@ function ReplyDeleteModal(props) {
         },
       })
       .then((res) => {
-        let idx = props.replyList.findIndex(
-          (item) => item.replyNum === replyNum
-        );
+        let idx = props.replyList.findIndex((item) => item.replyNum === replyNum);
         let newReplyList = [...props.replyList];
         newReplyList.splice(idx, 1);
         props.setReplyList(newReplyList);

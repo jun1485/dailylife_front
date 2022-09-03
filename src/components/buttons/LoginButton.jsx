@@ -1,16 +1,32 @@
+import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 
-function LoginBtn() {
-  return <LoginButton>로그인</LoginButton>;
+function LogInButton(props) {
+  const { text } = props;
+  return <StyledButton>{text}</StyledButton>;
 }
 
-const LoginButton = styled.button`
+LogInButton.defaultProps = {
+  text: '',
+};
+
+LogInButton.propTypes = {
+  text: PropTypes.string,
+};
+
+export default LogInButton;
+
+const StyledButton = styled.button`
   margin-top: 30px;
   padding: 13px;
   width: 100%;
   text-transform: uppercase;
   outline: 0;
-  background: linear-gradient(91.5deg, #fcc400 0%, #f1a027 100%);
+  background: linear-gradient(
+    91.5deg,
+    #fcc400 0%,
+    #f1a027 100%
+  );
   border: 0;
   border-radius: 4px;
   color: #ffffff;
@@ -28,5 +44,3 @@ const LoginButton = styled.button`
     background-color: rgb(252, 65, 96);
   }
 `;
-
-export default LoginBtn;
