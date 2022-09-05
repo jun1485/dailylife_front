@@ -6,11 +6,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login/index';
 import Main from './components/main/Main';
 import MyInfo from './components/myInfo/MyInfo';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar';
 import RecentlyViewed from './components/recentlyViewed/recentlyViewed';
-import Searching from './components/search/Searching';
 import SignUp from './components/signUp/SignUp';
-import UserPost from './components/UserPost/UserPost';
+import Searching from 'components/navbar/searching/Searching';
+import writePage from 'components/navbar/navlink/writePage/writePage';
 
 function App() {
   // const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/recentlyViewed" element={<RecentlyViewed />} />
         <Route path="/search" element={<Searching />} />
-        <Route path="/post" element={<UserPost />} />
+        <Route path="/post" element={<writePage />} />
         <Route path="/myInfo" element={<MyInfo />} />
       </Routes>
     </BrowserRouter>
