@@ -9,8 +9,6 @@ import MyInfo from './components/myInfo/MyInfo';
 import Navbar from './components/navbar';
 import SignUp from './components/signUp/SignUp';
 import SearchForm from 'components/navbar/searching/searchForm/searchForm';
-import Searching from 'components/navbar/searching/Searching';
-
 function App() {
 
   useEffect(() => {
