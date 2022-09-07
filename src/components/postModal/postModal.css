@@ -24,7 +24,7 @@
   margin-left: 20px;
 }
 
-.modal-content-container>.comment-create {
+.modal-content-container > .comment-create {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -36,21 +36,21 @@
   justify-content: space-around;
 }
 
-.modal-content {
+.modal-post-content {
   text-align: start;
   margin-top: 12px;
 }
 
-.modal-content>.title-in-modal {
+.modal-post-content > .title-in-modal {
   text-align: start;
   font-size: xx-large;
 }
 
-.modal-content>.text-in-modal {
+.modal-post-content > .text-in-modal {
   margin-bottom: 25px;
 }
 
-.modal-content hr {
+.modal-post-content hr {
   background-color: #eaeaea;
   height: 1px;
   border: 0;
@@ -61,11 +61,11 @@
   align-items: center;
 }
 
-.social-icons-container>.comments-icon {
+.social-icons-container > .comments-icon {
   margin-left: 10px;
 }
 
-.social-counter-container>.comments-count {
+.social-counter-container > .comments-count {
   margin-left: 10px;
 }
 
@@ -74,12 +74,14 @@
   overflow-y: auto;
 }
 
-.comment-section>.comment-container {
+.comment-section > .comment-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
-.comment-section>.comment-container>.comment-main {
+.comment-section
+  > .comment-container
+  > .comment-main {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -121,11 +123,11 @@
   height: 100%;
 }
 
-.reply-delete-box>div {
+.reply-delete-box > div {
   height: 50%;
 }
 
-.reply-delete-box>div>button {
+.reply-delete-box > div > button {
   border: none;
   display: block;
   width: 100%;
@@ -135,9 +137,10 @@
   color: black;
 }
 
-.reply-delete-box>div:first-of-type>button {
+.reply-delete-box > div:first-of-type > button {
   border-bottom: 1px solid rgb(0, 0, 0);
 }
-.rereply, .rereply-get{
+.rereply,
+.rereply-get {
   cursor: pointer;
 }
