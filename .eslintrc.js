@@ -3,11 +3,8 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'standard-with-typescript',
-    'airbnb',
-  ],
+
+  extends: ['plugin:react/recommended', 'standard-with-typescript', 'airbnb', 'prettier'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -29,7 +26,10 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'react/prop-types': 'off',
+
     'react/jsx-one-expression-per-line': 'off',
+
     'no-alert': 'off',
     'react/react-in-jsx-scope': 'off',
     'linebreak-style': 0,

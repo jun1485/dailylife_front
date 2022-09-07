@@ -1,4 +1,4 @@
-import methodFormat from '../common/utils';
+import { methodFormat } from '../common/utils';
 import client from './client';
 
 const PATH = 'api/users';
