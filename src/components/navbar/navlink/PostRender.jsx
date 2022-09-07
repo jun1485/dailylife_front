@@ -16,7 +16,6 @@ function PostRender() {
   useEffect(() => {
     if (openPostModal === true) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
-    console.log(`openPostModal: ${openPostModal}`);
 
     axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {

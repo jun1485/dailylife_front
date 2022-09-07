@@ -5,7 +5,7 @@ import LoginFind from './LoginFind/index';
 import useLoginForm from './useLoginForm';
 
 import LoginButton from 'components/buttons/LoginButton';
-import { LoadingSpinner } from 'components/styledComponents/Loading';
+import LoadingSpinner from 'components/styledComponents/Loading';
 import loginFormData from 'mocks/loginFormData';
 
 function LoginForm() {
@@ -36,9 +36,9 @@ function LoginForm() {
             style={
               formData.userId
                 ? {
-                    border: '1px solid #FCC401',
-                    color: '#1A1A1A',
-                  }
+                  border: '1px solid #FCC401',
+                  color: '#1A1A1A',
+                }
                 : { border: '1px solid #d7d7d7' }
             }
             onChange={handleChange}

@@ -7,15 +7,11 @@ import Login from './pages/Login/index';
 import Main from './components/main/Main';
 import MyInfo from './components/myInfo/MyInfo';
 import Navbar from './components/navbar';
-import RecentlyViewed from './components/recentlyViewed/recentlyViewed';
 import SignUp from './components/signUp/SignUp';
+import SearchForm from 'components/navbar/searching/searchForm/searchForm';
 import Searching from 'components/navbar/searching/Searching';
-import writePage from 'components/navbar/navlink/writePage/writePage';
 
 function App() {
-  // const dispatch = useDispatch();
-  // const store = useSelector((state) => state);
-  // const cardData = useSelector((state) => state.post);
 
   useEffect(() => {
     console.log('rendered App');
@@ -28,9 +24,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/recentlyViewed" element={<RecentlyViewed />} />
-        <Route path="/search" element={<Searching />} />
-        <Route path="/post" element={<writePage />} />
+        <Route path="/search" element={<SearchForm />} />
         <Route path="/myInfo" element={<MyInfo />} />
       </Routes>
     </BrowserRouter>
