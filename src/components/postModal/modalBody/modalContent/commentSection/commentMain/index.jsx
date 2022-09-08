@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AvatarIcon from '../../../../../Icons/avatarIcon';
 import LikeIcon from '../../../../../Icons/likeIcon';
 
-function CommentMain() {
+function CommentMain({ item }) {
   return (
     <CommentMainWrapper>
       <AvatarIcon />

@@ -1,11 +1,39 @@
+import axios from 'axios';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-function CommentDate() {
-  const [replyHover, setReplyHover] =
-    useState(-1);
+function CommentDate(props) {
+  const {
+    item,
+    replyHover,
+    replyList,
+    setReplyList,
+  } = props;
   const [replyDeleteFlag, setReplyDeleteFlag] =
     useState('');
+
+  /** 댓글 좋아요 개수 불러오는 api 통신 함수 */
+  const getReplyHeart = (replyNum) => {
+    let replyHeart = 1;
+    axios
+      .get(
+        `${process.env.REACT_APP_HOST}/api/heart/countHeartReply/${replyNum}`,
+        {
+          headers: {
+            'X-ACCESS-TOKEN':
+              localStorage.getItem('accessToken'),
+          },
+        },
+      )
+      .then((res) => {
+        replyHeart = res.data;
+      })
+      .catch((err) => console.log(err));
+
+    if (replyHeart === 0) return null;
+    return `좋아요 ${replyHeart}`;
+  };
+
   return (
     <CommentDateContainer>
       <span className="empty" />
@@ -47,8 +75,83 @@ function CommentDate() {
         ) : (
           ''
         )}
+        {replyDeleteFlag !== -1 ? (
+          <ReplyDeleteModal
+            setReplyList={setReplyList}
+            replyList={replyList}
+            replyDeleteFlag={replyDeleteFlag}
+            setReplyDeleteFlag={
+              setReplyDeleteFlag
+            }
+          />
+        ) : (
+          ''
+        )}
       </span>
     </CommentDateContainer>
+  );
+}
+
+// delete 컴포넌트
+function ReplyDeleteModal(props) {
+  const {
+    replyList,
+    setReplyList,
+    setReplyDeleteFlag,
+    replyDeleteFlag,
+  } = props;
+  const replyDeleteHandler = (replyNum) => {
+    axios
+      .delete(
+        `${process.env.REACT_APP_HOST}/api/reply/delete/${replyNum}`,
+        {
+          headers: {
+            'X-ACCESS-TOKEN':
+              localStorage.getItem('accessToken'),
+          },
+        },
+      )
+      .then(() => {
+        const idx = replyList.findIndex(
+          (item) => item.replyNum === replyNum,
+        );
+        const newReplyList = [...replyList];
+        newReplyList.splice(idx, 1);
+        setReplyList(newReplyList);
+        setReplyDeleteFlag(-1);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  return (
+    <div className="reply-delete-modal">
+      <div className="reply-delete-container">
+        <div className="reply-delete-box">
+          <div>
+            <button
+              type="button"
+              onClick={() => {
+                replyDeleteHandler(
+                  replyDeleteFlag,
+                );
+              }}
+            >
+              삭제
+            </button>
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={() => {
+                setReplyDeleteFlag(-1);
+              }}
+            >
+              취소
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

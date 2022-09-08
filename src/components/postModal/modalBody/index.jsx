@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import ModalContent from './modalContent';
 import ModalImage from './modalImage';
 
-function ModalBody(
-  currentPostData,
-  setModalOpacity,
-) {
+function ModalBody(props) {
+  const { currentPostData, setModalOpacity } =
+    props;
   const { src } = currentPostData;
   return (
     <ModalBodyWrapper

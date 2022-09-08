@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import CommentIcon from '../../../../Icons/commentIcon';
 import LikeIcon from '../../../../Icons/likeIcon';
 
-function ModalSocial() {
+function ModalSocial(props) {
+  const { replyList } = props;
   return (
     <ModalSocialWrapper>
       <div className="social-icons-container">
