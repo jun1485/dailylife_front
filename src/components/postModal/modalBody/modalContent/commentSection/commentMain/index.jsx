@@ -1,7 +1,8 @@
+/* eslint-disable import/no-unresolved */
 import styled from 'styled-components';
 
-import AvatarIcon from '../../../../../Icons/avatarIcon';
-import LikeIcon from '../../../../../Icons/likeIcon';
+import AvatarIcon from 'components/Icons/avatarIcon';
+import LikeIcon from 'components/Icons/likeIcon';
 
 function CommentMain({ item }) {
   return (

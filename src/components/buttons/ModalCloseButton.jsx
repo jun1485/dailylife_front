@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function ModalCloseButton(setModalOpacity) {
+function ModalCloseButton({ setModalOpacity }) {
   return (
     <ModalClose
       title="title"

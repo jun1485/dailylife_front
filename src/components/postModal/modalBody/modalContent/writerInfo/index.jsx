@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ModalCloseButton from '../../../../buttons/ModalCloseButton';
 import AvatarIcon from '../../../../Icons/avatarIcon';
 
-function WriterInfo(setModalOpacity) {
+function WriterInfo({ setModalOpacity }) {
   return (
     <div className="writer-info-container">
       <WriterInfoWrapper>
