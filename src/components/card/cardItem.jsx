@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {
+  useCallback,
   useEffect,
   useState,
 } from 'react';
@@ -40,7 +41,7 @@ function CardItem(props) {
   const Fullheart = '/assets/fullHeart.png';
   const Emptyheart = '/assets/heart.png';
 
-  useEffect(() => {
+  useEffect(useCallback(() => {
     console.log('rendered CardItem');
     axios
       .get(
@@ -65,7 +66,7 @@ function CardItem(props) {
       'props.heartState:',
       props.heartState,
     );
-  }, [like]);
+  }), [like]);
   const clickHeartEvent = (e) => {
     e.stopPropagation();
     setLike(!like);

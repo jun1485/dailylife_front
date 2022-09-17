@@ -1,4 +1,5 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+
 .cards {
   padding: 4rem;
   background: rgb(255, 255, 255);
@@ -69,6 +70,8 @@ h2 {
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
+  max-width: 100%;
+  height: auto;
 }
 
 .cards__item__img {
@@ -91,8 +94,7 @@ h2 {
   height: 50%;
   bottom: 0;
   opacity: 0.6;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 91.15%
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 91.15%);
 }
 
 .cards__item__info {
@@ -133,9 +135,11 @@ h2 {
   text-overflow: ellipsis;
   bottom: 0.7vw;
 }
+
 .cards__like__container {
   width: 100%;
 }
+
 .cards__item__like {
   position: absolute;
   width: 1.4vw;

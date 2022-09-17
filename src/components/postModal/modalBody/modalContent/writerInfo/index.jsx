@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ModalCloseButton from '../../../../buttons/ModalCloseButton';
 import AvatarIcon from '../../../../Icons/avatarIcon';
 
+import KebabMenuButton from 'components/buttons/kebabMenuButton';
+
 function WriterInfo({ setModalOpacity }) {
   return (
     <div className="writer-info-container">
@@ -12,6 +14,9 @@ function WriterInfo({ setModalOpacity }) {
         <Follow>팔로우</Follow>
       </WriterInfoWrapper>
       <div className="modal-close-container">
+        <KebabMenuContainer>
+          <KebabMenuButton />
+        </KebabMenuContainer>
         <ModalCloseButton
           setModalOpacity={setModalOpacity}
         />
@@ -21,6 +26,14 @@ function WriterInfo({ setModalOpacity }) {
 }
 
 export default WriterInfo;
+
+const KebabMenuContainer = styled.div`
+  position: absolute;
+  right: 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const WriterInfoWrapper = styled.div`
   display: grid;

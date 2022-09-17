@@ -1,45 +1,15 @@
 import styled from 'styled-components';
 
+import PostModalCloseButtonIcon from 'components/Icons/postModalCloseButtonIcon';
+
 function ModalCloseButton({ setModalOpacity }) {
   return (
     <ModalClose
       title="title"
       onClick={() => {
         setModalOpacity(0);
-        console.log('x clicked');
       }}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        viewBox="0 0 18 18"
-        fill="none"
-      >
-        <path
-          d="M1 1L17 17"
-          stroke="#42413C"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        viewBox="0 0 18 18"
-        fill="none"
-      >
-        <path
-          d="M1 1L17 17"
-          stroke="#42413C"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+    ><PostModalCloseButtonIcon />
     </ModalClose>
   );
 }
@@ -47,7 +17,9 @@ function ModalCloseButton({ setModalOpacity }) {
 export default ModalCloseButton;
 
 const ModalClose = styled.div`
-  position: relative;
+  position: absolute;
+  top: -3.5vh;
+  right: -7vh;
   margin-left: auto;
   width: 18px;
   aspect-ratio: 1;

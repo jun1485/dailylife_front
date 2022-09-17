@@ -4,11 +4,11 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Login from './pages/Login/index';
-import Main from './components/main/Main';
 import MyInfo from './components/myInfo/MyInfo';
 import Navbar from './components/navbar';
 import SignUp from './components/signUp/SignUp';
 import SearchForm from 'components/navbar/searching/searchForm/searchForm';
+import Main from 'components/main/main';
 function App() {
 
   useEffect(() => {

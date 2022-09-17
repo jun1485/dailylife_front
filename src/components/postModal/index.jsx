@@ -17,6 +17,9 @@ function PostModal(props) {
       <ModalWindow
         modalOpacity={modalOpacity}
         id="open-modal"
+        onClick={() => {
+          setModalOpacity(0);
+        }}
       >
         <ModalBody
           currentPostData={currentPostData}

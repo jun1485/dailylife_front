@@ -1,7 +1,10 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  current,
+} from '@reduxjs/toolkit';
 
 const post = createSlice({
-  name: "post",
+  name: 'post',
   initialState: {
     pageNum: 1,
     // isOpenWritePostModal: false,

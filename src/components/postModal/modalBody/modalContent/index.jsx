@@ -48,16 +48,14 @@ function ModalContent(props) {
     ];
     const today = new Date();
     const formattedDate = new Date(
-      `${replyDate[0]}-${replyDate[1]}-${
-        replyDate[2]
-      } ${(replyDate[3] + 9) % 24}:${
-        replyDate[4]
+      `${replyDate[0]}-${replyDate[1]}-${replyDate[2]
+      } ${(replyDate[3] + 9) % 24}:${replyDate[4]
       }:${replyDate[5]}`,
     );
     const elapsedTime = Math.trunc(
       (today.getTime() -
         formattedDate.getTime()) /
-        1000,
+      1000,
     );
     let elapsedText = '';
 
@@ -129,7 +127,7 @@ function ModalContent(props) {
         </h1>
         <div className="text-in-modal">
           {contentGenerator(content)}
-          {/* <button
+          <button
             className="delete-board"
             onClick={() => {
               console.log(currentPostData);
@@ -162,7 +160,7 @@ function ModalContent(props) {
             }}
           >
             글 삭제
-          </button> */}
+          </button>
         </div>
         {/* <div className="text-in-modal">{currentPostData.content}</div> */}
       </div>
