@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import PostRender from './PostRender';
 
+
 function NavLinks() {
   const accessToken = localStorage.getItem('accessToken');
   return (

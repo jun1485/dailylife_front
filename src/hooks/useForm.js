@@ -1,19 +1,26 @@
 import { useState } from 'react';
 
-import userApi from '../../apis/userApi';
+import userApi from '../apis/userApi';
 
 import { validate } from 'common/utils';
 
 const useForm = (initialValues) => {
-  const [values, setValues] = useState(initialValues);
+  const [values, setValues] = useState(
+    initialValues,
+  );
   const [errors, setErrors] = useState({});
-  // const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (event, formType) => {
     const { name, value } = event.target;
 
-    setValues((prevState) => ({ ...prevState, [name]: value }));
-    setErrors((prevState) => ({ ...prevState, ...validate(values[formType], formType) }));
+    setValues((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    setErrors((prevState) => ({
+      ...prevState,
+      ...validate(values[formType], formType),
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -28,7 +35,9 @@ const useForm = (initialValues) => {
         userPhoneNumber: values.phoneNumber,
       });
     } else {
-      alert('회원가입 형식이 올바르지 않습니다. 다시 확인해주세요.');
+      alert(
+        '회원가입 형식이 올바르지 않습니다. 다시 확인해주세요.',
+      );
     }
     event.preventDefault();
   };

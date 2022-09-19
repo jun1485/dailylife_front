@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import NewUserPost from 'components/navbar/navlink/writePage/writePage';
+import NewUserPost from 'components/navbar/navlink/writePage/WritePage';
 import { postActions } from 'reducers/post';
 
 function PostRender() {

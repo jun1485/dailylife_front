@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-import CloseButtonIcon from 'components/Icons/closeButtonIcon';
-import './writePage.scss';
+import CloseButtonIcon from 'components/icons/CloseButtonIcon';
+import './WritePage.scss';
 
 function writePage(props) {
   const [title, setTitle] = useState('');

@@ -23,6 +23,7 @@ const postApi = {
     },
   ),
 
+  /** 로그인 되어있지 않을 때 게시글 정보 받아오는 API */
   getItemByPage: methodFormat(
     async (currentPage) => {
       const response = await client.get(
@@ -32,12 +33,27 @@ const postApi = {
     },
   ),
 
+  /** 페이지네이션 구현을 위해 전체게시글 수를 받아오는 API */
   getTotalPostCount: methodFormat(async () => {
     const response = await client.get(
       `/${PATH}/getBoardCount`,
     );
     return response.data;
   }),
-};
 
+  deleteBoardData: methodFormat(
+    async (boardNum) => {
+      const response = await client.delete(
+        `/${PATH}/delete/${boardNum}`,
+        {
+          headers: {
+            'X-ACCESS-TOKEN':
+              localStorage.getItem('accessToken'),
+          },
+        },
+      );
+      return response.data;
+    },
+  ),
+};
 export default postApi;

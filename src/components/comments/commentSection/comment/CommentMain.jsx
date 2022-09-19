@@ -1,8 +1,8 @@
-/* eslint-disable import/no-unresolved */
 import styled from 'styled-components';
 
-import AvatarIcon from 'components/Icons/avatarIcon';
-import LikeIcon from 'components/Icons/likeIcon';
+/* eslint-disable import/no-unresolved */
+import AvatarIcon from 'components/icons/AvatarIcon';
+import LikeIcon from 'components/icons/LikeIcon';
 
 function CommentMain({ item }) {
   return (
@@ -14,7 +14,7 @@ function CommentMain({ item }) {
       <div className="comment-content">
         {item.replyContext}
       </div>
-      <LikeIcon />
+      <LikeIcon replyNum={item.replyNum} />
     </CommentMainWrapper>
   );
 }

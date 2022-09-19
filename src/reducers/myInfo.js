@@ -1,17 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const myInfo = createSlice({
-  name: "myInfo",
+  name: 'myInfo',
   initialState: {
-    userNum: "",
-    userInfo: "",
+    userNum: '',
+    userInfo: '',
   },
 
   reducers: {
     updateUserNum(state, aciton) {
+      // eslint-disable-next-line no-param-reassign
       state.userNum = aciton.payload;
     },
     updateUserInfo(state, action) {
+      // eslint-disable-next-line no-param-reassign
       state.userInfo = action.payload;
     },
   },

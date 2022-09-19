@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import ModalBody from './modalBody';
 
-import './postModal.css';
+import './PostModal.scss';
 
 function PostModal(props) {
   const { modalOpacity, setModalOpacity } = props;

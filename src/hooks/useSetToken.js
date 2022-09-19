@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 
 import { myInfoActions } from 'reducers/myInfo';
 
@@ -24,11 +27,13 @@ function useSetToken() {
             },
           },
         )
-        .then((res) => dispatch(
-          myInfoActions.updateUserInfo(
-            res.data.data,
+        .then((res) =>
+          dispatch(
+            myInfoActions.updateUserInfo(
+              res.data.data,
+            ),
           ),
-        ))
+        )
         .catch((err) => console.log(err));
     }
   }, []);

@@ -1,6 +1,6 @@
 import './index.css';
-import NavLinks from './navlink/navlink';
-import NavLogo from './navLogo/navLogo';
+import NavLinks from './navlink/Navlink';
+import NavLogo from './navLogo/NavLogo';
 import Searching from './searching/Searching';
 
 function Navbar() {

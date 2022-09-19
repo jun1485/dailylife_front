@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import KakaoIcon from 'components/Icons/kakaoIcon';
+import KakaoIcon from 'components/icons/KakaoIcon';
 
 function EasyLogin() {
   return (

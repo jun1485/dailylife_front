@@ -1,4 +1,4 @@
-import MyInfoForm from './myInfoForm/myInfoForm';
+import MyInfoForm from './myInfoForm/MyInfoForm';
 
 export default function MyInfo() {
   return (

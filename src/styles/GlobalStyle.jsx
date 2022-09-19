@@ -15,7 +15,7 @@ const CreatedGlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: 'Noto Sans KR';
+  font-family: 'Pretendard';
   width: 100%;
   height: 100%;
 }

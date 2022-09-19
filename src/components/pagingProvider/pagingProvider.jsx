@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import Pagination from 'react-js-pagination';
-import '../pagination/pagination.css'
+import '../pagination/Pagination.css'
 
 function PagingProvider({
   itemCountPerPage,
@@ -7,6 +8,9 @@ function PagingProvider({
   page,
   totalPostCount,
   handleChange, }) {
+  useEffect(() => {
+
+  })
   return (
     <Pagination
       activePage={page}

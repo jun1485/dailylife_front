@@ -1,4 +1,4 @@
-import useSetToken from './useSetToken';
+import useSetToken from '../../../hooks/useSetToken';
 
 function MyInfoForm() {
   const userData = useSetToken();

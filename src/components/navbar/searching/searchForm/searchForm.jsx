@@ -1,9 +1,11 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import '../Searching.css';
+// eslint-disable-next-line import/order
 
-import useAxios from './useAxios';
+// import useAxios from '../../../../hooks/useAxios';
 
 import { postActions } from 'reducers/post';
 
@@ -14,10 +16,9 @@ function SearchForm() {
   const submitHandler = (e) => {
     e.preventDefault();
   };
-
-  const getPostData = (url) => {
-    useAxios(url);
-  };
+  // const getPostData = (url) => {
+  //   useAxios(url);
+  // };
 
   return (
     <div id="wrap">
@@ -28,22 +29,23 @@ function SearchForm() {
           name="search"
           type="text"
           placeholder="검색"
-          onKeyUp={(e) => {
+          onChange={(e) => {
+            setTypedKeyword(e.target.value);
+          }}
+          onKeyUp={() => {
             if (window.event.keyCode === 13) {
-              getPostData(`process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`);
-              console.log(getPostData);
-              dispatch(postActions.updateItems(getPostData.data));
-              setTypedKeyword(e.target.value);
-              // axios
-              //   .get(`${process.env.REACT_APP_HOST}
-              // /api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`, { })
-              //   .then((res) => {
-              //     dispatch(postActions.updateItems(res.data));
-              //     setTypedKeyword(e.target.value);
-              //   })
-              //   .catch((res) => {
-              //     console.log(res);
-              //   });
+              // getPostData(`process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`);
+              // console.log(getPostData);
+              // dispatch(postActions.updateItems(getPostData.data));
+              // setTypedKeyword(e.target.value);
+              axios
+                .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`, {})
+                .then((res) => {
+                  dispatch(postActions.updateItems(res.data));
+                })
+                .catch((res) => {
+                  console.log(res);
+                });
             }
           }}
         />

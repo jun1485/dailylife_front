@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import PostModalCloseButtonIcon from 'components/Icons/postModalCloseButtonIcon';
+import PostModalCloseButtonIcon from 'components/icons/PostModalCloseButtonIcon';
 
 function ModalCloseButton({ setModalOpacity }) {
   return (
