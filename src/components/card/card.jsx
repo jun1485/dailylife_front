@@ -18,10 +18,10 @@ function Cards() {
   );
   const [modalOpacity, setModalOpacity] =
     useState(0);
+
   useEffect(() => {
-    console.log('rendered Cards');
-    axios
-      .get(
+    async function fetchCards() {
+      const getCards = await axios.get(
         `${process.env.REACT_APP_HOST}/api/board/getBoard`,
         {
           headers: {
@@ -29,16 +29,14 @@ function Cards() {
               localStorage.getItem('accessToken'),
           },
         },
-      )
-      .then((res) => {
-        console.log(res.data);
-        dispatch(
-          postActions.updateItems(res.data),
-        );
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+
+      );
+      const items = await getCards.then(
+        (res) => res.data,
+      );
+      dispatch(postActions.updateItems(items));
+    }
+    fetchCards();
   }, [modalOpacity]);
 
   return (
