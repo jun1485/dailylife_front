@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import PostModalCloseButtonIcon from 'components/icons/PostModalCloseButtonIcon';
+import PostModalCloseButtonIcon from 'components/Icons/PostModalCloseButtonIcon';
 
 function ModalCloseButton({ setModalOpacity }) {
   return (
@@ -9,7 +9,8 @@ function ModalCloseButton({ setModalOpacity }) {
       onClick={() => {
         setModalOpacity(0);
       }}
-    ><PostModalCloseButtonIcon />
+    >
+      <PostModalCloseButtonIcon />
     </ModalClose>
   );
 }

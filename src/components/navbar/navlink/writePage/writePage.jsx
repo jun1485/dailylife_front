@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-import CloseButtonIcon from 'components/icons/CloseButtonIcon';
+import CloseButtonIcon from 'components/Icons/CloseButtonIcon';
 import './WritePage.scss';
 
 function writePage(props) {
@@ -15,7 +15,8 @@ function writePage(props) {
   // eslint-disable-next-line consistent-return
   function handleSubmit(e) {
     e.preventDefault();
-    if (localStorage.getItem('accessToken') === null) return alert('로그인 후 이용 가능합니다.');
+    if (localStorage.getItem('accessToken') === null)
+      return alert('로그인 후 이용 가능합니다.');
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
@@ -68,11 +69,10 @@ function writePage(props) {
                         type="file"
                         accept="image/*"
                         onChange={(e) => {
-                          setFileImage(
-                            URL.createObjectURL(e.target.files[0]),
-                          );
+                          setFileImage(URL.createObjectURL(e.target.files[0]));
                           // eslint-disable-next-line no-plusplus
-                          for (let i = 0; i < e.target.files.length; i++) setFile(`${file} ${e.target.files[i].name}`);
+                          for (let i = 0; i < e.target.files.length; i++)
+                            setFile(`${file} ${e.target.files[i].name}`);
                           setImageName([...imageName, ...e.target.files]);
                         }}
                       />
@@ -121,7 +121,7 @@ function writePage(props) {
                 <button
                   type="submit"
                   className="submit-btn"
-                // onClick={closeModal}
+                  // onClick={closeModal}
                 >
                   게시물 등록
                 </button>
@@ -132,7 +132,8 @@ function writePage(props) {
               className="newPost-modal-close"
               onClick={closeModal}
               alt="newPostModal"
-            ><CloseButtonIcon />
+            >
+              <CloseButtonIcon />
             </button>
           </section>
         </section>

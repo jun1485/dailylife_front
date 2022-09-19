@@ -1,7 +1,5 @@
 import axios from 'axios';
-
 import { useEffect, useState } from 'react';
-
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import styled from 'styled-components';
 
@@ -39,26 +37,17 @@ function CardItem({
   const Fullheart = '/assets/fullHeart.png';
   const Emptyheart = '/assets/heart.png';
 
-
   useEffect(() => {
     async function fetchItemData() {
-      const items = await axios.get(
-
-        `${process.env.REACT_APP_HOST}/api/board/getBoard`,
-        {
+      const items = await axios
+        .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
           headers: {
-            'X-ACCESS-TOKEN':
-              localStorage.getItem('accessToken'),
+            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
           },
-        },
+        })
+        .then((res) => res.data);
 
-      );
-      const itemsData = await items.then(
-        (res) => res.data,
-      );
-      dispatch(
-        postActions.updateItems(itemsData),
-      );
+      dispatch(postActions.updateItems(items));
     }
     fetchItemData();
   }, [like]);
@@ -74,8 +63,7 @@ function CardItem({
         },
         {
           headers: {
-            'X-ACCESS-TOKEN':
-              localStorage.getItem('accessToken'),
+            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
           },
         },
       )

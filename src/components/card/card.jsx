@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { postActions } from '../../reducers/post';
 import PostModal from '../postModal/index';
@@ -11,29 +8,21 @@ import CardItem from './CardItem';
 import './Cards.css';
 
 function Cards() {
-  console.log('executes Cards');
   const dispatch = useDispatch();
-  const cardData = useSelector(
-    (state) => state.post,
-  );
-  const [modalOpacity, setModalOpacity] =
-    useState(0);
+  const cardData = useSelector((state) => state.post);
+  const [modalOpacity, setModalOpacity] = useState(0);
 
   useEffect(() => {
     async function fetchCards() {
-      const getCards = await axios.get(
-        `${process.env.REACT_APP_HOST}/api/board/getBoard`,
-        {
+      const getCards = await axios
+        .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
           headers: {
-            'X-ACCESS-TOKEN':
-              localStorage.getItem('accessToken'),
+            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
           },
-        },
-      );
-      const items = await getCards.then(
-        (res) => res.data,
-      );
-      dispatch(postActions.updateItems(items));
+        })
+        .then((res) => res.data);
+        
+      dispatch(postActions.updateItems(getCards));
     }
     fetchCards();
   }, [modalOpacity]);

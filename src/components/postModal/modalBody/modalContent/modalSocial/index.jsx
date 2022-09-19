@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import LikeIcon from '../../../../icons/LikeIcon';
+import LikeIcon from '../../../../Icons/LikeIcon';
 
-import CommentIcon from 'components/icons/CommentIcon';
+import CommentIcon from 'components/Icons/CommentIcon';
 
 function ModalSocial(props) {
   const { replyList } = props;
@@ -13,12 +13,8 @@ function ModalSocial(props) {
         <CommentIcon />
       </div>
       <div className="social-count-container">
-        <span className="likes-count">
-          좋아요 {10}개
-        </span>
-        <span className="comments-count">
-          댓글 {replyList.length}개
-        </span>
+        <span className="likes-count">좋아요 {10}개</span>
+        <span className="comments-count">댓글 {replyList.length}개</span>
       </div>
     </ModalSocialWrapper>
   );

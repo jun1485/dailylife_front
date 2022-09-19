@@ -5,27 +5,18 @@ import EasyLogin from './EasyLogin';
 import LoginFind from './LoginFind/index';
 
 import LoginButton from 'components/buttons/LoginButton';
-import LoadingSpinner from 'components/styledComponents/Loading';
+import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
 import loginFormData from 'mocks/loginFormData';
 
 function LoginForm() {
-  const {
-    formData,
-    handleChange,
-    handleSubmit,
-    loading,
-  } = useLoginForm({
+  const { formData, handleChange, handleSubmit, loading } = useLoginForm({
     userId: '',
     userPassword: '',
   });
 
   return (
     <FormWrapper>
-      <StyledForm
-        action="/login"
-        method="POST"
-        onSubmit={handleSubmit}
-      >
+      <StyledForm action="/login" method="POST" onSubmit={handleSubmit}>
         {loading && <LoadingSpinner />}
         {loginFormData.map((data) => (
           <StyledInput
@@ -36,9 +27,9 @@ function LoginForm() {
             style={
               formData.userId
                 ? {
-                  border: '1px solid #FCC401',
-                  color: '#1A1A1A',
-                }
+                    border: '1px solid #FCC401',
+                    color: '#1A1A1A',
+                  }
                 : { border: '1px solid #d7d7d7' }
             }
             onChange={handleChange}

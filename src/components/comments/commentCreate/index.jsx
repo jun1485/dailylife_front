@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
 
-import AvatarIcon from '../../icons/AvatarIcon';
+import AvatarIcon from '../../Icons/AvatarIcon';
 import useCommentUpload from './useCommentUpload';
 
 function CommentCreate(props) {
@@ -22,10 +22,7 @@ function CommentCreate(props) {
 
   /** 대댓글 작성 해제 */
   const replyCheckHandler = (e) => {
-    if (
-      e.target.value === '' &&
-      sessionStorage.length
-    ) {
+    if (e.target.value === '' && sessionStorage.length) {
       sessionStorage.removeItem('replyInfo');
     }
   };
@@ -39,10 +36,7 @@ function CommentCreate(props) {
         ref={replyInput}
         placeholder="댓글 달기"
         onKeyUp={(e) => {
-          if (
-            window.event.keyCode === 13 &&
-            e.target.value !== ''
-          )
+          if (window.event.keyCode === 13 && e.target.value !== '')
             addCommentProcess(e);
         }}
         onChange={(e) => {

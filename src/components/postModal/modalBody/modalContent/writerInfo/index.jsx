@@ -4,13 +4,11 @@ import styled from 'styled-components';
 
 import postApi from 'apis/postApi';
 import ModalCloseButton from 'components/buttons/ModalCloseButton';
-import AvatarIcon from 'components/icons/AvatarIcon';
-import KebabMenu from 'components/icons/KebabMenu';
+import AvatarIcon from 'components/Icons/AvatarIcon';
+import KebabMenu from 'components/Icons/KebabMenu';
 
 function WriterInfo({ setModalOpacity }) {
-  const selectedPostData = useSelector(
-    (state) => state.selectedPostData,
-  );
+  const selectedPostData = useSelector((state) => state.selectedPostData);
   const [isOpen, setMenu] = useState(false);
   const toggleMenu = () => {
     // eslint-disable-next-line no-shadow
@@ -19,7 +17,7 @@ function WriterInfo({ setModalOpacity }) {
 
   useEffect(() => {
     console.log(isOpen);
-  }, [isOpen])
+  }, [isOpen]);
 
   return (
     <div className="writer-info-container">
@@ -38,41 +36,29 @@ function WriterInfo({ setModalOpacity }) {
           <KebabListContainer>
             {isOpen === true ? (
               <ul className="kebab-list-container">
-                <button
-                  type="button"
-                  className="kebab-list-modify-button"
-                >
+                <button type="button" className="kebab-list-modify-button">
                   수정하기
                 </button>
                 <button
                   type="button"
                   className="kebab-list-delete-button"
                   onClick={() => {
-                    postApi.deleteBoardData(
-                      selectedPostData.boardNum,
-                    );
-                    alert(
-                      '게시글이 성공적으로 삭제되었습니다.',
-                    );
+                    postApi.deleteBoardData(selectedPostData.boardNum);
+                    alert('게시글이 성공적으로 삭제되었습니다.');
                     toggleMenu(); // useEffect는 왜 못쓸까?
                     setModalOpacity(0);
                   }}
                 >
                   삭제하기
                 </button>
-                <button
-                  type="button"
-                  className="kebab-list-cancel-button"
-                >
+                <button type="button" className="kebab-list-cancel-button">
                   취소
                 </button>
               </ul>
             ) : null}
           </KebabListContainer>
         </KebabMenuContainer>
-        <ModalCloseButton
-          setModalOpacity={setModalOpacity}
-        />
+        <ModalCloseButton setModalOpacity={setModalOpacity} />
       </div>
     </div>
   );

@@ -1,19 +1,15 @@
 import styled from 'styled-components';
 
 /* eslint-disable import/no-unresolved */
-import AvatarIcon from 'components/icons/AvatarIcon';
-import LikeIcon from 'components/icons/LikeIcon';
+import AvatarIcon from 'components/Icons/AvatarIcon';
+import LikeIcon from 'components/Icons/LikeIcon';
 
 function CommentMain({ item }) {
   return (
     <CommentMainWrapper>
       <AvatarIcon />
-      <div className="username">
-        {item.userName}
-      </div>
-      <div className="comment-content">
-        {item.replyContext}
-      </div>
+      <div className="username">{item.userName}</div>
+      <div className="comment-content">{item.replyContext}</div>
       <LikeIcon replyNum={item.replyNum} />
     </CommentMainWrapper>
   );
