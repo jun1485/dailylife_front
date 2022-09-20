@@ -1,8 +1,14 @@
 import axios from 'axios';
 import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getCommentDate } from 'common/utils';
+import { updateReplyList } from 'reducers/comment';
 
 function useCommentUpload(props) {
-  const { dateHandler, currentPostData, replyList, setReplyList } = props;
+  const dispatch = useDispatch();
+  const { replyList } = useSelector((state) => state.comment);
+  const { currentPostData } = props;
   const replyInput = useRef();
 
   function addCommentProcess(e) {
@@ -24,19 +30,9 @@ function useCommentUpload(props) {
           )
           .then((res) => {
             e.target.value = '';
-            res.data.time = dateHandler(res.data.replyTime);
-            setReplyList([
-              ...replyList,
-              {
-                boardNum: res.data.boardNum,
-                replyContext: res.data.replyContext,
-                replyNum: res.data.replyNum,
-                replyTime: res.data.replytime,
-                time: res.data.time,
-                userName: res.data.user.userName,
-                userNum: res.data.user.userNum,
-              },
-            ]);
+            console.log(getCommentDate(res.data.replyTime));
+            res.data.replyTime = getCommentDate(res.data.replyTime);
+            dispatch(updateReplyList([...replyList, res.data]));
           })
           .catch((err) => console.log(err));
       } else {
@@ -77,7 +73,6 @@ function useCommentUpload(props) {
                   (item) => item.replyNum === res.data.replyNum,
                 );
                 newReplyList[idx].reReply = reReplyRes.data;
-                setReplyList(newReplyList);
                 replyInput.current.value = '';
                 sessionStorage.removeItem('replyInfo');
               })

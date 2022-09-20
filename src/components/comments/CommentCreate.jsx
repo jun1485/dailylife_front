@@ -1,12 +1,16 @@
 import { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import AvatarIcon from 'components/Icons/AvatarIcon';
+import useComments from 'hooks/useComments';
 import useCommentUpload from 'hooks/useCommentUpload';
 
 function CommentCreate(props) {
+  const selectedPostData = useSelector((state) => state.selectedPostData);
   const replyInput = useRef();
   const { addCommentProcess } = useCommentUpload(props);
+  const { fetchComments } = useComments();
 
   /** 댓글, 대댓글 작성 api 통신 함수 */
 
@@ -36,8 +40,10 @@ function CommentCreate(props) {
         ref={replyInput}
         placeholder="댓글 달기"
         onKeyUp={(e) => {
-          if (window.event.keyCode === 13 && e.target.value !== '')
+          if (window.event.keyCode === 13 && e.target.value !== '') {
             addCommentProcess(e);
+            fetchComments(selectedPostData.boardNum);
+          }
         }}
         onChange={(e) => {
           replyCheckHandler(e);

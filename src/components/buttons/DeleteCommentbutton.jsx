@@ -1,9 +1,14 @@
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
-function DeleteCommentButton(props) {
-  const { replyList, setReplyList, setReplyDeleteFlag, replyDeleteFlag } =
+import { updateReplyList } from 'reducers/comment';
+
+function DeleteCommentPopup(props) {
+  const dispatch = useDispatch();
+  const { replyList } = useSelector(state => state.comment);
+  const { setReplyDeleteFlag, replyDeleteFlag } =
     props;
-  const replyDeleteHandler = (replyNum) => {
+  const handleDeleteComment = (replyNum) => {
     axios
       .delete(`${process.env.REACT_APP_HOST}/api/reply/delete/${replyNum}`, {
         headers: {
@@ -14,7 +19,7 @@ function DeleteCommentButton(props) {
         const idx = replyList.findIndex((item) => item.replyNum === replyNum);
         const newReplyList = [...replyList];
         newReplyList.splice(idx, 1);
-        setReplyList(newReplyList);
+        dispatch(updateReplyList(newReplyList));
         setReplyDeleteFlag(-1);
       })
       .catch((err) => console.log(err));
@@ -28,7 +33,7 @@ function DeleteCommentButton(props) {
             <button
               type="button"
               onClick={() => {
-                replyDeleteHandler(replyDeleteFlag);
+                handleDeleteComment(replyDeleteFlag);
               }}
             >
               삭제
@@ -50,4 +55,4 @@ function DeleteCommentButton(props) {
   );
 }
 
-export default DeleteCommentButton;
+export default DeleteCommentPopup;

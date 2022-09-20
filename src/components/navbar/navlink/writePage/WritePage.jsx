@@ -56,7 +56,6 @@ function writePage(props) {
                 <div className="newPost-body-example-container">
                   <div className="newPost-body-example-pic-list">
                     <label className="select-img-btn" htmlFor="selectImg">
-                      {/* <div className="btn-upload" src={}></div> */}
                       <img
                         src="/assets/addPicture.png"
                         style={{ cursor: 'pointer', marginLeft: '10px' }}
@@ -77,11 +76,6 @@ function writePage(props) {
                         }}
                       />
                     </label>
-                    {/* <img    // 업로드된 사진 삭제 이미지버튼
-                      src={"/assets/deleteImg.png"}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => deleteFileImage()}
-                    ></img> */}
                   </div>
 
                   {fileImage && (
@@ -121,7 +115,7 @@ function writePage(props) {
                 <button
                   type="submit"
                   className="submit-btn"
-                  // onClick={closeModal}
+                // onClick={closeModal}
                 >
                   게시물 등록
                 </button>
