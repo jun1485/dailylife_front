@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import CommentCreate from './CommentCreate';
 import CommentSection from './CommentSection';
 
-import ModalSocial from 'components/postModal/modalBody/modalContent/modalSocial/ModalSocial';
+import ModalSocial from 'components/postModal/ModalSocial';
 import useComments from 'hooks/useComments';
 
 function Comments() {
