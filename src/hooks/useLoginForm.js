@@ -7,9 +7,7 @@ import { SET_TOKEN } from '../reducers/authToken';
 import { myInfoActions } from '../reducers/myInfo';
 
 const useLoginForm = (initialValues) => {
-  const [formData, setFormData] = useState(
-    initialValues,
-  );
+  const [formData, setFormData] = useState(initialValues);
   const [loading, setLoading] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,26 +24,16 @@ const useLoginForm = (initialValues) => {
     event.preventDefault();
     setLoading(true);
     // eslint-disable-next-line operator-linebreak
-    const result =
-      await userApi.postUserInfoForLogIn({
-        userId: formData.userId,
-        userPassword: formData.userPassword,
-      });
+    const result = await userApi.postUserInfoForLogIn({
+      userId: formData.userId,
+      userPassword: formData.userPassword,
+    });
     setLoading(false);
     if (result.ok === true) {
       const response = result.data;
-      localStorage.setItem(
-        'accessToken',
-        response.data.data.accessToken,
-      );
-      dispatch(
-        SET_TOKEN(response.data.data.accessToken),
-      );
-      dispatch(
-        myInfoActions.updateUserNum(
-          response.data.data.userNum,
-        ),
-      );
+      localStorage.setItem('accessToken', response.data.data.accessToken);
+      dispatch(SET_TOKEN(response.data.data.accessToken));
+      dispatch(myInfoActions.updateUserNum(response.data.data.userNum));
       navigate('/');
     } else if (result.ok === false) {
       console.log(result.message);

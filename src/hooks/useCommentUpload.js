@@ -73,7 +73,6 @@ function useCommentUpload(props) {
                   (item) => item.replyNum === res.data.replyNum,
                 );
                 newReplyList[idx].reReply = reReplyRes.data;
-                setReplyList(newReplyList);
                 replyInput.current.value = '';
                 sessionStorage.removeItem('replyInfo');
               })

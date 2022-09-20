@@ -1,15 +1,15 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import DeleteCommentButton from 'components/buttons/DeleteCommentbutton';
+import DeleteCommentPopup from 'components/buttons/DeleteCommentbutton';
 import ReplyOptionButton from 'components/buttons/ReplyOptionButton';
 import useCommentHearts from 'hooks/useCommentHearts';
 
+
 function CommentDate(props) {
-  const {
-    item,
-    replyHover,
-  } = props;
+  const { replyList } = useSelector(state => state.comment);
+  const { item, replyHover, } = props;
   const [replyDeleteFlag, setReplyDeleteFlag] =
     useState(false);
 
@@ -43,8 +43,8 @@ function CommentDate(props) {
           ''
         )}
         {replyDeleteFlag === true ? (
-          <DeleteCommentButton
-            replyDeleteFlag={replyDeleteFlag}
+          <DeleteCommentPopup
+            replyDeleteFlag={item.replyNum}
             setReplyDeleteFlag={
               setReplyDeleteFlag
             }

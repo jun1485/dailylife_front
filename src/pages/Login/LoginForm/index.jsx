@@ -20,6 +20,7 @@ function LoginForm() {
         {loading && <LoadingSpinner />}
         {loginFormData.map((data) => (
           <StyledInput
+            autoComplete='none'
             key={data.name}
             type={data.type}
             placeholder={data.placeholder}
@@ -27,9 +28,9 @@ function LoginForm() {
             style={
               formData.userId
                 ? {
-                    border: '1px solid #FCC401',
-                    color: '#1A1A1A',
-                  }
+                  border: '1px solid #FCC401',
+                  color: '#1A1A1A',
+                }
                 : { border: '1px solid #d7d7d7' }
             }
             onChange={handleChange}

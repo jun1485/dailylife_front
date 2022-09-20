@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateReplyList } from 'reducers/comment';
 
-function DeleteCommentButton(props) {
+function DeleteCommentPopup(props) {
   const dispatch = useDispatch();
   const { replyList } = useSelector(state => state.comment);
   const { setReplyDeleteFlag, replyDeleteFlag } =
     props;
-  const replyDeleteHandler = (replyNum) => {
+  const handleDeleteComment = (replyNum) => {
     axios
       .delete(`${process.env.REACT_APP_HOST}/api/reply/delete/${replyNum}`, {
         headers: {
@@ -33,7 +33,7 @@ function DeleteCommentButton(props) {
             <button
               type="button"
               onClick={() => {
-                replyDeleteHandler(replyDeleteFlag);
+                handleDeleteComment(replyDeleteFlag);
               }}
             >
               삭제
@@ -55,4 +55,4 @@ function DeleteCommentButton(props) {
   );
 }
 
-export default DeleteCommentButton;
+export default DeleteCommentPopup;
