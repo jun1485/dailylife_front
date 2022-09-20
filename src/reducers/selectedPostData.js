@@ -1,20 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const selectedPostData = createSlice({
-  name: "selectedPostData",
+  name: 'selectedPostData',
   initialState: {
-    boardNum: "",
-    src: "",
-    title: "",
-    content: "",
+    boardNum: '',
+    src: '',
+    title: '',
+    content: '',
   },
   reducers: {
-    updateData(state, action) {
-      state.boardNum = action.payload.boardNum;
-      state.src = action.payload.src;
-      state.title = action.payload.title;
-      state.content = action.payload.content;
-    },
+    updateData: (action) => ({
+      boardNum: action.payload.boardNum,
+      src: action.payload.src,
+      title: action.payload.title,
+      content: action.payload.content,
+    }),
   },
 });
 

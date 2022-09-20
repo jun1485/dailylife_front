@@ -1,17 +1,17 @@
-import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import authToken from "./authToken";
-import myInfo from "./myInfo";
-import post from "./post";
-import searchResult from "./searchResult";
-import selectedPostData from "./selectedPostData";
+import authToken from './authToken';
+import myInfo from './myInfo';
+import post from './post';
+import searchResult from './searchResult';
+import selectedPostData from './selectedPostData';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["authToken", "myInfo"],
+  whitelist: ['authToken', 'myInfo'],
 };
 
 export const rootReducer = combineReducers({

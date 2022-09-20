@@ -1,7 +1,4 @@
-import {
-  createSlice,
-  current,
-} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const post = createSlice({
   name: 'post',
@@ -11,12 +8,8 @@ const post = createSlice({
     myValues: [],
   },
   reducers: {
-    updateItems(state, action) {
-      state.myValues = action.payload;
-    },
-    updatePageNum(state, action) {
-      state.pageNum = action.payload;
-    },
+    updateItems: (action) => ({ myValues: action.payload }),
+    updatePageNum: (action) => ({ pageNum: action.payload }),
   },
 });
 

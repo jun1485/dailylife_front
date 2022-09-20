@@ -1,12 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const searchResult = createSlice({
-  name: "searchResult",
+  name: 'searchResult',
   initialState: [],
   reducers: {
-    bringItems(state, action) {
-      return action.payload;
-    },
+    bringItems: (action) => action.payload,
   },
 });
 

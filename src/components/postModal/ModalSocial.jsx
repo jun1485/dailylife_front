@@ -2,11 +2,8 @@ import styled from 'styled-components';
 
 import LikeIcon from '../Icons/LikeIcon';
 
-<<<<<<< HEAD:src/components/postModal/ModalSocial.jsx
 import CommentIcon from 'components/Icons/CommentIcon';
 
-=======
->>>>>>> d80a9d12fbf8de3f74b92423c3ef58505daffd81:src/components/postModal/modalBody/modalContent/modalSocial/index.jsx
 function ModalSocial(props) {
   const { replyList } = props;
   return (
