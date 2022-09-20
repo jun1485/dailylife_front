@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
 
-import AvatarIcon from '../../Icons/AvatarIcon';
-import useCommentUpload from './useCommentUpload';
+import AvatarIcon from 'components/Icons/AvatarIcon';
+import useCommentUpload from 'hooks/useCommentUpload';
 
 function CommentCreate(props) {
   const replyInput = useRef();

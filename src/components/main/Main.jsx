@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-import Cards from '../card/Card';
-
+import Cards from 'components/card/Card';
 import PagingProvider from 'components/pagingProvider/PagingProvider';
 import usePagination from 'hooks/usePagination';
 

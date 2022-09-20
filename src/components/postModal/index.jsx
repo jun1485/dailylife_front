@@ -1,16 +1,14 @@
 import { useSelector } from 'react-redux/es/exports';
 import styled from 'styled-components';
 
-import ModalBody from './modalBody';
+import ModalBody from './ModalBody';
 
 import './PostModal.scss';
 
 function PostModal(props) {
   const { modalOpacity, setModalOpacity } = props;
   console.log('executes PostModal');
-  const currentPostData = useSelector(
-    (state) => state.selectedPostData,
-  );
+  const currentPostData = useSelector((state) => state.selectedPostData);
 
   return (
     <div className="container">
@@ -44,8 +42,7 @@ const ModalWindow = styled.div.attrs({
   z-index: 999;
   visibility: visible;
   opacity: ${(props) => props.modalOpacity};
-  pointer-events: ${(props) =>
-    props.modalOpacity === 0 ? 'none' : 'auto'};
+  pointer-events: ${(props) => (props.modalOpacity === 0 ? 'none' : 'auto')};
   transition: all 0.3s;
 
   font-family: 'Pretendard';

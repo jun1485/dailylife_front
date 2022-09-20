@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import LikeIcon from '../../../../Icons/LikeIcon';
+import LikeIcon from '../Icons/LikeIcon';
 
 import CommentIcon from 'components/Icons/CommentIcon';
 

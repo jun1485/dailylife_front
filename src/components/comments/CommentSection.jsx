@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-import Comment from 'components/comments/commentSection/comment';
+import Comment from 'components/comments/Comment';
 
 function CommentSection({ replyList, setReplyList, reReplyFlag }) {
-  const [replyHover, setReplyHover] =
-    useState(-1);
+  const [replyHover, setReplyHover] = useState(-1);
 
   return (
     <div className="comment-section">
