@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux/es/exports';
 import styled from 'styled-components';
 
-import ModalBody from './ModalBody';
-
+import ModalBody from 'components/postModal/ModalBody';
 import './PostModal.scss';
 
 function PostModal(props) {
