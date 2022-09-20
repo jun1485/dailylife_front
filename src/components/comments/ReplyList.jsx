@@ -3,7 +3,7 @@ import styled from 'styled-components';
 function ReplyList({ reReplyFlag, item, index }) {
     return (
         <div>
-            {reReplyFlag[index] ? (
+            {/* {reReplyFlag[index] ? (
                 item.reReply.map((data) => (
                     <StyledReply>
                         {data.replyReplyContext}
@@ -11,7 +11,7 @@ function ReplyList({ reReplyFlag, item, index }) {
                 ))
             ) : (
                 <StyledReply />
-            )}
+            )} */}
         </div>
     );
 }

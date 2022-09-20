@@ -8,8 +8,14 @@ const post = createSlice({
     myValues: [],
   },
   reducers: {
-    updateItems: (action) => ({ myValues: action.payload }),
-    updatePageNum: (action) => ({ pageNum: action.payload }),
+    // updateItems(state, action) {
+    //   state.myValues = action.payload;
+    // },
+    // updatePageNum(state, action) {
+    //   state.PageNum = action.payload;
+    // },
+    updateItems: (state, action) => ({ ...state, myValues: action.payload }),
+    updatePageNum: (state, action) => ({ ...state, pageNum: action.payload }),
   },
 });
 

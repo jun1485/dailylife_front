@@ -9,10 +9,7 @@ function CommentDate(props) {
   const {
     item,
     replyHover,
-    replyList,
-    setReplyList,
   } = props;
-  console.log(item);
   const [replyDeleteFlag, setReplyDeleteFlag] =
     useState(false);
 
@@ -47,8 +44,6 @@ function CommentDate(props) {
         )}
         {replyDeleteFlag === true ? (
           <DeleteCommentButton
-            setReplyList={setReplyList}
-            replyList={replyList}
             replyDeleteFlag={replyDeleteFlag}
             setReplyDeleteFlag={
               setReplyDeleteFlag

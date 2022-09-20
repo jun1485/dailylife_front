@@ -1,7 +1,12 @@
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { updateReplyList } from 'reducers/comment';
 
 function DeleteCommentButton(props) {
-  const { replyList, setReplyList, setReplyDeleteFlag, replyDeleteFlag } =
+  const dispatch = useDispatch();
+  const { replyList } = useSelector(state => state.comment);
+  const { setReplyDeleteFlag, replyDeleteFlag } =
     props;
   const replyDeleteHandler = (replyNum) => {
     axios
@@ -14,7 +19,7 @@ function DeleteCommentButton(props) {
         const idx = replyList.findIndex((item) => item.replyNum === replyNum);
         const newReplyList = [...replyList];
         newReplyList.splice(idx, 1);
-        setReplyList(newReplyList);
+        dispatch(updateReplyList(newReplyList));
         setReplyDeleteFlag(-1);
       })
       .catch((err) => console.log(err));

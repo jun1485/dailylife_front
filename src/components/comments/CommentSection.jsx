@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Comment from 'components/comments/Comment';
 
-function CommentSection({ replyList, setReplyList, reReplyFlag }) {
+
+function CommentSection() {
+  const { replyList } = useSelector(state => state.comment);
   const [replyHover, setReplyHover] = useState(-1);
 
   return (
@@ -13,8 +16,6 @@ function CommentSection({ replyList, setReplyList, reReplyFlag }) {
           replyHover={replyHover}
           setReplyHover={setReplyHover}
           replyList={replyList}
-          setReplyList={setReplyList}
-          reReplyFlag={reReplyFlag}
           index={index}
           item={item}
         />

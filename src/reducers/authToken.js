@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const TOKEN_TIME_OUT = 600 * 10000;
+const TOKEN_TIME_OUT = 600 * 10000;
 
 const authToken = createSlice({
   name: 'authToken',
@@ -10,7 +10,7 @@ const authToken = createSlice({
     expireTime: null,
   },
   reducers: {
-    SET_TOKEN: (action) => ({
+    SET_TOKEN: (state, action) => ({
       authenticated: true,
       accessToken: action.payload,
       expireTime: new Date().getTime() + TOKEN_TIME_OUT,
