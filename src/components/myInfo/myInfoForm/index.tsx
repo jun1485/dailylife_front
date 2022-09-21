@@ -1,6 +1,10 @@
 import ProfileMenuItem from 'components/buttons/ProfileMenuItem';
+import AvatarIcon from 'components/Icons/AvatarIcon';
 import { useState } from 'react';
+<<<<<<< Updated upstream
 import { useNavigate, useLocation } from 'react-router-dom';
+=======
+>>>>>>> Stashed changes
 import '../myinfo.scss';
 import MyInfoTitle from './MyInfoTitle';
 
@@ -29,7 +33,6 @@ function MyInfoForm() {
       description: '회원님의 비밀번호 변경 및 계정 유형을 변경할 수 있습니다.'
     },
   ]);
-
   return (
     <div className="profile-info-container">
       <div className='profile-manage-tap-container'>
@@ -40,8 +43,13 @@ function MyInfoForm() {
       </div>
       <div className='profile-modify-container'>
         <div className='profile-introduce-container'>
-          <div className='profile-introduce-'>
-            <MyInfoTitle path={location.pathname} textArr={textArr} />
+          <MyInfoTitle path={location.pathname} textArr={textArr} />
+          <div className='profile-pic-container'>
+            <div className='profile-pic-title'>프로필 사진</div>
+            <div className='profile-pic-avatar'>
+              <AvatarIcon width={70} height={70}/>
+              <div className='asdasd'>asdasdasd</div>
+            </div>
           </div>
         </div>
       </div>
