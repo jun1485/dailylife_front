@@ -1,17 +1,33 @@
 import styled from 'styled-components';
-
-interface Props {
-    active: boolean;
-    setActive: Function;
-    text: string;
+interface TextArr {
+    id: number;
+    data: string;
+    active?: boolean;
+    setTextArr: Function;
 }
 
-function ProfileMenuItem({ active, setActive, text }: Props) {
-    return <StyledButton active={active} onClick={() => { setActive((prevState: boolean) => !prevState) }}>{text}</StyledButton>
+function ProfileMenuItem({ id, data, active, setTextArr }: TextArr) {
+    function handleClick() {
+        if (active === undefined)
+            setTextArr((prevState: []) =>
+                prevState.map((item: TextArr) => {
+                    if (item.active) return { ...item, active: undefined };
+                    else if (item.id === id) return { ...item, active: true }
+                    else return { ...item, active: undefined }
+                }
+                )
+            )
+    }
+    return (
+        <StyledButton active={active} onClick={handleClick}>
+            {data}
+        </StyledButton>
+    )
 }
 
 export default ProfileMenuItem;
 const StyledButton = styled.button < { active: boolean | undefined }> `
+    display: block;
     padding: 0;
     font-family: Pretendard, sans-serif;
     font-size: 15px;
