@@ -7,6 +7,7 @@ export default AvatarIcon;
 const Avatar = styled.div <{width: number | undefined, height: number | undefined}>`
   border-radius: 50%;
   margin-top: 0.7vh;
+  float:left;
   width: ${props => props.width}px;
   height:${props => props.height}px;
   aspect-ratio: 1;

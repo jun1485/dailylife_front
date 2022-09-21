@@ -37,8 +37,43 @@
   margin-top: 3vh;
 }
 
-.asdasd {
-  display: inline-block;
+.profile-pic-avatar {
+  height: 9vh;
 }
 
-.profile-introduce {}
+.profile-pic-change-button {
+  width: 85px;
+  height: 28px;
+  position: relative;
+  top: 3vh;
+  left: 2vh;
+
+  border: 1px solid #BCBCBC;
+  border-radius: 4px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #909090;
+}
+
+.profile-modify-input-container {
+  width: 80%;
+  padding: 4vh 0 4vh 0;
+}
+
+.profile-input-wrapper {
+  display: grid;
+  gap: 7vh;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.profile-modify-input {
+  width: 11vh;
+  float: left;
+}

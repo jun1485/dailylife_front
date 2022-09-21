@@ -28,6 +28,7 @@ const MainTitle = styled.h1`
     text-align: left;
 `;
 const SubTitle = styled.p`
+    margin-top: 0.8vh;
     font-weight: 400;
     font-size: 14px;
     line-height: 16.8px;

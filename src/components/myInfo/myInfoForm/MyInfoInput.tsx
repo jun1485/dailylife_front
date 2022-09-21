@@ -26,6 +26,8 @@ export default function MyInfoInput(
 }
 
 const StyledInput = styled.input<Props>`
+
+display: inline-block;
   padding: 7px;
   height: ${props => props.height}px;
   width: ${props => props.width}px;
