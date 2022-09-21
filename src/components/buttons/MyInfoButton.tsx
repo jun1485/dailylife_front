@@ -2,32 +2,15 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 interface Props {
-  inputName: string;
-  inputId: string;
   text: string;
   isActive: boolean;
   requestPath: string;
 }
 
 export default function MyInfoButton({ text, isActive, requestPath }: Props) {
-  function handleClick(e: MouseEvent) {
-    e.preventDefault();
-    axios
-      .post(
-        `${process.env.REACT_APP_HOST}/${requestPath}`,
-        {},
-        {
-          headers: {
-            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-          },
-        },
-      )
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  }
+
   return (
-    <StyledButton isActive={isActive} onClick={handleClick}>
-      {' '}
+    <StyledButton isActive={isActive} >
       {text}
     </StyledButton>
   );

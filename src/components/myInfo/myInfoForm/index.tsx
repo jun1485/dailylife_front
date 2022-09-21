@@ -1,7 +1,8 @@
+import axios from 'axios';
 import MyInfoButton from 'components/buttons/MyInfoButton';
 import ProfileMenuItem from 'components/buttons/ProfileMenuItem';
 import AvatarIcon from 'components/Icons/AvatarIcon';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../myinfo.scss';
 import MyInfoInput from './MyInfoInput';
@@ -39,9 +40,29 @@ function MyInfoForm() {
       description: '회원님의 비밀번호 변경 및 계정 유형을 변경할 수 있습니다.',
     },
   ]);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    axios
+      .post(
+        `${process.env.REACT_APP_HOST}/${'api/users/modifyUser'}`,
+        {
+          userName: inputName,
+          userPassword: inputId,
+          userProfileImg: fileImage
+        },
+        {
+          headers: {
+            'X-ACCESS-TOKEN': localStorage.getItem('accessToken')!,
+          },
+        },
+      )
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  }
   return (
     <div className="profile-info-container">
-      <form className="profile-form">
+      <form className="profile-form" onSubmit={handleSubmit}>
         <div className="profile-manage-tap-container">
           {textArr.map((item) => (
             <ProfileMenuItem key={item.id} {...item} setTextArr={setTextArr} />
