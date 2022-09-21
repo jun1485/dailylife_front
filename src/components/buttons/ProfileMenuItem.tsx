@@ -1,16 +1,15 @@
 import styled from 'styled-components';
-interface TextArr {
-    id: number;
-    data: string;
-    active?: boolean;
+import { TextObj } from 'components/myInfo/MyInfo';
+
+interface Props extends TextObj {
     setTextArr: Function;
 }
 
-function ProfileMenuItem({ id, data, active, setTextArr }: TextArr) {
+function ProfileMenuItem({ id, data, active, setTextArr }: Props) {
     function handleClick() {
         if (active === undefined)
             setTextArr((prevState: []) =>
-                prevState.map((item: TextArr) => {
+                prevState.map((item: TextObj) => {
                     if (item.active) return { ...item, active: undefined };
                     else if (item.id === id) return { ...item, active: true }
                     else return { ...item, active: undefined }
