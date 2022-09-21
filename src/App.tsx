@@ -8,6 +8,7 @@ import SearchForm from 'components/navbar/searching/searchForm/SearchForm';
 import Main from 'components/main/Main';
 import SignUp from 'components/signUp/SignUp';
 import MyInfo from 'components/myInfo/MyInfo';
+import MyInfoForm from 'components/myInfo/myInfoForm';
 function App() {
 
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/search" element={<SearchForm />} />
         <Route path="/myInfo" element={<MyInfo />} />
+        <Route path='/profileModify' element={<MyInfoForm />} /> 
       </Routes>
     </BrowserRouter>
   );

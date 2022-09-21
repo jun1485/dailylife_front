@@ -1,0 +1,36 @@
+.profile-info-container {
+  position: relative;
+  top: 7vh;
+  margin: auto;
+  width: 740px;
+  height: 600px;
+
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+  border-radius: 12px;
+}
+
+.profile-manage-tap-container {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+}
+
+.prifile-manage-modify-button {
+  position: relative;
+  margin: 2vh 2vh 2vh 2vh;
+}
+
+.profile-modify-container {
+  position: absolute;
+  right: 0;
+  width: 70%;
+  height: 100%;
+}
+
+.profile-introduce-container {
+  padding: 2vh 0 0 0;
+}
+
+.profile-introduce {}

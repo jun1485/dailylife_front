@@ -8,6 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'standard-with-typescript',
     'airbnb',
+    'airbnb-typescript',
     'prettier',
   ],
   overrides: [],

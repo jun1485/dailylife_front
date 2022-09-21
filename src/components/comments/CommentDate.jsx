@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import DeleteCommentPopup from 'components/buttons/DeleteCommentbutton';
@@ -8,7 +8,7 @@ import useCommentHearts from 'hooks/useCommentHearts';
 
 
 function CommentDate(props) {
-  const { replyList } = useSelector(state => state.comment);
+  // const { replyList } = useSelector(state => state.comment);
   const { item, replyHover, } = props;
   const [replyDeleteFlag, setReplyDeleteFlag] =
     useState(false);

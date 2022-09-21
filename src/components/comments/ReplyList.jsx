@@ -1,6 +1,5 @@
-import styled from 'styled-components';
 
-function ReplyList({ reReplyFlag, item, index }) {
+function ReplyList() {
     return (
         <div>
             {/* {reReplyFlag[index] ? (
@@ -17,7 +16,7 @@ function ReplyList({ reReplyFlag, item, index }) {
 }
 export default ReplyList;
 
-const StyledReply = styled.div`
-    width: '100%';
-    height: '30px';
-`;
+// const StyledReply = styled.div`
+//     width: '100%';
+//     height: '30px';
+// `;

@@ -68,7 +68,7 @@ body {
   justify-content: center;
 }
 
-.nav>.nav-links>.link {
+.nav>.DeleteCommentButton>.link {
   display: inline-block;
   padding: 10px 30px;
   background-size: 30px;
@@ -95,7 +95,7 @@ body {
 
 
 /* @media (hover: hover) {
-	.nav > .nav-links > .link1:hover {
+	.nav > .DeleteCommentButton > .link1:hover {
     background: url(../../../public/assets/hoverstar.png);
     background-size: 30px;
     background-repeat: no-repeat;
@@ -103,7 +103,7 @@ body {
     width: auto;
   }
   
-  .nav > .nav-links > .link2:hover {
+  .nav > .DeleteCommentButton > .link2:hover {
     background: url(../../../public/assets/hovermessage.png);
     background-size: 30px;
     background-repeat: no-repeat;
@@ -111,7 +111,7 @@ body {
     width: auto;
   }
   
-  .nav > .nav-links > .link3:hover {
+  .nav > .DeleteCommentButton > .link3:hover {
     background: url(../../../public/assets/hoverviewed.png);
     background-size: 30px;
     background-repeat: no-repeat;
@@ -119,7 +119,7 @@ body {
     width: auto;
   }
   
-  .nav > .nav-links > .link4:hover {
+  .nav > .DeleteCommentButton > .link4:hover {
     background: url(../../../public/assets/hoverprofil.png);
     background-size: 30px;
     background-repeat: no-repeat;
@@ -133,7 +133,7 @@ body {
 }
 
 @media (max-width:1200px) {
-  .nav>.nav-links>.link {
+  .nav>.DeleteCommentButton>.link {
     padding: 10px 30px;
   }
 }
@@ -171,23 +171,23 @@ body {
     border-top: 3px solid rgb(255, 247, 0);
   }
 
-  .nav>.nav-links {
+  .nav>.DeleteCommentButton {
     display: flex;
     background-color: #333;
     transition: all 0.3s ease-in;
   }
 
-  .nav>.nav-links>a {
+  .nav>.DeleteCommentButton>a {
     display: block;
     width: 100%;
     height: 50px;
   }
 
-  .nav>#nav-check:not(:checked)~.nav-links {
+  .nav>#nav-check:not(:checked)~.DeleteCommentButton {
     height: 0px;
   }
 
-  .nav>#nav-check:checked~.nav-links {
+  .nav>#nav-check:checked~.DeleteCommentButton {
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
