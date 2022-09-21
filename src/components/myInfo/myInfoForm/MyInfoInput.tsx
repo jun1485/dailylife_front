@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import styled from "styled-components";
 
 interface Props {
@@ -6,6 +7,7 @@ interface Props {
   height?: number;
   backgroundColor?: string;
   placeholder?: string;
+  description?: string;
 }
 interface StateProps extends Props {
   setState: Function;
@@ -18,22 +20,27 @@ export default function MyInfoInput(
     height = 34,
     backgroundColor = '#f4f4f477',
     placeholder = '',
-    setState
+    setState,
+    description = ''
   }: StateProps) {
-  function handleChange(e) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     // console.log(e.target.value)
     setState(e.target.value);
   }
   return (
-    <div>
+    <div className="myinfo-input-wrapper">
       <StyledInput
         type={type}
         width={width}
         height={height}
         backgroundColor={backgroundColor}
         placeholder={placeholder}
-        onChange={handleChange} />
-    </div>)
+        onChange={(e) => handleChange(e)} />
+      <Description>
+        {description}
+      </Description>
+    </div>
+  )
 }
 
 const StyledInput = styled.input<Props>`
@@ -48,4 +55,12 @@ const StyledInput = styled.input<Props>`
   font-weight: 300;
   line-height: 19px;
   letter-spacing: 0.02em;
+`;
+const Description = styled.p`
+  margin-top: 8px;
+  font-family: Pretendard;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14.4px;
+  color: #909090;
 `
