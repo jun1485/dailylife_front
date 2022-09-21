@@ -5,6 +5,10 @@ interface Props {
   width?: number;
   height?: number;
   backgroundColor?: string;
+  placeholder?: string;
+}
+interface StateProps extends Props {
+  setState: Function;
 }
 
 export default function MyInfoInput(
@@ -12,17 +16,24 @@ export default function MyInfoInput(
     type = 'text',
     width = 355,
     height = 34,
-    backgroundColor = '#f4f4f477'
-  }: Props) {
+    backgroundColor = '#f4f4f477',
+    placeholder = '',
+    setState
+  }: StateProps) {
   function handleChange(e) {
     // console.log(e.target.value)
+    setState(e.target.value);
   }
-  return <StyledInput
-    type={type}
-    width={width}
-    height={height}
-    backgroundColor={backgroundColor}
-    onChange={handleChange} />
+  return (
+    <div>
+      <StyledInput
+        type={type}
+        width={width}
+        height={height}
+        backgroundColor={backgroundColor}
+        placeholder={placeholder}
+        onChange={handleChange} />
+    </div>)
 }
 
 const StyledInput = styled.input<Props>`
