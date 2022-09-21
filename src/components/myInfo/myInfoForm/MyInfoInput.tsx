@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 interface Props {
   type?: string;
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
   backgroundColor?: string;
   placeholder?: string;
   description?: string;
@@ -16,19 +16,19 @@ interface StateProps extends Props {
 export default function MyInfoInput(
   {
     type = 'text',
-    width = 355,
-    height = 34,
+    width = '100%',
+    height = '100%',
     backgroundColor = '#f4f4f477',
     placeholder = '',
+    description = '',
     setState,
-    description = ''
   }: StateProps) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     // console.log(e.target.value)
     setState(e.target.value);
   }
   return (
-    <div className="myinfo-input-wrapper">
+    <div>
       <StyledInput
         type={type}
         width={width}
@@ -45,8 +45,8 @@ export default function MyInfoInput(
 
 const StyledInput = styled.input<Props>`
   padding: 7px;
-  height: ${props => props.height}px;
-  width: ${props => props.width}px;
+  height: ${props => props.height};
+  width: ${props => props.width};
   background: ${props => props.backgroundColor};
   border: 1px solid #bcbcbc5b;
   border-radius: 4px;
