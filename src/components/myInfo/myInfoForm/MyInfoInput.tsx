@@ -1,5 +1,5 @@
-import { ChangeEvent } from "react";
-import styled from "styled-components";
+import { ChangeEvent } from 'react';
+import styled from 'styled-components';
 
 interface Props {
   type?: string;
@@ -13,18 +13,17 @@ interface StateProps extends Props {
   setState: Function;
 }
 
-export default function MyInfoInput(
-  {
-    type = 'text',
-    width = '100%',
-    height = '100%',
-    backgroundColor = '#f4f4f477',
-    placeholder = '',
-    description = '',
-    setState,
-  }: StateProps) {
+export default function MyInfoInput({
+  type = 'text',
+  width = '100%',
+  height = '100%',
+  backgroundColor = '#f4f4f477',
+  placeholder = '',
+  description = '',
+  setState,
+}: StateProps) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    // console.log(e.target.value)
+    console.log(e.target.value);
     setState(e.target.value);
   }
   return (
@@ -32,24 +31,22 @@ export default function MyInfoInput(
       <StyledInput
         type={type}
         width={width}
-        height={height}
+        // height={height}
         backgroundColor={backgroundColor}
         placeholder={placeholder}
-        onChange={(e) => handleChange(e)} />
-      <Description>
-        {description}
-      </Description>
+        onChange={(e) => handleChange(e)}
+      />
+      <Description>{description}</Description>
     </div>
-  )
+  );
 }
 
 const StyledInput = styled.input<Props>`
-
-display: inline-block;
+  display: inline-block;
   padding: 7px;
-  height: ${props => props.height};
-  width: ${props => props.width};
-  background: ${props => props.backgroundColor};
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  background: ${(props) => props.backgroundColor};
   border: 1px solid #bcbcbc5b;
   border-radius: 4px;
   font-family: Pretendard;
@@ -65,4 +62,4 @@ const Description = styled.p`
   font-size: 12px;
   line-height: 14.4px;
   color: #909090;
-`
+`;

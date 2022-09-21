@@ -1,3 +1,4 @@
+import MyInfoButton from 'components/buttons/MyInfoButton';
 import ProfileMenuItem from 'components/buttons/ProfileMenuItem';
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import { useState } from 'react';
@@ -16,7 +17,13 @@ export interface TextObj {
 
 function MyInfoForm() {
   const location = useLocation();
-  const [inputText, setInfutText] = useState();
+  const [inputName, setInputName] = useState();
+  const [inputId, setInputId] = useState();
+
+  const [imageName, setImageName] = useState<string[]>([]);
+  const [file, setFile] = useState('');
+  const [fileImage, setFileImage] = useState<string>('');
+
   const [textArr, setTextArr] = useState<TextObj[]>([
     {
       id: 1,
@@ -34,36 +41,62 @@ function MyInfoForm() {
   ]);
   return (
     <div className="profile-info-container">
-      <div className="profile-manage-tap-container">
-        {textArr.map((item) => (
-          <ProfileMenuItem key={item.id} {...item} setTextArr={setTextArr} />
-        ))}
-      </div>
-      <div className="profile-modify-container">
-        <div className="profile-introduce-container">
-          <MyInfoTitle path={location.pathname} textArr={textArr} />
-          <div className="profile-pic-container">
-            <div className="profile-pic-title">프로필 사진</div>
-            <div className="profile-pic-avatar">
-              <AvatarIcon width={70} height={70} />
-              <button className="profile-pic-change-button">이미지 변경</button>
+      <form className="profile-form">
+        <div className="profile-manage-tap-container">
+          {textArr.map((item) => (
+            <ProfileMenuItem key={item.id} {...item} setTextArr={setTextArr} />
+          ))}
+        </div>
+        <div className="profile-modify-container">
+          <div className="profile-introduce-container">
+            <MyInfoTitle path={location.pathname} textArr={textArr} />
+            <div className="profile-pic-container">
+              <div className="profile-pic-title">프로필 사진</div>
+              <div className="profile-pic-avatar">
+                <AvatarIcon width={70} height={70} />
+                <label htmlFor="selectImg">
+                  <div className="profile-pic-change-button">이미지 등록</div>
+                </label>
+                <input
+                  style={{ display: 'none' }}
+                  // className="custom-file-input"
+                  id="selectImg"
+                  name="imgUpload"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    if (e.target.files !== null) {
+                      setFileImage(URL.createObjectURL(e.target.files[0]));
+                      for (let i = 0; i < e.target.files.length; i++)
+                        setFile(`${file} ${e.target.files[i].name}`);
+                      setImageName([...imageName]);
+                    }
+                  }}
+                />
+              </div>
             </div>
-            {/* <MyInfoButton text={'수정 완료'} isActive={false} requestPath={'api/users/modifyUser'}/> */}
-          </div>
-          <div className="profile-modify-input-container">
-            <div className="profile-input-wrapper">
-              <div className="row">
-                <p className="profile-modify-input">프로필 이름</p>
-                <MyInfoInput />
+            <div className="profile-modify-input-container">
+              <div className="profile-input-wrapper">
+                <div className="row">
+                  <p className="profile-modify-input">프로필 이름</p>
+                  <MyInfoInput setState={setInputName} />
+                </div>
+                <div className="row">
+                  <p className="profile-modify-input">프로필 아이디</p>
+                  <MyInfoInput setState={setInputId} />
+                </div>
               </div>
-              <div className="row">
-                <p className="profile-modify-input">프로필 아이디</p>
-                <MyInfoInput />
-              </div>
+            </div>
+            <div className="profile-form-submit-button-wrapper">
+              <MyInfoButton
+                text={'수정 완료'}
+                isActive={false}
+                requestPath={'api/users/modifyUser'}
+              />
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
