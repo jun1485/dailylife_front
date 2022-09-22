@@ -1,23 +1,21 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import postApi from 'apis/postApi';
 import ModalCloseButton from 'components/buttons/ModalCloseButton';
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import KebabMenu from 'components/Icons/KebabMenu';
+import { updateModalStatus } from 'reducers/kebab.postModal';
 
 function WriterInfo({ setModalOpacity }) {
+  const dispatch = useDispatch();
+  const kebabModal = useSelector(state => state.kebabModal);
   const selectedPostData = useSelector((state) => state.selectedPostData);
   const [isOpen, setMenu] = useState(false);
   const toggleMenu = () => {
-    // eslint-disable-next-line no-shadow
-    setMenu((isOpen) => !isOpen);
+    dispatch(updateModalStatus(true));
   };
-
-  useEffect(() => {
-    console.log(isOpen);
-  }, [isOpen]);
 
   return (
     <div className="writer-info-container">
@@ -34,7 +32,7 @@ function WriterInfo({ setModalOpacity }) {
         >
           <KebabMenu />
           <KebabListContainer>
-            {isOpen === true ? (
+            {kebabModal.isOpen === true ? (
               <ul className="kebab-list-container">
                 <button type="button" className="kebab-list-modify-button">
                   수정하기
@@ -45,7 +43,7 @@ function WriterInfo({ setModalOpacity }) {
                   onClick={() => {
                     postApi.deleteBoardData(selectedPostData.boardNum);
                     alert('게시글이 성공적으로 삭제되었습니다.');
-                    toggleMenu(); // useEffect는 왜 못쓸까?
+                    toggleMenu();
                     setModalOpacity(0);
                   }}
                 >

@@ -1,10 +1,12 @@
-import { useSelector } from 'react-redux/es/exports';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 import styled from 'styled-components';
 
 import ModalBody from 'components/postModal/ModalBody';
 import './PostModal.scss';
+import { updateModalStatus } from 'reducers/kebab.postModal';
 
 function PostModal(props) {
+  const dispatch = useDispatch();
   const { modalOpacity, setModalOpacity } = props;
   console.log('executes PostModal');
   const currentPostData = useSelector((state) => state.selectedPostData);
@@ -16,6 +18,7 @@ function PostModal(props) {
         id="open-modal"
         onClick={() => {
           setModalOpacity(0);
+          dispatch(updateModalStatus(false));
         }}
       >
         <ModalBody
