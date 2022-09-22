@@ -60,9 +60,6 @@ function MyInfoForm() {
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   }
-  useEffect(() => {
-    console.log('file:', fileImage);
-  })
   return (
     <div className="profile-info-container">
       <form className="profile-form" onSubmit={handleSubmit}>
