@@ -11,7 +11,7 @@ import MyInfoTitle from './MyInfoTitle';
 export interface TextObj {
   id: number;
   data: string;
-  active?: boolean;
+  isActive?: boolean;
   path: string;
   description: string;
 }
@@ -29,7 +29,7 @@ function MyInfoForm() {
     {
       id: 1,
       data: '프로필 편집',
-      active: true,
+      isActive: true,
       path: '/profileModify',
       description: '회원님의 프로필을 방문하는 사용자에게 표시되는 정보입니다.',
     },
