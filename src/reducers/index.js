@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import kebabModal from './kebab.postModal';
 import authToken from './authToken';
 import comment from './comment';
 import myInfo from './myInfo';
@@ -16,6 +17,7 @@ const persistConfig = {
 };
 
 export const rootReducer = combineReducers({
+  kebabModal: kebabModal.reducer,
   authToken: authToken.reducer,
   comment: comment.reducer,
   myInfo: myInfo.reducer,
