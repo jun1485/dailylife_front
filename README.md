@@ -1,4 +1,4 @@
-## 기술 스택
+## 🛠️기술 스택
 
 ### 프레임워크
 
@@ -15,5 +15,11 @@
 ### 커뮤니케이션
 
 <img src="https://img.shields.io/badge/jira-%230052CC.svg?&style=for-the-badge&logo=jira&logoColor=white" /> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Discord&logoColor=white">
+
+<br />
+
+## 📌디자인 및 와이어프레임
+
+- [Daily Life 피그마 보러가기](https://www.figma.com/file/frl6KURTn0ckzo2dTmsIxT/DailyLife(%EC%82%AC%EC%9D%B4%EB%93%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8))
 
 <br />
