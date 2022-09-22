@@ -2,7 +2,7 @@ import axios from 'axios';
 import MyInfoButton from 'components/buttons/MyInfoButton';
 import ProfileMenuItem from 'components/buttons/ProfileMenuItem';
 import AvatarIcon from 'components/Icons/AvatarIcon';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../myinfo.scss';
 import MyInfoInput from './MyInfoInput';
@@ -60,6 +60,9 @@ function MyInfoForm() {
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   }
+  useEffect(() => {
+    console.log('file:', fileImage);
+  })
   return (
     <div className="profile-info-container">
       <form className="profile-form" onSubmit={handleSubmit}>
@@ -74,7 +77,7 @@ function MyInfoForm() {
             <div className="profile-pic-container">
               <div className="profile-pic-title">프로필 사진</div>
               <div className="profile-pic-avatar">
-                <AvatarIcon width={70} height={70} />
+                <AvatarIcon width={70} height={70} image={fileImage} />
                 <label htmlFor="selectImg">
                   <div className="profile-pic-change-button">이미지 등록</div>
                 </label>
