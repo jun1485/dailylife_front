@@ -18,8 +18,11 @@
 
 <br />
 
-## 📌디자인 및 와이어프레임
 
-- [Daily Life 피그마 보러가기](https://www.figma.com/file/frl6KURTn0ckzo2dTmsIxT/DailyLife(%EC%82%AC%EC%9D%B4%EB%93%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8))
-
+## 팀원 소개
 <br />
+
+|주정준|신승식|심채윤|이준석|
+|:-:|:-:|:-:|:-:|
+|<img src="https://avatars.githubusercontent.com/u/65483521?v=4" alt="jun1485" width="100" height="100">|<img src="https://avatars.githubusercontent.com/u/102969108?v=4" alt="NEARworld" width="100" height="100">|<img src="https://avatars.githubusercontent.com/u/92790783?v=4" alt="dlwnstjrzz" width="100" height="100">|<img src="https://avatars.githubusercontent.com/u/95525638?v=4" alt="Lela12" width="100" height="100">|
+|[jun1485](https://github.com/jun1485)|[NEARworld](https://github.com/NEARworld)|[Lela12](https://github.com/Lela12)|[dlwnstjrzz](https://github.com/dlwnstjrzz)|
