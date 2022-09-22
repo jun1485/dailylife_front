@@ -4,7 +4,7 @@ import styled from 'styled-components';
 interface Props {
   text: string;
   isActive: boolean;
-  requestPath: string;
+  requestPath?: string;
 }
 
 export default function MyInfoButton({ text, isActive, requestPath }: Props) {
