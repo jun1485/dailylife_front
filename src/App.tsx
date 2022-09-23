@@ -9,8 +9,8 @@ import Main from 'components/main/Main';
 import SignUp from 'components/signUp/SignUp';
 import MyInfo from 'components/myInfo/MyInfo';
 import MyInfoForm from 'components/myInfo/myInfoForm';
+import AccountModifyForm from 'components/myInfo/myInfoForm/AccountModifyForm';
 function App() {
-
   useEffect(() => {
     console.log('rendered App');
   }, []);
@@ -24,7 +24,8 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/search" element={<SearchForm />} />
         <Route path="/myInfo" element={<MyInfo />} />
-        <Route path='/profileModify' element={<MyInfoForm />} /> 
+        <Route path="/profileModify" element={<MyInfoForm />} />
+        <Route path="/findAccount" element={<AccountModifyForm />} />
       </Routes>
     </BrowserRouter>
   );
