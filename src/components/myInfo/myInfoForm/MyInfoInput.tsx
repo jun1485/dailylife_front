@@ -29,34 +29,40 @@ export default function MyInfoInput({
   description = '',
   setState,
   state,
-  formType
+  formType,
 }: StateProps) {
   const [result, setResult] = useState<ResultType>({
     isValid: true,
-    error: ''
+    error: '',
   });
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setState(e.target.value);
     const validationResult = validate(state, formType);
-    if (validationResult) setResult({ isValid: false, error: validationResult[formType] });
-    else setResult({ isValid: true, error: '' })
+    if (validationResult)
+      setResult({ isValid: false, error: validationResult[formType] });
+    else setResult({ isValid: true, error: '' });
   }
   return (
     <div>
       <StyledInput
         type={type}
         width={width}
-        // height={height}
         backgroundColor={backgroundColor}
         placeholder={placeholder}
-        onChange={(e) => handleChange(e)}
+        onChange={(e) => {
+          handleChange;
+          console.log();
+        }}
       />
-      <Description isValid={result.isValid}>{result.isValid ? description : result.error}</Description>
+      <Description isValid={result.isValid}>
+        {result.isValid ? description : result.error}
+      </Description>
     </div>
   );
 }
 
 const StyledInput = styled.input<Props>`
+  position: relative;
   display: inline-block;
   padding: 7px;
   height: ${(props) => props.height};
@@ -71,10 +77,11 @@ const StyledInput = styled.input<Props>`
   letter-spacing: 0.02em;
 `;
 const Description = styled.p<{ isValid: boolean }>`
-  margin-top: 8px;
+  position: absolute;
+  margin-top: 6px;
   font-family: Pretendard;
   font-weight: 300;
   font-size: 12px;
   line-height: 14.4px;
-  color: ${props => props.isValid ? '#909090' : 'red'}
+  color: ${(props) => (props.isValid ? '#909090' : 'red')};
 `;

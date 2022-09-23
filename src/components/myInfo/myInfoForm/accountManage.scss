@@ -25,9 +25,23 @@
   height: 100%;
 }
 
-.account-modify-input-container {
+.account-modify-input-wrapper {
+  display: grid;
+  gap: 3vh;
   width: 100%;
-  padding: 4vh 0 4vh 0;
+  padding: 2.4vh 0 4vh 0;
+}
+
+.account-password-info-title {
+  padding: 3vh 0 0 0;
+
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 17px;
+  letter-spacing: -0.01em;
+
+  color: #3E3E3E;
 }
 
 .row {
@@ -37,11 +51,6 @@
 }
 
 .row>div {
-  display: flex;
+  // display: flex;
   align-items: center;
-}
-
-.profile-modify-input {
-  width: 11vh;
-  float: left;
 }

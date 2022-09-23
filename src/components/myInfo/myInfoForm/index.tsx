@@ -33,16 +33,17 @@ function MyInfoForm() {
   ]);
 
   const handlePage = () => {
-    if (location.pathname === '/profileModify') return <ProfileModifyForm textArr={textArr} />;
-    else if (location.pathname === '/findAccount') return <AccountModifyForm />;
+    if (location.pathname === '/profileModify')
+      return <ProfileModifyForm textArr={textArr} />;
+    else if (location.pathname === '/findAccount')
+      return <AccountModifyForm textArr={textArr} />;
   };
-  return <div className="form-container">
-    <ProfileMenu textArr={textArr} setTextArr={setTextArr} />
-    <div>
-      <MyInfoTitle path={location.pathname} textArr={textArr} />
-      {handlePage()}
+  return (
+    <div className="form-container">
+      <ProfileMenu textArr={textArr} setTextArr={setTextArr} />
+      <div className="form-body-container">{handlePage()}</div>
     </div>
-  </div>;
+  );
 }
 
 export default MyInfoForm;

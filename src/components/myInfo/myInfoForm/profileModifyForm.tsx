@@ -16,7 +16,6 @@ function ProfileModifyForm({ textArr }) {
   const [file, setFile] = useState('');
   const [fileImage, setFileImage] = useState<string>('');
 
-
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     axios
@@ -69,11 +68,11 @@ function ProfileModifyForm({ textArr }) {
             <div className="profile-input-wrapper">
               <div className="row">
                 <p className="profile-modify-input">프로필 이름</p>
-                <MyInfoInput setState={setInputName} />
+                <MyInfoInput formType={'text'} setState={setInputName} />
               </div>
               <div className="row">
                 <p className="profile-modify-input">프로필 아이디</p>
-                <MyInfoInput setState={setInputId} />
+                <MyInfoInput formType={'text'} setState={setInputId} />
               </div>
             </div>
           </div>
