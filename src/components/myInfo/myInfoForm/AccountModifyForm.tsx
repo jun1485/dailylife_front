@@ -13,7 +13,6 @@ function AccountModifyForm() {
   return (
     <div className="account-manage-container">
       <div className="account-input-wrapper">
-        <ProfileMenu />
         <div className="account-manage-tap-container"></div>
         <div className="account-modify-container">
           <div className="account-modify-input-container">

@@ -1,5 +1,4 @@
 import ProfileMenuItem from 'components/buttons/ProfileMenuItem';
-import { TextObj } from './profileModifyForm';
 
 function ProfileMenu({ textArr, setTextArr }) {
   return (
