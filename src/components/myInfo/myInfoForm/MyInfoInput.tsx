@@ -49,10 +49,7 @@ export default function MyInfoInput({
         width={width}
         backgroundColor={backgroundColor}
         placeholder={placeholder}
-        onChange={(e) => {
-          handleChange;
-          console.log();
-        }}
+        onChange={handleChange}
       />
       <Description isValid={result.isValid}>
         {result.isValid ? description : result.error}

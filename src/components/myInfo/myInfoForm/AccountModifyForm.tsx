@@ -1,16 +1,23 @@
-import { useNavigate } from 'react-router-dom';
-import ProfileModifyForm from './profileModifyForm';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import './accountManage.scss';
 import MyInfoInput from './MyInfoInput';
-import ProfileMenu from './profileMenu';
 import MyInfoTitle from './MyInfoTitle';
 import MyInfoButton from 'components/buttons/MyInfoButton';
+import { validate } from 'common/utils';
 
 function AccountModifyForm({ textArr }) {
   const [inputCurrentPassword, setInputCurrentPassword] = useState();
   const [inputNewPassword, setInputNewPassword] = useState();
   const [inputConfirmPassword, setInputConfirmPassword] = useState();
+
+  function activator() {
+    const firstErrorMsg = validate(inputCurrentPassword, 'password')['password'];
+    const secondErrorMsg = validate(inputNewPassword, 'password')['password'];
+    const thirdErrorMsg = validate(inputConfirmPassword, 'password')['password'];
+
+    if (firstErrorMsg || secondErrorMsg || thirdErrorMsg) return false;
+    else return true;
+  }
 
   return (
     <div className="account-modify-container">
@@ -29,7 +36,7 @@ function AccountModifyForm({ textArr }) {
           />
         </div>
         <div className="row">
-          <p className="profile-modify-input">새 비밀번호</p>
+          <p className="account-modify-input">새 비밀번호</p>
           <MyInfoInput
             type={'password'}
             state={inputNewPassword}
@@ -38,7 +45,7 @@ function AccountModifyForm({ textArr }) {
           />
         </div>
         <div className="row">
-          <p className="profile-modify-input">새 비밀번호 확인</p>
+          <p className="account-modify-input">새 비밀번호 확인</p>
           <MyInfoInput
             type={'password'}
             state={inputConfirmPassword}
@@ -49,7 +56,7 @@ function AccountModifyForm({ textArr }) {
         <div className="profile-form-submit-button-wrapper">
           <MyInfoButton
             text={'비밀번호 변경'}
-            isActive={false}
+            isActive={activator()}
             requestPath={'api/users/modifyUser'}
           />
         </div>

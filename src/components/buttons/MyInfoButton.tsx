@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 interface Props {
@@ -8,6 +8,10 @@ interface Props {
 }
 
 export default function MyInfoButton({ text, isActive, requestPath }: Props) {
+
+  useEffect(() => {
+    console.log('isActive:', isActive);
+  })
 
   return (
     <StyledButton isActive={isActive} >
