@@ -1,4 +1,5 @@
-import { ChangeEvent } from 'react';
+import { validate } from 'common/utils';
+import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 
 interface Props {
@@ -8,9 +9,15 @@ interface Props {
   backgroundColor?: string;
   placeholder?: string;
   description?: string;
+  state?: string;
+  formType?: string;
 }
 interface StateProps extends Props {
   setState: Function;
+}
+interface ResultType {
+  isValid: boolean;
+  error: string;
 }
 
 export default function MyInfoInput({
@@ -21,10 +28,18 @@ export default function MyInfoInput({
   placeholder = '',
   description = '',
   setState,
+  state,
+  formType
 }: StateProps) {
+  const [result, setResult] = useState<ResultType>({
+    isValid: true,
+    error: ''
+  });
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    console.log(e.target.value);
     setState(e.target.value);
+    const validationResult = validate(state, formType);
+    if (validationResult) setResult({ isValid: false, error: validationResult[formType] });
+    else setResult({ isValid: true, error: '' })
   }
   return (
     <div>
@@ -36,7 +51,7 @@ export default function MyInfoInput({
         placeholder={placeholder}
         onChange={(e) => handleChange(e)}
       />
-      <Description>{description}</Description>
+      <Description isValid={result.isValid}>{result.isValid ? description : result.error}</Description>
     </div>
   );
 }
@@ -55,11 +70,11 @@ const StyledInput = styled.input<Props>`
   line-height: 19px;
   letter-spacing: 0.02em;
 `;
-const Description = styled.p`
+const Description = styled.p<{ isValid: boolean }>`
   margin-top: 8px;
   font-family: Pretendard;
   font-weight: 300;
   font-size: 12px;
   line-height: 14.4px;
-  color: #909090;
+  color: ${props => props.isValid ? '#909090' : 'red'}
 `;
