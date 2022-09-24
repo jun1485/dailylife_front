@@ -30,7 +30,7 @@ function useCommentUpload(props) {
           )
           .then((res) => {
             e.target.value = '';
-            // console.log(getCommentDate(res.data.replyTime));
+            console.log(getCommentDate(res.data.replyTime));
             res.data.replyTime = getCommentDate(res.data.replyTime);
             dispatch(updateReplyList([...replyList, res.data]));
           })
@@ -44,41 +44,41 @@ function useCommentUpload(props) {
           '',
         );
         // 대댓글 업로드
-        // axios
-        //   .post(
-        //     `${process.env.REACT_APP_HOST}/api/replyReply/insert`,
-        //     {
-        //       replyNum,
-        //       replyReplyContext: replyContext,
-        //     },
-        //     {
-        //       headers: {
-        //         'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-        //       },
-        //     },
-        //   )
-        //   .then((res) => {
-        //     axios
-        //       .get(
-        //         `${process.env.REACT_APP_HOST}/api/replyReply/getReply/${res.data.replyNum}`,
-        //         {
-        //           headers: {
-        //             'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-        //           },
-        //         },
-        //       )
-        //       .then((reReplyRes) => {
-        //         const newReplyList = [...replyList];
-        //         const idx = newReplyList.findIndex(
-        //           (item) => item.replyNum === res.data.replyNum,
-        //         );
-        //         newReplyList[idx].reReply = reReplyRes.data;
-        //         replyInput.current.value = '';
-        //         sessionStorage.removeItem('replyInfo');
-        //       })
-        //       .catch((err) => console.log(err));
-        //   })
-        //   .catch((err) => console.log(err));
+        axios
+          .post(
+            `${process.env.REACT_APP_HOST}/api/replyReply/insert`,
+            {
+              replyNum,
+              replyReplyContext: replyContext,
+            },
+            {
+              headers: {
+                'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
+              },
+            },
+          )
+          .then((res) => {
+            axios
+              .get(
+                `${process.env.REACT_APP_HOST}/api/replyReply/getReply/${res.data.replyNum}`,
+                {
+                  headers: {
+                    'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
+                  },
+                },
+              )
+              .then((reReplyRes) => {
+                const newReplyList = [...replyList];
+                const idx = newReplyList.findIndex(
+                  (item) => item.replyNum === res.data.replyNum,
+                );
+                newReplyList[idx].reReply = reReplyRes.data;
+                replyInput.current.value = '';
+                sessionStorage.removeItem('replyInfo');
+              })
+              .catch((err) => console.log(err));
+          })
+          .catch((err) => console.log(err));
       }
     } else {
       e.target.value = '';
