@@ -9,10 +9,12 @@ interface Props {
   backgroundColor?: string;
   placeholder?: string;
   description?: string;
-  state?: string;
-  formType?: string;
 }
-interface StateProps extends Props {
+interface ValidateProps extends Props {
+  state: string;
+  formType: string;
+}
+interface StateProps extends ValidateProps {
   setState: Function;
 }
 interface ResultType {
