@@ -23,7 +23,8 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/search" element={<SearchForm />} />
         <Route path="/myInfo" element={<MyInfo />} />
-        <Route path='/profileModify' element={<MyInfoForm />} /> 
+        <Route path="/profileModify" element={<MyInfoForm />} />
+        <Route path="/findAccount" element={<MyInfoForm />} />
       </Routes>
     </BrowserRouter>
   );

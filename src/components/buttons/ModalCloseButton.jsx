@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PostModalCloseButtonIcon from 'components/Icons/PostModalCloseButtonIcon';
 import { updateModalStatus } from 'reducers/kebab.postModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function ModalCloseButton({ setModalOpacity }) {
   const dispatch = useDispatch();

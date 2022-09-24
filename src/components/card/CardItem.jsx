@@ -94,13 +94,12 @@ function CardItem({
 
 const CardWrapper = styled.li`
   position: relative;
-  /* margin: 0 2rem 3rem 0; */
   border-radius: 10px;
   width: 100%;
-  /* height: 28vw; */
-  aspect-ratio: 1;
+  height: 100%;
   overflow: hidden;
-  /* grid-area: item; */
+  object-fit: cover;
+  aspect-ratio: 1;
   background-color: rgb(247, 247, 247);
   box-shadow: rgba(79, 79, 117, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -111,6 +110,34 @@ const CardWrapper = styled.li`
     height: 100%;
   };
 `;
+const Thumbnail = styled.img`
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  transition: all 0.2s linear;
+  `;
+const ImgWrapper = styled.figure`
+  margin: 0 auto 0 auto;
+  width: auto;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;  
+  `;
+const CardInfo = styled.div`
+  font-family: 'pretendard';
+  color: #ffffff;
+  cursor: pointer;
+  width: 100%;
+  `;
+
 const GradientBar = styled.div`
   position: absolute;
   width: 100%;
@@ -122,29 +149,8 @@ const GradientBar = styled.div`
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.7) 91.15%
   );
-`;
-const Thumbnail = styled.img`
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  object-fit: cover;
-  transition: all 0.2s linear;
-`;
-const ImgWrapper = styled.figure`
-  margin: 0 auto 0 auto;
-  overflow: hidden;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 3vw;
-`;
-const CardInfo = styled.div`
-  font-family: 'pretendard';
-  color: #ffffff;
-  cursor: pointer;
-  width: 100%;
-`;
+  `;
+
 const Text = styled.h5`
   position: absolute;
   width: 75%;

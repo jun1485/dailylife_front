@@ -2,8 +2,12 @@ import styled from 'styled-components';
 
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import LikeIcon from 'components/Icons/LikeIcon';
+import { useEffect } from 'react';
 
 function CommentMain({ item }) {
+  useEffect(() => {
+    console.log(item);
+  }, [item])
   return (
     <CommentMainWrapper>
       <AvatarIcon />

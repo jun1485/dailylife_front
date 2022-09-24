@@ -22,7 +22,7 @@ export default ModalBody;
 
 const ModalBodyWrapper = styled.div`
   position: absolute;
-  padding: 2em;
+  padding: 1em;
   display: flex;
   width: 1183px;
   height: 650px;

@@ -20,6 +20,8 @@ const useComments = () => {
       replyTime: getCommentDate(item.replyTime),
     }));
     dispatch(updateReplyList(updatedTimeList));
+    const today = new Date();
+    console.log(today.getDate());
   };
 
   return {
