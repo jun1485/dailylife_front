@@ -1,6 +1,6 @@
 import { validate } from "common/utils";
 import { ChangeEvent, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 interface SizeType {
   width?: string;
