@@ -39,7 +39,7 @@ export default function MyInfoInput({
   });
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setState(e.target.value);
-    const validationResult = validate(state, formType);
+    const validationResult = validate(e.target.value, formType);
     if (validationResult)
       setResult({ isValid: false, error: validationResult[formType] });
     else setResult({ isValid: true, error: '' });
