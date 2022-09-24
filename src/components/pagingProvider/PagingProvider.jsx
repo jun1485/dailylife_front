@@ -1,6 +1,6 @@
 import Pagination from 'react-js-pagination';
 
-import '../Pagination/pagination.css';
+import 'components/pagingProvider/pagingProvider.scss';
 
 function PagingProvider({
   itemCountPerPage,

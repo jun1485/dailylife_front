@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import '../Searching.css';
+import '../Searching.scss';
 // eslint-disable-next-line import/order
 
 // import useAxios from '../../../../hooks/useAxios';
@@ -39,7 +39,10 @@ function SearchForm() {
               // dispatch(postActions.updateItems(getPostData.data));
               // setTypedKeyword(e.target.value);
               axios
-                .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`, {})
+                .get(
+                  `${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`,
+                  {},
+                )
                 .then((res) => {
                   dispatch(postActions.updateItems(res.data));
                 })

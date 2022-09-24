@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postActions } from '../../reducers/post';
 import PostModal from '../postModal/index';
 import CardItem from './CardItem';
-import './Cards.css';
+import './Cards.scss';
 
 function Cards() {
   const dispatch = useDispatch();
