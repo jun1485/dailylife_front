@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { validate } from 'common/utils';
 import MyInfoButton from 'components/buttons/MyInfoButton';
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import { FormEvent, useState } from 'react';
@@ -15,6 +16,14 @@ function ProfileModifyForm({ textArr }) {
   const [imageName, setImageName] = useState<string[]>([]);
   const [file, setFile] = useState('');
   const [fileImage, setFileImage] = useState<string>('');
+
+  function activator() {
+    const firstErrorMsg = validate(inputName, 'username')['username'];
+    const secondErrorMsg = validate(inputId, 'userId')['userId'];
+
+    if (firstErrorMsg || secondErrorMsg) return false;
+    else return true;
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -68,18 +77,18 @@ function ProfileModifyForm({ textArr }) {
             <div className="profile-input-wrapper">
               <div className="row">
                 <p className="profile-modify-input">프로필 이름</p>
-                <MyInfoInput formType={'text'} state={inputName} setState={setInputName} />
+                <MyInfoInput formType={'username'} state={inputName} setState={setInputName} />
               </div>
               <div className="row">
                 <p className="profile-modify-input">프로필 아이디</p>
-                <MyInfoInput formType={'text'} state={inputId} setState={setInputId} />
+                <MyInfoInput formType={'userId'} state={inputId} setState={setInputId} />
               </div>
             </div>
           </div>
           <div className="profile-form-submit-button-wrapper">
             <MyInfoButton
               text={'수정 완료'}
-              isActive={false}
+              isActive={activator()}
               requestPath={'api/users/modifyUser'}
             />
           </div>
