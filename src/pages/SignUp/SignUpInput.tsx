@@ -8,7 +8,7 @@ interface SizeType {
 interface Props extends SizeType {
   type: 'text' | 'email' | 'password';
   text: string;
-  setText: string;
+  setText: Function;
 }
 
 function SignUpInput({ type, width = '100%', height = '55px', text, setText }: Props) {
