@@ -41,11 +41,9 @@ function CardItem({
     console.log('rendered CardItem');
     async function fetchItemData() {
       const items = await axios
-        .get(`${process.env.REACT_APP_HOST}/api/board/getBoard/${boardNum}`, {
-          headers: {
-            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-          },
-        })
+        .get(
+          `${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin/${boardNum}`,
+        )
         .then((res) => res.data);
 
       // dispatch(postActions.updateItems(items));

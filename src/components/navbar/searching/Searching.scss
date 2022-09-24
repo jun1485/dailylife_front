@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css');
 
 #wrap {
   width: 35vw;
@@ -14,16 +14,16 @@
   width: 35vw;
   height: 34px;
   padding: 10px 2.5vw;
-  background-color:#F4F4F4;
-  border:none;
+  background-color: #f4f4f4;
+  border: none;
   border-radius: 7px;
   outline: none;
 }
 
-#wrap input[type="submit"]{
-  background-image: url(/public/assets/search.png);
+#wrap input[type='submit'] {
+  background-image: url('../../../../public/assets/search.png');
   background-color: rgba(0, 0, 0, 0);
-  color: #F4F4F4;
+  color: #f4f4f4;
   width: 19px;
   height: 19px;
   background-size: 19px;
@@ -35,7 +35,7 @@
   cursor: pointer;
 }
 
-#wrap input[type="text"]{
+#wrap input[type='text'] {
   font-size: 16px;
   position: absolute;
   top: 50%;
@@ -45,15 +45,12 @@
   font-family: 'pretendard';
 }
 
-#wrap input::placeholder { 
+#wrap input::placeholder {
   font-size: 16px;
   position: absolute;
   top: 50%;
-  color: #6A6A6A;
+  color: #6a6a6a;
   left: 9%;
   transform: translate(-10%, -50%);
   font-family: 'Viga', sans-serif;
 }
-
-
-

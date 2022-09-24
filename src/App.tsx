@@ -1,4 +1,4 @@
-import './index.css';
+import './index.scss';
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
