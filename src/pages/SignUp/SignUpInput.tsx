@@ -34,7 +34,7 @@ function SignUpInput({ type, width = '100%', height = '55px', text, setText, for
 
   return <StyledWrapper>
     <StyledInput type={type} width={width} height={height} onChange={handleChange} />
-    <Description></Description>
+    {result.isValid ? null : <Description isValid={result.isValid}>{result.error}</Description>}
   </StyledWrapper>
 }
 
@@ -47,6 +47,6 @@ const StyledInput = styled.input<SizeType>`
   width: ${props => props.width};
   height: ${props => props.height};
 `
-const Description = styled.p`
+const Description = styled.p<{ isValid: boolean }>`
 
 `
