@@ -20,6 +20,18 @@ interface ResultType {
     isValid: true,
     error: '',
   });
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    const validateResult = validate(e.target.value, formType);
+    setText(e.target.value)
+    if (validateResult)
+      setResult({ isValid: false, error: validateResult[formType] });
+    else setResult({ isValid: true, error: '' });
+  }
+
+  return <div>
+    <StyledInput type={type} width={width} height={height} onChange={handleChange} />
+  </div>
 }
 
 export default SignUpInput;
