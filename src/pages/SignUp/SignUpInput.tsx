@@ -1,3 +1,5 @@
+import { validate } from "common/utils";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 
 interface SizeType {
@@ -16,6 +18,7 @@ interface ResultType {
   error: ''
 }
 
+function SignUpInput({ type, width = '100%', height = '55px', text, setText, formType }: Props) {
   const [result, setResult] = useState<ResultType>({
     isValid: true,
     error: '',
