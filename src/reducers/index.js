@@ -1,21 +1,25 @@
-import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import authToken from "./authToken";
-import myInfo from "./myInfo";
-import post from "./post";
-import searchResult from "./searchResult";
-import selectedPostData from "./selectedPostData";
+import kebabModal from './kebab.postModal';
+import authToken from './authToken';
+import comment from './comment';
+import myInfo from './myInfo';
+import post from './post';
+import searchResult from './searchResult';
+import selectedPostData from './selectedPostData';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["authToken", "myInfo"],
+  whitelist: ['authToken', 'myInfo'],
 };
 
 export const rootReducer = combineReducers({
+  kebabModal: kebabModal.reducer,
   authToken: authToken.reducer,
+  comment: comment.reducer,
   myInfo: myInfo.reducer,
   post: post.reducer,
   searchResult: searchResult.reducer,

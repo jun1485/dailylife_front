@@ -8,14 +8,12 @@ const myInfo = createSlice({
   },
 
   reducers: {
-    updateUserNum(state, aciton) {
-      // eslint-disable-next-line no-param-reassign
-      state.userNum = aciton.payload;
-    },
-    updateUserInfo(state, action) {
-      // eslint-disable-next-line no-param-reassign
-      state.userInfo = action.payload;
-    },
+    updateUserNum: (aciton) => ({
+      userNum: aciton.payload,
+    }),
+    updateUserInfo: (action) => ({
+      userInfo: action.payload,
+    }),
   },
 });
 

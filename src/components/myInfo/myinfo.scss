@@ -1,0 +1,114 @@
+.profile-info-container {
+  position: relative;
+  top: 7vh;
+  margin: auto;
+  width: 740px;
+  height: 600px;
+
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+  border-radius: 12px;
+}
+
+.profile-manage-tap-container {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+}
+
+.prifile-manage-modify-button {
+  position: relative;
+  margin: 2vh 2vh 2vh 2vh;
+}
+
+.profile-modify-container {
+  position: absolute;
+  padding-right: 10%;
+  right: 0;
+  width: 70%;
+  height: 100%;
+}
+
+.profile-introduce-container {
+  padding: 2vh 0 0 0;
+}
+
+.profile-pic-title {
+  margin-top: 3vh;
+}
+
+.profile-pic-avatar {
+  display: flex;
+  align-items: center;
+  height: 9vh;
+}
+
+.profile-pic-change-button {
+  justify-content: center;
+  width: 85px;
+  padding: 5px;
+  margin-left: 2vh;
+  text-align: center;
+
+  border: 1px solid #BCBCBC;
+  border-radius: 4px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  cursor: pointer;
+  color: #909090;
+}
+
+// .custom-file-input::-webkit-file-upload-button {
+//   visibility: hidden;
+// }
+
+// .custom-file-input::before {
+//   content: 'Select some files';
+//   display: inline-block;
+//   background: linear-gradient(top, #f9f9f9, #e3e3e3);
+//   border: 1px solid #999;
+//   border-radius: 3px;
+//   padding: 5px 8px;
+//   outline: none;
+//   white-space: nowrap;
+//   -webkit-user-select: none;
+//   cursor: pointer;
+//   text-shadow: 1px 1px #fff;
+//   font-weight: 700;
+//   font-size: 10pt;
+// }
+
+.profile-modify-input-container {
+  width: 100%;
+  padding: 4vh 0 4vh 0;
+}
+
+.profile-input-wrapper {
+  display: grid;
+  gap: 7vh;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+}
+
+.row>div {
+  display: flex;
+  align-items: center;
+}
+
+.profile-modify-input {
+  width: 11vh;
+  float: left;
+}
+
+.profile-form-submit-button-wrapper {
+  display: flex;
+  justify-content: right;
+}

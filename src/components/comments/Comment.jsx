@@ -2,9 +2,15 @@ import styled from 'styled-components';
 
 import CommentDate from './CommentDate';
 import CommentMain from './CommentMain';
-import ReplyList from './ReplyList'
+import ReplyList from './ReplyList';
 
-function Comment({ replyHover, setReplyHover, replyList, setReplyList, reReplyFlag, index, item }) {
+function Comment({
+  replyHover,
+  setReplyHover,
+  reReplyFlag,
+  index,
+  item,
+}) {
   return (
     <CommentContainer
       onMouseOver={() => setReplyHover(item.replyNum)}
@@ -14,15 +20,9 @@ function Comment({ replyHover, setReplyHover, replyList, setReplyList, reReplyFl
       <CommentDate
         item={item}
         replyHover={replyHover}
-        replyList={replyList}
-        setReplyList={setReplyList}
       />
       {/* 대댓글 목록 */}
-      <ReplyList
-        reReplyFlag={reReplyFlag}
-        item={item}
-        index={index}
-      />
+      <ReplyList reReplyFlag={reReplyFlag} item={item} index={index} />
     </CommentContainer>
   );
 }

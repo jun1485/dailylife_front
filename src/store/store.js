@@ -1,5 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
-import persistedReducer from "../reducers/index";
+import { configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
   REHYDRATE,
@@ -7,7 +6,9 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
+} from 'redux-persist';
+
+import persistedReducer from '../reducers/index';
 
 export default configureStore({
   reducer: persistedReducer,

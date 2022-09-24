@@ -21,7 +21,7 @@ function Cards() {
           },
         })
         .then((res) => res.data);
-        
+
       dispatch(postActions.updateItems(getCards));
     }
     fetchCards();

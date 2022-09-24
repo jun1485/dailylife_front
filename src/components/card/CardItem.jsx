@@ -104,7 +104,7 @@ const CardWrapper = styled.li`
   background-color: rgb(247, 247, 247);
   box-shadow: rgba(79, 79, 117, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  &: nth-of-type(9n + 2),
+  &:nth-of-type(9n + 2),
   &:nth-of-type(9n + 7) {
     grid-column: span 2;
     grid-row: span 2;

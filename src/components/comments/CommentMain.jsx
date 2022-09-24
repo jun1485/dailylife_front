@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-/* eslint-disable import/no-unresolved */
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import LikeIcon from 'components/Icons/LikeIcon';
 

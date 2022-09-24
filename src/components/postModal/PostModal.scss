@@ -111,9 +111,20 @@
   margin-left: 10px;
 }
 
+.comments-wrapper {
+  position: relative;
+  height: 350px;
+}
+
 .comment-section {
-  height: 330px;
+  margin-top: 1vh;
+  height: 260px;
   overflow-y: auto;
+}
+
+.comment-create {
+  position: absolute;
+  bottom: 0;
 }
 
 .comment-section>.comment-container {

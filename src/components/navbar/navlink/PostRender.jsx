@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import WritePageButton from 'components/Icons/WritePageButton';
 import NewUserPost from 'components/navbar/navlink/writePage/WritePage';
 import { postActions } from 'reducers/post';
 
@@ -33,15 +34,10 @@ function PostRender() {
   }, [openPostModal]);
 
   return (
-    <button
-      className="link link3"
-      type="button"
-      onClick={() => {
-        setOpenPostModal(true);
-      }}
-    >
+    <div>
+      <WritePageButton setOpenPostModal={setOpenPostModal} />
       {openPostModal && <NewUserPost changeOpenPostModal={changeOpenPostModal} />}
-    </button>
+    </div>
   );
 }
 
