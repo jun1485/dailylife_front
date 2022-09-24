@@ -9,8 +9,8 @@ import MyInfoTitle from './MyInfoTitle';
 
 function ProfileModifyForm({ textArr }) {
   const location = useLocation();
-  const [inputName, setInputName] = useState();
-  const [inputId, setInputId] = useState();
+  const [inputName, setInputName] = useState('');
+  const [inputId, setInputId] = useState('');
 
   const [imageName, setImageName] = useState<string[]>([]);
   const [file, setFile] = useState('');
@@ -68,11 +68,11 @@ function ProfileModifyForm({ textArr }) {
             <div className="profile-input-wrapper">
               <div className="row">
                 <p className="profile-modify-input">프로필 이름</p>
-                <MyInfoInput formType={'text'} setState={setInputName} />
+                <MyInfoInput formType={'text'} state={inputName} setState={setInputName} />
               </div>
               <div className="row">
                 <p className="profile-modify-input">프로필 아이디</p>
-                <MyInfoInput formType={'text'} setState={setInputId} />
+                <MyInfoInput formType={'text'} state={inputId} setState={setInputId} />
               </div>
             </div>
           </div>
