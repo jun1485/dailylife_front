@@ -32,14 +32,21 @@ function SignUpInput({ type, width = '100%', height = '55px', text, setText, for
     else setResult({ isValid: true, error: '' });
   }
 
-  return <div>
+  return <StyledWrapper>
     <StyledInput type={type} width={width} height={height} onChange={handleChange} />
-  </div>
+    <Description></Description>
+  </StyledWrapper>
 }
 
 export default SignUpInput;
 
+const StyledWrapper = styled.div.attrs({ class: ['signup-input-wrapper'] })`
+  display: grid;
+`
 const StyledInput = styled.input<SizeType>`
   width: ${props => props.width};
   height: ${props => props.height};
+`
+const Description = styled.p`
+
 `
