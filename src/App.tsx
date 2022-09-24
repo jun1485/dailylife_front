@@ -9,6 +9,7 @@ import Main from 'components/main/Main';
 import SignUp from 'pages/SignUp/index';
 import MyInfo from 'components/myInfo/MyInfo';
 import MyInfoForm from 'components/myInfo/myInfoForm';
+import AccountModifyForm from 'components/myInfo/myInfoForm/AccountModifyForm';
 function App() {
   useEffect(() => {
     console.log('rendered App');
