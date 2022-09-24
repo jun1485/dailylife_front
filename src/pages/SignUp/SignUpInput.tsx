@@ -9,7 +9,7 @@ interface SizeType {
 
 interface Props extends SizeType {
   type: 'text' | 'email' | 'password';
-  text: string;
+  title: string;
   setText: Function;
   formType: string;
 }
