@@ -49,7 +49,7 @@ function MyInfoForm() {
         {
           userName: inputName,
           userPassword: inputId,
-          userProfileImg: fileImage
+          userProfileImg: fileImage,
         },
         {
           headers: {
@@ -74,7 +74,7 @@ function MyInfoForm() {
             <div className="profile-pic-container">
               <div className="profile-pic-title">프로필 사진</div>
               <div className="profile-pic-avatar">
-                <AvatarIcon width={70} height={70} />
+                <AvatarIcon width={70} height={70} image={fileImage} />
                 <label htmlFor="selectImg">
                   <div className="profile-pic-change-button">이미지 등록</div>
                 </label>
