@@ -9,6 +9,11 @@ interface Props extends SizeType {
   type: 'text' | 'email' | 'password';
   text: string;
   setText: Function;
+  formType: string;
+}
+interface ResultType {
+  isValid: boolean,
+  error: ''
 }
 
 function SignUpInput({ type, width = '100%', height = '55px', text, setText }: Props) {
