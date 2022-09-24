@@ -18,7 +18,7 @@ interface ResultType {
   error: ''
 }
 
-function SignUpInput({ type, width = '100%', height = '55px', text, setText, formType }: Props) {
+function SignUpInput({ type, width = '100%', height = '55px', title, setText, formType }: Props) {
   const [result, setResult] = useState<ResultType>({
     isValid: true,
     error: '',
@@ -48,5 +48,5 @@ const StyledInput = styled.input<SizeType>`
   height: ${props => props.height};
 `
 const Description = styled.p<{ isValid: boolean }>`
-
+  color: red;
 `
