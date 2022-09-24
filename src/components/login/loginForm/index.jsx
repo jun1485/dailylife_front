@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import useLoginForm from '../../../hooks/useLoginForm';
-import EasyLogin from './EasyLogin';
-import LoginFind from './LoginFind/index';
+import EasyLogin from './easyLogin';
+import LoginFind from './loginFind/index';
 
 import LoginButton from 'components/buttons/LoginButton';
 import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';

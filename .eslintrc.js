@@ -26,6 +26,7 @@ module.exports = {
           'plugin: prettier/recommended',
         ],
         paths: ['src'],
+        moduleDirectory: ['src', 'node_modules'],
       },
     },
   },
@@ -42,12 +43,7 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: [
-          'builtin',
-          'external',
-          ['parent', 'sibling'],
-          'index',
-        ],
+        groups: ['builtin', 'external', ['parent', 'sibling'], 'index'],
         pathGroups: [
           {
             pattern: 'angular',
