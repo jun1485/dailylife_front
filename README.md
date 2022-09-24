@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+## 🛠️기술 스택
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 프레임워크
 
-## Available Scripts
+<img src="https://img.shields.io/badge/Typescript-4.7.4-3776AB?style=for-the-badge"> <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge"> 
 
-In the project directory, you can run:
+### 라이브러리
 
-### `npm start`
+<img src="https://img.shields.io/badge/Eslint-8.20.0-4B32C3?style=for-the-badge"> <img src="https://img.shields.io/badge/Prettier-2.7.1-F7B93E?style=for-the-badge"> <img src="https://img.shields.io/badge/Redux-4.2.0-4B32C3?style=for-the-badge"> <img src="https://img.shields.io/badge/Styled Components-2.7.1-F7B93E?style=for-the-badge">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 개발 환경
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img src="https://img.shields.io/badge/VSCODE-007ACC?style=for-the-badge&logo=visual studio code&logoColor=white"> <img src="https://img.shields.io/badge/NPM-^8-CB3837?style=for-the-badge"> <img src="https://img.shields.io/badge/Node.js-^16-339933?style=for-the-badge"> <img src="https://img.shields.io/badge/Webpack-^5-8DD6F9?style=for-the-badge">
 
-### `npm test`
+### 커뮤니케이션
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://img.shields.io/badge/jira-%230052CC.svg?&style=for-the-badge&logo=jira&logoColor=white" /> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Discord&logoColor=white">
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 팀원 소개
+<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+|주정준|신승식|심채윤|이준석|
+|:-:|:-:|:-:|:-:|
+|<img src="https://avatars.githubusercontent.com/u/65483521?v=4" alt="jun1485" width="100" height="100">|<img src="https://avatars.githubusercontent.com/u/102969108?v=4" alt="NEARworld" width="100" height="100">|<img src="https://avatars.githubusercontent.com/u/92790783?v=4" alt="dlwnstjrzz" width="100" height="100">|<img src="https://avatars.githubusercontent.com/u/95525638?v=4" alt="Lela12" width="100" height="100">|
+|[jun1485](https://github.com/jun1485)|[NEARworld](https://github.com/NEARworld)|[Lela12](https://github.com/Lela12)|[dlwnstjrzz](https://github.com/dlwnstjrzz)|
