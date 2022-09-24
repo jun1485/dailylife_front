@@ -8,16 +8,11 @@ interface Props {
 }
 
 export default function MyInfoButton({ text, isActive, requestPath }: Props) {
-
   useEffect(() => {
     console.log('isActive:', isActive);
-  })
+  });
 
-  return (
-    <StyledButton isActive={isActive} >
-      {text}
-    </StyledButton>
-  );
+  return <StyledButton isActive={isActive}>{text}</StyledButton>;
 }
 
 const StyledButton = styled.button<{ isActive: boolean }>`

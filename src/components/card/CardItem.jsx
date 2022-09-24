@@ -38,16 +38,15 @@ function CardItem({
   const Emptyheart = '/assets/heart.png';
 
   useEffect(() => {
+    console.log('rendered CardItem');
     async function fetchItemData() {
       const items = await axios
-        .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
-          headers: {
-            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-          },
-        })
+        .get(
+          `${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin/${boardNum}`,
+        )
         .then((res) => res.data);
 
-      dispatch(postActions.updateItems(items));
+      // dispatch(postActions.updateItems(items));
     }
     fetchItemData();
   }, [like]);
@@ -108,7 +107,7 @@ const CardWrapper = styled.li`
     grid-column: span 2;
     grid-row: span 2;
     height: 100%;
-  };
+  }
 `;
 const Thumbnail = styled.img`
   top: 0;
@@ -121,7 +120,7 @@ const Thumbnail = styled.img`
   overflow: hidden;
   object-fit: cover;
   transition: all 0.2s linear;
-  `;
+`;
 const ImgWrapper = styled.figure`
   margin: 0 auto 0 auto;
   width: auto;
@@ -129,14 +128,14 @@ const ImgWrapper = styled.figure`
   overflow: hidden;
   object-fit: cover;
   border-radius: 10px;
-  cursor: pointer;  
-  `;
+  cursor: pointer;
+`;
 const CardInfo = styled.div`
   font-family: 'pretendard';
   color: #ffffff;
   cursor: pointer;
   width: 100%;
-  `;
+`;
 
 const GradientBar = styled.div`
   position: absolute;
@@ -149,7 +148,7 @@ const GradientBar = styled.div`
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.7) 91.15%
   );
-  `;
+`;
 
 const Text = styled.h5`
   position: absolute;

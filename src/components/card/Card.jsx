@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postActions } from '../../reducers/post';
 import PostModal from '../postModal/index';
 import CardItem from './CardItem';
-import './Cards.css';
+import './Cards.scss';
 
 function Cards() {
   const dispatch = useDispatch();
@@ -15,11 +15,7 @@ function Cards() {
   useEffect(() => {
     async function fetchCards() {
       const getCards = await axios
-        .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
-          headers: {
-            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-          },
-        })
+        .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`)
         .then((res) => res.data);
 
       dispatch(postActions.updateItems(getCards));

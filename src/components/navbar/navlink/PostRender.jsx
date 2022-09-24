@@ -19,11 +19,7 @@ function PostRender() {
     else document.body.style.overflow = 'unset';
 
     axios
-      .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
-        headers: {
-          'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-        },
-      })
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`)
       .then((res) => {
         console.log(res.data);
         dispatch(postActions.updateItems(res.data));
@@ -36,7 +32,9 @@ function PostRender() {
   return (
     <div>
       <WritePageButton setOpenPostModal={setOpenPostModal} />
-      {openPostModal && <NewUserPost changeOpenPostModal={changeOpenPostModal} />}
+      {openPostModal && (
+        <NewUserPost changeOpenPostModal={changeOpenPostModal} />
+      )}
     </div>
   );
 }
