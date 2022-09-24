@@ -11,7 +11,9 @@ interface Props extends SizeType {
 }
 
 function SignUpInput({ width = '100%', height = '55px', text, setText }: Props) {
-  return <StyledInput width={width} height={height}></StyledInput>
+  return <StyledInput width={width} height={height}>
+    {text}
+  </StyledInput>
 }
 
 export default SignUpInput;
