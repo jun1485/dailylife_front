@@ -16,10 +16,10 @@ interface ResultType {
   error: ''
 }
 
-function SignUpInput({ type, width = '100%', height = '55px', text, setText }: Props) {
-  return <StyledInput type={type} width={width} height={height}>
-    {text}
-  </StyledInput>
+  const [result, setResult] = useState<ResultType>({
+    isValid: true,
+    error: '',
+  });
 }
 
 export default SignUpInput;
