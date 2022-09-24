@@ -7,7 +7,7 @@ interface Props {
   setText: string;
 }
 
-function SignUpInput({ width = '100%', height = '100%', text, setText }: Props) {
+function SignUpInput({ width = '100%', height = '55px', text, setText }: Props) {
   return <StyledInput></StyledInput>
 }
 
