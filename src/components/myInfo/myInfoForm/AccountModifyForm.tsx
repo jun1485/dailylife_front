@@ -6,9 +6,9 @@ import MyInfoButton from 'components/buttons/MyInfoButton';
 import { validate } from 'common/utils';
 
 function AccountModifyForm({ textArr }) {
-  const [inputCurrentPassword, setInputCurrentPassword] = useState();
-  const [inputNewPassword, setInputNewPassword] = useState();
-  const [inputConfirmPassword, setInputConfirmPassword] = useState();
+  const [inputCurrentPassword, setInputCurrentPassword] = useState('');
+  const [inputNewPassword, setInputNewPassword] = useState('');
+  const [inputConfirmPassword, setInputConfirmPassword] = useState('');
 
   function activator() {
     const firstErrorMsg = validate(inputCurrentPassword, 'password')['password'];
