@@ -15,11 +15,7 @@ function Cards() {
   useEffect(() => {
     async function fetchCards() {
       const getCards = await axios
-        .get(`${process.env.REACT_APP_HOST}/api/board/getBoard`, {
-          headers: {
-            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
-          },
-        })
+        .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`)
         .then((res) => res.data);
 
       dispatch(postActions.updateItems(getCards));
