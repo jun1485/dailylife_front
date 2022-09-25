@@ -24,13 +24,16 @@ function SignUpInput({ type, width = '100%', height = 'auto', title, setText, fo
     isValid: undefined,
     error: '',
   });
+  const [count, setCount] = useState(0);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    setCount(e.target.value.length);
     const validateResult = validate(e.target.value, formType);
     setText(e.target.value)
     if (validateResult)
       setResult({ isValid: false, error: validateResult[formType] });
     else setResult({ isValid: true, error: '' });
+    if (e.target.value.length === 0) setResult({ isValid: undefined, error: '' });
   }
 
   return <StyledWrapper className='signup-input-wrapper'>
