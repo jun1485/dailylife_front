@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import ModalContent from './ModalContent';
 import ModalImage from './ModalImage';
@@ -8,7 +8,6 @@ function ModalBody(props) {
   const { src } = currentPostData;
   return (
     <ModalBodyWrapper onClick={(e) => e.stopPropagation()}>
-      {/* 이미지는 Carousel로 교체 예정 */}
       <ModalImage image={src} />
       <ModalContent
         currentPostData={currentPostData}

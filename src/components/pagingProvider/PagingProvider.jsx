@@ -11,10 +11,6 @@ function PagingProvider({
   totalPostCount,
   handleChange,
 }) {
-  const cardData = useSelector((state) => state.post);
-  useEffect(() => {
-    console.log('rendered PagingProvider');
-  });
   return (
     <Pagination
       activePage={page}

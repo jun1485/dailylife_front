@@ -40,12 +40,12 @@ function WriterInfo({ setModalOpacity }) {
                 <button
                   type="button"
                   className="kebab-list-delete-button"
-                  onClick={() => {
-                    postApi.deleteBoardData(selectedPostData.boardNum);
-                    alert('게시글이 성공적으로 삭제되었습니다.');
-                    toggleMenu();
-                    setModalOpacity(0);
-                  }}
+                // onClick={() => {
+                //   postApi.deleteBoardData(selectedPostData.boardNum);
+                //   alert('게시글이 성공적으로 삭제되었습니다.');
+                //   toggleMenu();
+                //   setModalOpacity(0);
+                // }}
                 >
                   삭제하기
                 </button>
