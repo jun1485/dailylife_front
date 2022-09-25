@@ -13,6 +13,7 @@ interface Props extends SizeType {
   setText: Function;
   formType: string;
   limit: number;
+  placeholder: string;
 }
 interface ResultType {
   isValid: boolean | undefined,
@@ -38,6 +39,13 @@ function SignUpInput({ type, width = '100%', height = 'auto', title, setText, fo
 
   return <StyledWrapper className='signup-input-wrapper'>
     <Section isValid={result.isValid}>
+      <StyledInput
+        type={type}
+        width={width}
+        height={height}
+        onChange={handleChange}
+        maxLength={limit}
+        placeholder={placeholder} />
       <Header>
         <span>{title}</span>
         <span>{count}/{limit}</span>
