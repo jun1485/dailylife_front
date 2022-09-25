@@ -33,8 +33,14 @@ function SignUpInput({ type, width = '100%', height = 'auto', title, setText, fo
     else setResult({ isValid: true, error: '' });
   }
 
-  return <StyledWrapper>
-    <StyledInput type={type} width={width} height={height} onChange={handleChange} />
+  return <StyledWrapper className='signup-input-wrapper'>
+    <Section isValid={result.isValid}>
+      <Header>
+        <span>{title}</span>
+        <span>{count}/{limit}</span>
+      </Header>
+      <StyledInput type={type} width={width} height={height} onChange={handleChange} maxLength={limit} />
+    </Section>
     {result.isValid ? null : <Description isValid={result.isValid}>{result.error}</Description>}
   </StyledWrapper>
 }
@@ -43,6 +49,36 @@ export default SignUpInput;
 
 const StyledWrapper = styled.div.attrs({ class: ['signup-input-wrapper'] })`
   display: grid;
+`
+const Section = styled.div<{ isValid: boolean | undefined }>`
+  display: grid;
+  /* border: 1px solid #D7D7D7; */
+  ${props => {
+    switch (props.isValid) {
+      case true:
+        return css`
+          border: 1px solid #CF990C;
+        `;
+      case false:
+        return css`
+          border: 1px solid #E50303;
+        `;
+      default:
+        return css`
+          border: 1px solid #D7D7D7;
+        `;
+    }
+  }}
+    border-radius: 4px;
+    padding: 9px;
+`;
+const Header = styled.header`
+  display: flex;
+  margin-bottom: 2px;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 400;
 `
 const StyledInput = styled.input<SizeType>`
   width: ${props => props.width};
