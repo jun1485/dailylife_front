@@ -14,7 +14,7 @@ export interface PayloadType {
   userId: string;
   password: string;
   passwordConfirm: string;
-}
+};
 
 function SignUp() {
   const signUpData = {
