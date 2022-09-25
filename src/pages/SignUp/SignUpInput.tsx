@@ -1,6 +1,6 @@
 import { validate } from "common/utils";
 import { ChangeEvent, useState } from "react";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 
 interface SizeType {
   width?: string;
@@ -47,7 +47,7 @@ function SignUpInput({ type, width = '100%', height = 'auto', title, setText, fo
 
 export default SignUpInput;
 
-const StyledWrapper = styled.div.attrs({ class: ['signup-input-wrapper'] })`
+const StyledWrapper = styled.div`
   display: grid;
 `
 const Section = styled.div<{ isValid: boolean | undefined }>`
