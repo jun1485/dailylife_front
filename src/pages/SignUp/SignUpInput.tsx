@@ -50,7 +50,6 @@ function SignUpInput({ type, width = '100%', height = 'auto', title, setText, fo
         <span>{title}</span>
         <span>{count}/{limit}</span>
       </Header>
-      <StyledInput type={type} width={width} height={height} onChange={handleChange} maxLength={limit} />
     </Section>
     {result.isValid ? null : <Description isValid={result.isValid}>{result.error}</Description>}
   </StyledWrapper>
