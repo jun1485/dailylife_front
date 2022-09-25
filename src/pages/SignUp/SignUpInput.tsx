@@ -30,7 +30,7 @@ function SignUpInput({ type, width = '100%', height = 'auto', title, setText, fo
     setCount(e.target.value.length);
     const validateResult = validate(e.target.value, formType);
     setText(e.target.value)
-    if (validateResult)
+    if (validateResult[formType])
       setResult({ isValid: false, error: validateResult[formType] });
     else setResult({ isValid: true, error: '' });
     if (e.target.value.length === 0) setResult({ isValid: undefined, error: '' });
