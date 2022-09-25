@@ -42,7 +42,10 @@ function SignUpInput({
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setCount(e.target.value.length);
     const validateResult = validate(e.target.value, formType);
-    setText((prevState: PayloadType) => ({ ...prevState, [reqId]: e.target.value }));
+    setText((prevState: PayloadType) => ({
+      ...prevState,
+      [reqId]: e.target.value,
+    }));
     if (validateResult[formType])
       setResult({ isValid: false, error: validateResult[formType] });
     else setResult({ isValid: true, error: '' });
