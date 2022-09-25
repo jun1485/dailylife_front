@@ -96,6 +96,7 @@ const StyledInput = styled.input<SizeType>`
 `
 const Header = styled.header`
   grid-row-start: 1;
+  display: flex;
   justify-content: space-between;
   opacity: 0;
   height: 0;
@@ -105,10 +106,12 @@ const Header = styled.header`
   font-weight: 400;
   
   ${StyledInput}:focus + & {
-    display: flex;
     height: 14.5px;
     opacity: 1;
     transition: all .3s ease;
+  }
+  & > span {
+    overflow: hidden;
   }
 `
 const Description = styled.p<{ isValid: boolean | undefined }>`
