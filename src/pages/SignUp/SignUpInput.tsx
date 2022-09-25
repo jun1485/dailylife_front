@@ -20,7 +20,7 @@ interface ResultType {
   error: ''
 }
 
-function SignUpInput({ type, width = '100%', height = 'auto', title, setText, formType, limit }: Props) {
+function SignUpInput({ type, width = '100%', height = 'auto', title, setText, formType, limit, placeholder }: Props) {
   const [result, setResult] = useState<ResultType>({
     isValid: undefined,
     error: '',
