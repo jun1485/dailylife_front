@@ -25,7 +25,7 @@ ul.pagination li {
 }
 
 ul.pagination li:left {
-  content: url(/public/assets/nextPage.png);
+  content: url('../../../public/assets/nextPage.png');
 }
 
 ul.pagination li:first-child {
@@ -46,7 +46,7 @@ ul.pagination li a {
 }
 
 ul.pagination li.active a {
-  color: #CF990C;
+  color: #cf990c;
 }
 
 ul.pagination li.active {
@@ -57,7 +57,6 @@ ul.pagination li a:hover,
 ul.pagination li a.active {
   color: blue;
 }
-
 
 .page-selection {
   width: 48px;

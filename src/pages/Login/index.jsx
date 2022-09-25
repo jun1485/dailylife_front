@@ -1,6 +1,5 @@
-// import './login.css';
-import LoginForm from './LoginForm';
-import './login.css';
+import LoginForm from 'components/login/loginForm';
+import './login.scss';
 
 function Login() {
   return (

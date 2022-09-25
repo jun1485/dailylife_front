@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css');
 
 * {
   box-sizing: border-box;
@@ -32,12 +32,12 @@ body {
   background-color: #fff;
 }
 
-.nav>.nav-header {
+.nav > .nav-header {
   display: inline;
   margin-left: 15%;
 }
 
-.nav>.nav-header>.nav-title {
+.nav > .nav-header > .nav-title {
   cursor: pointer;
   display: inline-block;
   font-size: 22px;
@@ -47,7 +47,7 @@ body {
   border: none;
 }
 
-.nav-title>a {
+.nav-title > a {
   font-family: 'Viga', sans-serif;
   text-decoration-line: none;
   color: rgb(255, 247, 0);
@@ -55,11 +55,11 @@ body {
   letter-spacing: 4px;
 }
 
-.nav>.nav-btn {
+.nav > .nav-btn {
   display: none;
 }
 
-.nav>.nav-links {
+.nav > .nav-links {
   width: 7vh;
   margin-right: 20px;
   display: flex;
@@ -69,7 +69,7 @@ body {
   justify-content: space-between;
 }
 
-.nav>.DeleteCommentButton>.link {
+.nav > .DeleteCommentButton > .link {
   display: inline-block;
   padding: 10px 30px;
   background-size: 30px;
@@ -79,7 +79,7 @@ body {
 }
 
 .link2 {
-  background: url(/public/assets/write.png);
+  background: url('../../../public/assets/write.png');
   transition: all 0.1s ease-out;
 }
 
@@ -89,23 +89,22 @@ body {
   border: none;
 }
 
-.nav>#nav-check {
+.nav > #nav-check {
   display: none;
 }
 
-@media (max-width:1200px) {
-  .nav>.DeleteCommentButton>.link {
+@media (max-width: 1200px) {
+  .nav > .DeleteCommentButton > .link {
     padding: 10px 30px;
   }
 }
 
-@media (max-width:600px) {
-
-  .nav>.nav-header>.nav-title {
+@media (max-width: 600px) {
+  .nav > .nav-header > .nav-title {
     margin-left: 0;
   }
 
-  .nav>.nav-btn {
+  .nav > .nav-btn {
     display: inline-block;
     position: absolute;
     right: 0px;
@@ -113,42 +112,42 @@ body {
     margin: 10px 13px 0 0;
   }
 
-  .nav>.nav-btn>label {
+  .nav > .nav-btn > label {
     display: inline-block;
     width: 50px;
     height: 50px;
     padding: 13px;
   }
 
-  .nav>.nav-btn>label:hover,
-  .nav #nav-check:checked~.nav-btn>label {
+  .nav > .nav-btn > label:hover,
+  .nav #nav-check:checked ~ .nav-btn > label {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
-  .nav>.nav-btn>label>span {
+  .nav > .nav-btn > label > span {
     display: block;
     /* width: 25px;
     height: 10px; */
     border-top: 3px solid rgb(255, 247, 0);
   }
 
-  .nav>.DeleteCommentButton {
+  .nav > .DeleteCommentButton {
     display: flex;
     background-color: #333;
     transition: all 0.3s ease-in;
   }
 
-  .nav>.DeleteCommentButton>a {
+  .nav > .DeleteCommentButton > a {
     display: block;
     width: 100%;
     height: 50px;
   }
 
-  .nav>#nav-check:not(:checked)~.DeleteCommentButton {
+  .nav > #nav-check:not(:checked) ~ .DeleteCommentButton {
     height: 0px;
   }
 
-  .nav>#nav-check:checked~.DeleteCommentButton {
+  .nav > #nav-check:checked ~ .DeleteCommentButton {
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
