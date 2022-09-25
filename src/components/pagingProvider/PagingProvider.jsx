@@ -1,8 +1,6 @@
 import Pagination from 'react-js-pagination';
 
 import 'components/pagingProvider/pagingProvider.scss';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function PagingProvider({
   itemCountPerPage,

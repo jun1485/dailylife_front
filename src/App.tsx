@@ -1,5 +1,4 @@
 import './index.scss';
-import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Login from './pages/Login/index';

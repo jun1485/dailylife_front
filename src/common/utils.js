@@ -22,7 +22,7 @@ const validate = (value, formType) => {
   const userIdNumberRegex = /[0-9]/;
   const passwordRegexArr = [/^.{8,15}$/, /\d/, /[a-zA-Z]/, /[\\*!&]/];
   // const usernameRegex = /^[a-z][a-z\d]{2,}$/;
-  const usernameRegex = /^[a-z0-9]{2,16}$/;
+  const usernameRegex = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|0-9]{2,20}$/;
   const emailRegex = /^[\w]{4,}@[\w]+(\.[\w]+){1,3}$/;
   const errorMessage = {
     userId: '아이디는 영문자로 시작하고 숫자를 포함한 4~12글자입니다.',

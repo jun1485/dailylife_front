@@ -10,6 +10,7 @@
 
 .register-avatar-wrapper {
     display: flex;
+    padding-bottom: 3vh;
     margin: auto;
     justify-content: center;
     width: 80%;
@@ -20,12 +21,12 @@
 }
 
 .register-input-container {
-    padding: 3vh 0 0 0;
-}
+    // padding: 1vh 0 0 0;
 
-// .register-input-container {
-//     padding: 1vh 0 1vh 0;
-// }
+    .register-input-wrapper {
+        // padding-bottom: 1vh;
+    }
+}
 
 .register-form-submit-btn {
     width: 320px;

@@ -4,15 +4,60 @@ import styled from 'styled-components/macro';
 
 import useForm from '../../hooks/useForm';
 import './signUp.scss';
+import SignUpInput from './SignUpInput';
 
 function SignUp() {
-  const { handleChange, handleSubmit } = useForm({
+  const signUpData = {
+    userName: '',
+    userEmail: '',
     userId: '',
-    phoneNumber: '',
-    name: '',
     password: '',
-    email: '',
-  });
+    passwordConfirm: '',
+  };
+  const [inputValues, setInputValues] = useState(signUpData);
+  const signUpInputData = [
+    {
+      type: 'text',
+      title: '사용자 이름',
+      setText: setInputValues,
+      formType: 'username',
+      limit: 20,
+      placeholder: '사용자 이름',
+    },
+    {
+      type: 'email',
+      title: '이메일',
+      setText: setInputValues,
+      formType: 'email',
+      limit: 30,
+      placeholder: '이메일',
+    },
+    {
+      type: 'text',
+      title: '아이디',
+      setText: setInputValues,
+      formType: 'userId',
+      limit: 30,
+      placeholder: '아이디',
+    },
+    {
+      type: 'password',
+      title: '비밀번호',
+      setText: setInputValues,
+      formType: 'password',
+      limit: 15,
+      placeholder: '비밀번호',
+    },
+    {
+      type: 'password',
+      title: '비밀번호 확인',
+      setText: setInputValues,
+      formType: 'password',
+      limit: 15,
+      placeholder: '비밀번호 확인',
+    },
+  ];
+  const { handleChange, handleSubmit } = useForm(signUpData);
   const [imageName, setImageName] = useState<string[]>([]);
   const [file, setFile] = useState('');
   const [fileImage, setFileImage] = useState<string>('');
@@ -43,13 +88,18 @@ function SignUp() {
             />
           </div>
           <div className="register-input-container">
-            <ul>
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
-            </ul>
+            {signUpInputData.map((item) => (
+              <div className="register-input-wrapper">
+                <SignUpInput
+                  type={item.type}
+                  title={item.title}
+                  setText={item.setText}
+                  formType={item.formType}
+                  limit={item.limit}
+                  placeholder={item.placeholder}
+                />
+              </div>
+            ))}
           </div>
           <button type="submit" className="register-form-submit-btn">
             가입하기
