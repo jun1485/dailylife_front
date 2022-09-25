@@ -80,7 +80,7 @@ export default SignUpInput;
 
 const StyledWrapper = styled.div`
   display: grid;
-`;
+`
 const Section = styled.div<{ isValid: boolean | undefined }>`
   display: grid;
   grid-template-rows: 0 1fr;
