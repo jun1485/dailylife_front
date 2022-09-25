@@ -93,13 +93,17 @@ const StyledInput = styled.input<SizeType>`
   font-family: Pretendard;
   line-height: 18px;
   font-weight: 400;
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
 `
 const Header = styled.header`
   grid-row-start: 1;
   display: flex;
   justify-content: space-between;
-  opacity: 0;
   height: 0;
+  opacity: 0;
   margin-bottom: 2px;
   font-size: 12px;
   line-height: 14.4px;
@@ -108,7 +112,7 @@ const Header = styled.header`
   ${StyledInput}:focus + & {
     height: 14.5px;
     opacity: 1;
-    transition: all .3s ease;
+    transition: opacity .3s ease-out;
   }
   & > span {
     overflow: hidden;
