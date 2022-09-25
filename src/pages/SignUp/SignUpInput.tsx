@@ -73,17 +73,12 @@ const Section = styled.div<{ isValid: boolean | undefined }>`
         `;
     }
   }}
-    border-radius: 4px;
-    padding: 9px;
-`;
-const Header = styled.header`
-  display: flex;
-  margin-bottom: 2px;
-  justify-content: space-between;
-  font-size: 12px;
-  line-height: 14.4px;
-  font-weight: 400;
-`
+  border-radius: 4px;
+  padding: 9px;
+  &:focus-within {
+    grid-template-rows: auto;
+  }
+  `
 const StyledInput = styled.input<SizeType>`
   width: ${props => props.width};
   height: ${props => props.height};
