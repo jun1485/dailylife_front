@@ -8,6 +8,14 @@ import useForm from '../../hooks/useForm';
 import './signUp.scss';
 import SignUpInput from './SignUpInput';
 
+export interface PayloadType {
+  username: string;
+  email: string;
+  userId: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 function SignUp() {
   const signUpData = {
     userName: '',
@@ -51,6 +59,7 @@ function SignUp() {
   const signUpInputData = [
     {
       type: 'text',
+      reqId: 'username',
       title: '사용자 이름',
       setText: setInputValues,
       formType: 'username',
@@ -59,6 +68,7 @@ function SignUp() {
     },
     {
       type: 'email',
+      reqId: 'email',
       title: '이메일',
       setText: setInputValues,
       formType: 'email',
@@ -67,6 +77,7 @@ function SignUp() {
     },
     {
       type: 'text',
+      reqId: 'userId',
       title: '아이디',
       setText: setInputValues,
       formType: 'userId',
@@ -75,6 +86,7 @@ function SignUp() {
     },
     {
       type: 'password',
+      reqId: 'password',
       title: '비밀번호',
       setText: setInputValues,
       formType: 'password',
@@ -83,6 +95,7 @@ function SignUp() {
     },
     {
       type: 'password',
+      reqId: 'passwordConfirm',
       title: '비밀번호 확인',
       setText: setInputValues,
       formType: 'password',
@@ -128,6 +141,7 @@ function SignUp() {
                   title={item.title}
                   setText={item.setText}
                   formType={item.formType}
+                  reqId={item.reqId}
                   limit={item.limit}
                   placeholder={item.placeholder}
                 />

@@ -1,6 +1,7 @@
 import { validate } from 'common/utils';
 import { ChangeEvent, useState } from 'react';
 import styled, { css } from 'styled-components/macro';
+import { PayloadType } from '.';
 
 interface SizeType<T> {
   width?: T;
@@ -11,6 +12,7 @@ interface Props extends SizeType<string> {
   title: string;
   setText: Function;
   formType: string;
+  reqId: string;
   limit: number;
   placeholder: string;
 }
@@ -27,6 +29,7 @@ function SignUpInput({
   title,
   setText,
   formType,
+  reqId,
   limit,
   placeholder,
 }: Props) {
@@ -39,7 +42,7 @@ function SignUpInput({
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setCount(e.target.value.length);
     const validateResult = validate(e.target.value, formType);
-    setText(e.target.value);
+    setText((prevState: PayloadType) => ({ ...prevState, [reqId]: e.target.value }));
     if (validateResult[formType])
       setResult({ isValid: false, error: validateResult[formType] });
     else setResult({ isValid: true, error: '' });
