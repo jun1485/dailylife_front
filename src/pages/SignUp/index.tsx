@@ -1,3 +1,5 @@
+import { validate } from 'common/utils';
+import MyInfoButton from 'components/buttons/MyInfoButton';
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import { useState } from 'react';
 import styled from 'styled-components/macro';
@@ -14,7 +16,28 @@ function SignUp() {
     password: '',
     passwordConfirm: '',
   };
+
   const [inputValues, setInputValues] = useState(signUpData);
+  const activator = () => {
+    const firstErrorMsg = validate(inputValues.userId, 'username')['username'];
+    const secondErrorMsg = validate(inputValues.userEmail, 'email')['email'];
+    const thirdErrorMsg = validate(inputValues.userId, 'username')['username'];
+    const fourthErrorMsg = validate(inputValues.password, 'password')[
+      'password'
+    ];
+    const fifthErrorMsg = validate(inputValues.passwordConfirm, 'password')[
+      'password'
+    ];
+    if (
+      firstErrorMsg ||
+      secondErrorMsg ||
+      thirdErrorMsg ||
+      fourthErrorMsg ||
+      fifthErrorMsg
+    )
+      return false;
+    else return true;
+  };
   const signUpInputData = [
     {
       type: 'text',
@@ -101,9 +124,10 @@ function SignUp() {
               </div>
             ))}
           </div>
-          <button type="submit" className="register-form-submit-btn">
+          <MyInfoButton text="가입하기" isActive={activator()} />
+          {/* <button type="submit" className="register-form-submit-btn">
             가입하기
-          </button>
+          </button> */}
         </div>
       </form>
     </SignUpWrapper>
