@@ -2,12 +2,11 @@ import { validate } from 'common/utils';
 import { ChangeEvent, useState } from 'react';
 import styled, { css } from 'styled-components/macro';
 
-interface SizeType {
-  width?: string;
-  height?: string;
+interface SizeType<T> {
+  width?: T;
+  height?: T;
 }
-
-interface Props extends SizeType {
+interface Props extends SizeType<string> {
   type: string;
   title: string;
   setText: Function;
@@ -15,6 +14,7 @@ interface Props extends SizeType {
   limit: number;
   placeholder: string;
 }
+
 interface ResultType {
   isValid: boolean | undefined;
   error: '';
@@ -101,7 +101,7 @@ const Section = styled.div<{ isValid: boolean | undefined }>`
     grid-template-rows: auto;
   }
 `;
-const StyledInput = styled.input<SizeType>`
+const StyledInput = styled.input<SizeType<string>>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   font-size: 15px;
