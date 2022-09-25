@@ -51,7 +51,7 @@ function SignUpInput({ type, width = '100%', height = 'auto', title, setText, fo
         <span>{count}/{limit}</span>
       </Header>
     </Section>
-    {result.isValid ? null : <Description isValid={result.isValid}>{result.error}</Description>}
+    <Description isValid={result.isValid}>{result.error}</Description>
   </StyledWrapper>
 }
 
