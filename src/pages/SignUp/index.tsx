@@ -1,5 +1,5 @@
 import { validate } from 'common/utils';
-import MyInfoButton from 'components/buttons/MyInfoButton';
+import MyInfoButton from 'components/buttons/SubmitButton';
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import { useState } from 'react';
 import styled from 'styled-components/macro';

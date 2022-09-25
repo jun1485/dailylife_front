@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './accountManage.scss';
 import MyInfoInput from './MyInfoInput';
 import MyInfoTitle from './MyInfoTitle';
-import MyInfoButton from 'components/buttons/MyInfoButton';
+import MyInfoButton from 'components/buttons/SubmitButton';
 import { validate } from 'common/utils';
 
 function AccountModifyForm({ textArr }) {
