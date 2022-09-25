@@ -55,7 +55,8 @@ const StyledWrapper = styled.div`
 `
 const Section = styled.div<{ isValid: boolean | undefined }>`
   display: grid;
-  /* border: 1px solid #D7D7D7; */
+  grid-template-rows: 0 1fr;
+  height: 54.5px;
   ${props => {
     switch (props.isValid) {
       case true:
