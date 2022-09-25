@@ -119,6 +119,7 @@ const Header = styled.header`
   }
 `
 const Description = styled.p<{ isValid: boolean | undefined }>`
+  height: 2vh;
   color: #E50303;
   font-size: 12px;
   font-weight: 300;
