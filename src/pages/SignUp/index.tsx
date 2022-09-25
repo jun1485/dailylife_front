@@ -1,7 +1,7 @@
 import { validate } from 'common/utils';
-import MyInfoButton from 'components/buttons/SubmitButton';
+import SubmitButton from 'components/buttons/SubmitButton';
 import AvatarIcon from 'components/Icons/AvatarIcon';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 
 import useForm from '../../hooks/useForm';
@@ -19,15 +19,25 @@ function SignUp() {
 
   const [inputValues, setInputValues] = useState(signUpData);
   const activator = () => {
-    const firstErrorMsg = validate(inputValues.userId, 'username')['username'];
+    const firstErrorMsg = validate(inputValues.userName, 'username')[
+      'username'
+    ];
     const secondErrorMsg = validate(inputValues.userEmail, 'email')['email'];
-    const thirdErrorMsg = validate(inputValues.userId, 'username')['username'];
+    const thirdErrorMsg = validate(inputValues.userId, 'userId')['userId'];
     const fourthErrorMsg = validate(inputValues.password, 'password')[
       'password'
     ];
     const fifthErrorMsg = validate(inputValues.passwordConfirm, 'password')[
       'password'
     ];
+    console.log(
+      firstErrorMsg,
+      secondErrorMsg,
+      thirdErrorMsg,
+      fourthErrorMsg,
+      fifthErrorMsg,
+    );
+
     if (
       firstErrorMsg ||
       secondErrorMsg ||
@@ -123,8 +133,13 @@ function SignUp() {
                 />
               </div>
             ))}
+            <SubmitButton
+              text="가입하기"
+              height="52px"
+              fontSize="17px"
+              isActive={activator()}
+            />
           </div>
-          <MyInfoButton text="가입하기" isActive={activator()} />
           {/* <button type="submit" className="register-form-submit-btn">
             가입하기
           </button> */}
