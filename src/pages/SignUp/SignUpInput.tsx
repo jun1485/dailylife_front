@@ -12,6 +12,7 @@ interface Props extends SizeType {
   title: string;
   setText: Function;
   formType: string;
+  limit: number;
 }
 interface ResultType {
   isValid: boolean,
