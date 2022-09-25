@@ -18,8 +18,8 @@ export interface PayloadType {
 
 function SignUp() {
   const signUpData = {
-    userName: '',
-    userEmail: '',
+    username: '',
+    email: '',
     userId: '',
     password: '',
     passwordConfirm: '',
@@ -27,10 +27,10 @@ function SignUp() {
 
   const [inputValues, setInputValues] = useState(signUpData);
   const activator = () => {
-    const firstErrorMsg = validate(inputValues.userName, 'username')[
+    const firstErrorMsg = validate(inputValues.username, 'username')[
       'username'
     ];
-    const secondErrorMsg = validate(inputValues.userEmail, 'email')['email'];
+    const secondErrorMsg = validate(inputValues.email, 'email')['email'];
     const thirdErrorMsg = validate(inputValues.userId, 'userId')['userId'];
     const fourthErrorMsg = validate(inputValues.password, 'password')[
       'password'
