@@ -65,9 +65,7 @@ function SignUpInput({
           </span>
         </Header>
       </Section>
-      {result.isValid ? null : (
-        <Description isValid={result.isValid}>{result.error}</Description>
-      )}
+      <Description isValid={result.isValid}>{result.error}</Description>
     </StyledWrapper>
   );
 }
