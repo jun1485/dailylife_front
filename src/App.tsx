@@ -8,7 +8,6 @@ import Main from 'components/main/Main';
 import MyInfo from 'components/myInfo/MyInfo';
 import MyInfoForm from 'components/myInfo/myInfoForm';
 import SignUp from 'pages/SignUp';
-
 function App() {
   return (
     <BrowserRouter>
