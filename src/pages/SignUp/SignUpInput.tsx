@@ -15,13 +15,13 @@ interface Props extends SizeType {
   limit: number;
 }
 interface ResultType {
-  isValid: boolean,
+  isValid: boolean | undefined,
   error: ''
 }
 
-function SignUpInput({ type, width = '100%', height = '55px', title, setText, formType }: Props) {
+function SignUpInput({ type, width = '100%', height = 'auto', title, setText, formType, limit }: Props) {
   const [result, setResult] = useState<ResultType>({
-    isValid: true,
+    isValid: undefined,
     error: '',
   });
 
