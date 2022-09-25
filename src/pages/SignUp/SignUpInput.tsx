@@ -52,6 +52,7 @@ const StyledInput = styled.input<SizeType>`
   line-height: 18px;
   font-weight: 400;
 `
+const Description = styled.p<{ isValid: boolean | undefined }>`
   color: #E50303;
   font-size: 12px;
   font-weight: 300;
