@@ -91,6 +91,23 @@ const StyledInput = styled.input<SizeType>`
   line-height: 18px;
   font-weight: 400;
 `
+const Header = styled.header`
+  grid-row-start: 1;
+  justify-content: space-between;
+  opacity: 0;
+  height: 0;
+  margin-bottom: 2px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 400;
+  
+  ${StyledInput}:focus + & {
+    display: flex;
+    height: 14.5px;
+    opacity: 1;
+    transition: all .3s ease;
+  }
+`
 const Description = styled.p<{ isValid: boolean | undefined }>`
   color: #E50303;
   font-size: 12px;
