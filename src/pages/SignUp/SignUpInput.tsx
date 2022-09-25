@@ -47,7 +47,14 @@ const StyledWrapper = styled.div.attrs({ class: ['signup-input-wrapper'] })`
 const StyledInput = styled.input<SizeType>`
   width: ${props => props.width};
   height: ${props => props.height};
+  font-size: 15px;
+  font-family: Pretendard;
+  line-height: 18px;
+  font-weight: 400;
 `
-const Description = styled.p<{ isValid: boolean }>`
-  color: red;
+  color: #E50303;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 14.4px;
+  margin-top: 5px;
 `
