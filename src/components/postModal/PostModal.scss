@@ -18,50 +18,16 @@
   justify-content: right;
 }
 
-.kebab-list-container {
-  padding: 0;
-  width: 214px;
-  /* height: 9.9vh; */
-  height: 165px;
-  box-sizing: border-box;
-  background: #FFFFFF;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.kebab-list-container>button {
-  top: 30px;
-  height: 55px;
-  line-height: 55px;
-  background: #FFFFFF;
-  border: 0.1px solid #DCDCDC;
-}
-
-.kebab-list-modify-button {
-  color: #6A6A6A;
-}
-
-.kebab-list-delete-button {
-  color: #6A6A6A;
-}
-
-.kebab-list-cancel-button {
-  color: #E50303;
-}
-
 .modal-content-container {
   width: 50%;
   margin-left: 20px;
 }
 
-.modal-content-container>.comments-wrapper {
+.modal-content-container > .comments-wrapper {
   position: relative;
 }
 
-.modal-content-container>.comments-wrapper>.comment-create {
+.modal-content-container > .comments-wrapper > .comment-create {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -79,12 +45,12 @@
   margin-top: 12px;
 }
 
-.modal-post-content>.title-in-modal {
+.modal-post-content > .title-in-modal {
   text-align: start;
   font-size: xx-large;
 }
 
-.modal-post-content>.text-in-modal {
+.modal-post-content > .text-in-modal {
   height: 17vh;
   mex-height: 121px;
   overflow-y: auto;
@@ -103,11 +69,11 @@
   align-items: center;
 }
 
-.social-icons-container>.comments-icon {
+.social-icons-container > .comments-icon {
   margin-left: 10px;
 }
 
-.social-counter-container>.comments-count {
+.social-counter-container > .comments-count {
   margin-left: 10px;
 }
 
@@ -127,12 +93,12 @@
   bottom: 0;
 }
 
-.comment-section>.comment-container {
+.comment-section > .comment-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
-.comment-section>.comment-container>.comment-main {
+.comment-section > .comment-container > .comment-main {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -173,11 +139,11 @@
   height: 100%;
 }
 
-.reply-delete-box>div {
+.reply-delete-box > div {
   height: 50%;
 }
 
-.reply-delete-box>div>button {
+.reply-delete-box > div > button {
   border: none;
   display: block;
   width: 100%;
@@ -187,11 +153,18 @@
   color: black;
 }
 
-.reply-delete-box>div:first-of-type>button {
+.reply-delete-box > div:first-of-type > button {
   border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .rereply,
 .rereply-get {
   cursor: pointer;
+}
+
+.warning-modal-container {
+  width: 320px;
+  height: 222px;
+  padding: 2vh 0 0 0;
+  border: 1px black solid;
 }

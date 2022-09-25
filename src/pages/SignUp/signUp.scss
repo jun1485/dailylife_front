@@ -1,0 +1,46 @@
+.register-form-wrapper {
+    width: 80%;
+    margin: auto;
+    font-weight: 600;
+}
+
+.register-info-title {
+    padding: 3.5vh 0 0 0;
+}
+
+.register-avatar-wrapper {
+    display: flex;
+    padding-bottom: 3vh;
+    margin: auto;
+    justify-content: center;
+    width: 80%;
+}
+
+.register-avatar-lable > div {
+    cursor: pointer;
+}
+
+.register-form-submit-btn {
+    width: 320px;
+    height: 52px;
+
+    background: #BCBCBC;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+}
+
+.register-form-submit-btn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 3vh 0 3vh 0;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: white;
+}

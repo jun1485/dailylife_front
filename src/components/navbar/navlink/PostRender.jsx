@@ -21,7 +21,6 @@ function PostRender() {
     axios
       .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`)
       .then((res) => {
-        console.log(res.data);
         dispatch(postActions.updateItems(res.data));
       })
       .catch((res) => {

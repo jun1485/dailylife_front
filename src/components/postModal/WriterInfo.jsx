@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -10,12 +9,9 @@ import { updateModalStatus } from 'reducers/kebab.postModal';
 
 function WriterInfo({ setModalOpacity }) {
   const dispatch = useDispatch();
-  const kebabModal = useSelector(state => state.kebabModal);
+  const kebabModal = useSelector((state) => state.kebabModal);
   const selectedPostData = useSelector((state) => state.selectedPostData);
-  const [isOpen, setMenu] = useState(false);
-  const toggleMenu = () => {
-    dispatch(updateModalStatus(true));
-  };
+  const toggleMenu = () => dispatch(updateModalStatus(!kebabModal.isOpen));
 
   return (
     <div className="writer-info-container">
@@ -33,11 +29,9 @@ function WriterInfo({ setModalOpacity }) {
           <KebabMenu />
           <KebabListContainer>
             {kebabModal.isOpen === true ? (
-              <ul className="kebab-list-container">
-                <button type="button" className="kebab-list-modify-button">
-                  수정하기
-                </button>
-                <button
+              <KebabList onMouseLeave={toggleMenu}>
+                <ModifyButton type="button">수정하기</ModifyButton>
+                <DeleteButton
                   type="button"
                   className="kebab-list-delete-button"
                   onClick={() => {
@@ -48,11 +42,15 @@ function WriterInfo({ setModalOpacity }) {
                   }}
                 >
                   삭제하기
-                </button>
-                <button type="button" className="kebab-list-cancel-button">
+                </DeleteButton>
+                <CancelButton
+                  type="button"
+                  className="kebab-list-cancel-button"
+                  onClick={toggleMenu}
+                >
                   취소
-                </button>
-              </ul>
+                </CancelButton>
+              </KebabList>
             ) : null}
           </KebabListContainer>
         </KebabMenuContainer>
@@ -87,6 +85,40 @@ const WriterInfoWrapper = styled.div`
   gap: 10px;
   justify-content: space-around;
   align-items: center;
+`;
+const KebabList = styled.div`
+  padding: 0;
+  width: 214px;
+  /* height: 9.9vh; */
+  height: 165px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  & > button {
+    width: 100%;
+    top: 30px;
+    height: 55px;
+    line-height: 55px;
+    background: #ffffff;
+    border: 0.1px solid #dcdcdc;
+  }
+  & > button:hover {
+    background-color: #f3f3f3;
+  }
+`;
+const ModifyButton = styled.button`
+  color: #6a6a6a;
+`;
+const DeleteButton = styled.button`
+  color: #6a6a6a;
+`;
+const CancelButton = styled.button`
+  color: #e50303;
 `;
 const Follow = styled.button`
   width: 68px;

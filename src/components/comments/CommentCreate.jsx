@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import AvatarIcon from 'components/Icons/AvatarIcon';
 import useComments from 'hooks/useComments';

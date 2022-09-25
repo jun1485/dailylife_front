@@ -69,7 +69,6 @@ function writePage(props) {
                         accept="image/*"
                         onChange={(e) => {
                           setFileImage(URL.createObjectURL(e.target.files[0]));
-                          // eslint-disable-next-line no-plusplus
                           for (let i = 0; i < e.target.files.length; i++)
                             setFile(`${file} ${e.target.files[i].name}`);
                           setImageName([...imageName, ...e.target.files]);
@@ -116,6 +115,9 @@ function writePage(props) {
                   type="submit"
                   className="submit-btn"
                 // onClick={closeModal}
+                //   onClick={() => {
+                //     if (fileImage === '' ? (alert('이미지를 등록해주세요!')))
+                // }}
                 >
                   게시물 등록
                 </button>

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Cards from 'components/card/Card';
 import PagingProvider from 'components/pagingProvider/PagingProvider';
 import usePagination from 'hooks/usePagination';
+import { useSelector } from 'react-redux';
 
 export default function Main() {
   console.log('executes Main');

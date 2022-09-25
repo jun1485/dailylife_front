@@ -12,13 +12,12 @@ function AvatarIcon({ width = 38, height = 38, image }: AvatarProps) {
 export default AvatarIcon;
 const Avatar = styled.div<AvatarProps>`
   border-radius: 50%;
-  margin-top: 0.7vh;
   float: left;
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
   aspect-ratio: 1;
-  background-color: purple;
-  background-image: ${(props) => (props.image ? `url(${props.image})` : null)};
+  background-image: ${(props) =>
+    props.image ? `url(${props.image})` : `url('/assets/avatarImg.png')`};
   background-position: center;
   background-size: cover;
 `;
