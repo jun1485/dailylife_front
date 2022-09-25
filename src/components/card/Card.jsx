@@ -25,7 +25,6 @@ function Cards() {
 
   return (
     <div className="cards">
-      {/* <Searching cardData={cardData} /> */}
       <div className="cards__container">
         <div className="cards__wrapper">
           <div className="cards__items">

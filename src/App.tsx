@@ -8,10 +8,12 @@ import Main from 'components/main/Main';
 import MyInfo from 'components/myInfo/MyInfo';
 import MyInfoForm from 'components/myInfo/myInfoForm';
 import SignUp from 'pages/SignUp';
+import WarningModal from 'components/postModal/WarningModal';
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <WarningModal />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

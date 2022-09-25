@@ -11,9 +11,13 @@ function AccountModifyForm({ textArr }) {
   const [inputConfirmPassword, setInputConfirmPassword] = useState('');
 
   function activator() {
-    const firstErrorMsg = validate(inputCurrentPassword, 'password')['password'];
+    const firstErrorMsg = validate(inputCurrentPassword, 'password')[
+      'password'
+    ];
     const secondErrorMsg = validate(inputNewPassword, 'password')['password'];
-    const thirdErrorMsg = validate(inputConfirmPassword, 'password')['password'];
+    const thirdErrorMsg = validate(inputConfirmPassword, 'password')[
+      'password'
+    ];
 
     if (firstErrorMsg || secondErrorMsg || thirdErrorMsg) return false;
     else return true;
@@ -55,6 +59,8 @@ function AccountModifyForm({ textArr }) {
         </div>
         <div className="profile-form-submit-button-wrapper">
           <MyInfoButton
+            width="85px"
+            height="28px"
             text={'비밀번호 변경'}
             isActive={activator()}
             requestPath={'api/users/modifyUser'}

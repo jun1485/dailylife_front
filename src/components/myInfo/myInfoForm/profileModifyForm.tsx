@@ -77,16 +77,32 @@ function ProfileModifyForm({ textArr }) {
             <div className="profile-input-wrapper">
               <div className="row">
                 <p className="profile-modify-input">프로필 이름</p>
-                <MyInfoInput formType={'username'} state={inputName} setState={setInputName} />
+                <MyInfoInput
+                  formType={'username'}
+                  state={inputName}
+                  setState={setInputName}
+                  description={
+                    '최대 12글자(공백포함)까지 이름으로 등록 가능합니다.'
+                  }
+                />
               </div>
               <div className="row">
                 <p className="profile-modify-input">프로필 아이디</p>
-                <MyInfoInput formType={'userId'} state={inputId} setState={setInputId} />
+                <MyInfoInput
+                  formType={'userId'}
+                  state={inputId}
+                  setState={setInputId}
+                  description={
+                    '사람들에게 회원님의 계정을 찾을 수 있도록 변경해주세요. '
+                  }
+                />
               </div>
             </div>
           </div>
           <div className="profile-form-submit-button-wrapper">
             <MyInfoButton
+              width="69px"
+              height="28px"
               text={'수정 완료'}
               isActive={activator()}
               requestPath={'api/users/modifyUser'}

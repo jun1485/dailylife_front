@@ -149,7 +149,7 @@ function SignUp() {
             ))}
             <SubmitButton
               text="가입하기"
-              height="52px"
+              height="50px"
               fontSize="17px"
               isActive={activator()}
             />

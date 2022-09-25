@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styled from 'styled-components';
 
 interface Props {
@@ -18,10 +17,6 @@ export default function SubmitButton({
   height = 'auto',
   fontSize = '13px',
 }: Props) {
-  useEffect(() => {
-    console.log('isActive:', isActive);
-  });
-
   return (
     <StyledButton
       isActive={isActive}
@@ -43,8 +38,8 @@ const StyledButton = styled.button<{
   background-color: ${(props) => (props.isActive ? '#CF990C' : '#BCBCBC')};
   border: 1px solid ${(props) => (props.isActive ? '#CF990C' : '#BCBCBC')};
   border-radius: 4px;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => (props.width ? props.width : '85px')};
+  height: ${(props) => (props.height ? props.height : '28px')};
   color: white;
   font-family: Pretendard;
   font-weight: 500px;
