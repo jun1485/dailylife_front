@@ -7,8 +7,7 @@ function DeleteCommentPopup(props) {
   const dispatch = useAppDispatch();
   // const { replyList } = useSelector((state) => state.comment);
   const { replyList } = useAppSelector((state) => state.comment);
-  const { setReplyDeleteFlag, replyDeleteFlag } =
-    props;
+  const { setReplyDeleteFlag, replyDeleteFlag } = props;
   const handleDeleteComment = (replyNum: number) => {
     axios
       .delete(`${process.env.REACT_APP_HOST}/api/reply/delete/${replyNum}`, {
@@ -17,7 +16,9 @@ function DeleteCommentPopup(props) {
         },
       })
       .then(() => {
-        const idx = replyList.findIndex((item: { replyNum: number }) => item.replyNum === replyNum);
+        const idx = replyList.findIndex(
+          (item: { replyNum: number }) => item.replyNum === replyNum,
+        );
         const newReplyList = [...replyList];
         newReplyList.splice(idx, 1);
         dispatch(updateReplyList(newReplyList));

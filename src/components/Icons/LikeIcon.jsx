@@ -14,7 +14,6 @@ function LikeIcon({ replyNum }) {
             localStorage.getItem('accessToken'),
         },
       }).then(res => {
-        console.log(res)
         setLikeState(res.data);
       });
 

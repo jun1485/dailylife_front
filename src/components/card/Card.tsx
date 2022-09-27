@@ -7,10 +7,23 @@ import PostModal from '../postModal/index';
 import CardItem from './CardItem';
 import './Cards.scss';
 
+export type CardItemData = {
+  boardNum?: number;
+  src?: string;
+  title: string;
+  content: string;
+  heartState: number;
+  path: string;
+};
+
+export interface CardProps {
+  data: CardItemData;
+}
+
 function Cards() {
   const dispatch = useDispatch();
   const cardData = useSelector((state) => state.post);
-  const [modalOpacity, setModalOpacity] = useState(0);
+  const [modalOpacity, setModalOpacity] = useState<number>(0);
 
   useEffect(() => {
     async function fetchCards() {

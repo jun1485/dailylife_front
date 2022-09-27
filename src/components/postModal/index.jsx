@@ -8,7 +8,6 @@ import { updateModalStatus } from 'reducers/kebab.postModal';
 function PostModal(props) {
   const dispatch = useDispatch();
   const { modalOpacity, setModalOpacity } = props;
-  console.log('executes PostModal');
   const currentPostData = useSelector((state) => state.selectedPostData);
 
   return (

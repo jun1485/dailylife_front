@@ -14,7 +14,7 @@ export interface PayloadType {
   userId: string;
   password: string;
   passwordConfirm: string;
-};
+}
 
 function SignUp() {
   const signUpData = {
@@ -38,13 +38,6 @@ function SignUp() {
     const fifthErrorMsg = validate(inputValues.passwordConfirm, 'password')[
       'password'
     ];
-    console.log(
-      firstErrorMsg,
-      secondErrorMsg,
-      thirdErrorMsg,
-      fourthErrorMsg,
-      fifthErrorMsg,
-    );
 
     if (
       firstErrorMsg ||

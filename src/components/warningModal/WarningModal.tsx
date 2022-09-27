@@ -7,7 +7,7 @@ export default function WarningModal() {
       <WarningIcon />
       <WarningInfo>로그인을 실패했습니다. </WarningInfo>
       <WarningExplain>
-        계정의 아이디 또는 비밀번호가 맞는지 다시 확인해 주세요.
+        계정의 아이디 또는 비밀번호가 맞는지 다시 확인해 주세요!
       </WarningExplain>
     </div>
   );
