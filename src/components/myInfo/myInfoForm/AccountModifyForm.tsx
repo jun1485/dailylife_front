@@ -4,8 +4,10 @@ import MyInfoInput from './MyInfoInput';
 import MyInfoTitle from './MyInfoTitle';
 import MyInfoButton from 'components/buttons/SubmitButton';
 import { validate } from 'common/utils';
+import { useLocation } from 'react-router-dom';
 
 function AccountModifyForm({ textArr }) {
+  const location = useLocation();
   const [inputCurrentPassword, setInputCurrentPassword] = useState('');
   const [inputNewPassword, setInputNewPassword] = useState('');
   const [inputConfirmPassword, setInputConfirmPassword] = useState('');

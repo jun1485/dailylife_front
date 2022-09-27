@@ -10,7 +10,7 @@ import {
 
 import persistedReducer from '../reducers/index';
 
-export default configureStore({
+export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -19,3 +19,5 @@ export default configureStore({
       },
     }),
 });
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

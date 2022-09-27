@@ -3,7 +3,7 @@ import Pagination from 'react-js-pagination';
 import 'components/pagingProvider/pagingProvider.scss';
 
 function PagingProvider({
-  itemCountPerPage,
+  boardCountPerPage,
   pageRangeCount,
   page,
   totalPostCount,
@@ -12,7 +12,7 @@ function PagingProvider({
   return (
     <Pagination
       activePage={page}
-      itemsCountPerPage={itemCountPerPage}
+      itemsCountPerPage={boardCountPerPage}
       totalItemsCount={Number(totalPostCount)}
       pageRangeDisplayed={pageRangeCount}
       prevPageText={<img src="/assets/prevPage.png" alt="" />}

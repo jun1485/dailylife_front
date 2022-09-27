@@ -146,4 +146,4 @@ const Description = styled.p<{ isValid: boolean | undefined }>`
   font-weight: 300;
   line-height: 14.4px;
   margin-top: 5px;
-`;
+`

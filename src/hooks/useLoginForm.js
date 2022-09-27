@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { useNavigate } from 'react-router-dom';
 
 import userApi from '../apis/userApi';
@@ -9,7 +9,7 @@ import { myInfoActions } from '../reducers/myInfo';
 const useLoginForm = (initialValues) => {
   const [formData, setFormData] = useState(initialValues);
   const [loading, setLoading] = useState();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleChange = (event) => {

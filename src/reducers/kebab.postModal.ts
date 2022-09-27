@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const kebabModal = createSlice({
   name: 'kebabModal',
@@ -6,9 +6,9 @@ const kebabModal = createSlice({
     isOpen: false,
   },
   reducers: {
-    updateModalStatus: (state, action) => ({
-      isOpen: action.payload,
-    }),
+    updateModalStatus: (state, action: PayloadAction<boolean>): void => {
+      state.isOpen = action.payload;
+    },
   },
 });
 

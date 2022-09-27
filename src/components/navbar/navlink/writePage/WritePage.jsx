@@ -4,7 +4,7 @@ import { useState } from 'react';
 import CloseButtonIcon from 'components/Icons/CloseButtonIcon';
 import './WritePage.scss';
 
-function writePage(props) {
+function WritePage(props) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [thumbNail] = useState('dummy');
@@ -114,10 +114,10 @@ function writePage(props) {
                 <button
                   type="submit"
                   className="submit-btn"
-                // onClick={closeModal}
-                //   onClick={() => {
-                //     if (fileImage === '' ? (alert('이미지를 등록해주세요!')))
-                // }}
+                  // onClick={closeModal}
+                  //   onClick={() => {
+                  //     if (fileImage === '' ? (alert('이미지를 등록해주세요!')))
+                  // }}
                 >
                   게시물 등록
                 </button>
@@ -138,4 +138,4 @@ function writePage(props) {
   );
 }
 
-export default writePage;
+export default WritePage;

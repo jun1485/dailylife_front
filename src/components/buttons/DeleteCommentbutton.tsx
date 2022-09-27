@@ -1,22 +1,23 @@
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from 'store/hooks';
 
 import { updateReplyList } from 'reducers/comment';
 
 function DeleteCommentPopup(props) {
-  const dispatch = useDispatch();
-  const { replyList } = useSelector(state => state.comment);
+  const dispatch = useAppDispatch();
+  // const { replyList } = useSelector((state) => state.comment);
+  const { replyList } = useAppSelector((state) => state.comment);
   const { setReplyDeleteFlag, replyDeleteFlag } =
     props;
-  const handleDeleteComment = (replyNum) => {
+  const handleDeleteComment = (replyNum: number) => {
     axios
       .delete(`${process.env.REACT_APP_HOST}/api/reply/delete/${replyNum}`, {
         headers: {
-          'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
+          'X-ACCESS-TOKEN': localStorage.getItem('accessToken')!,
         },
       })
       .then(() => {
-        const idx = replyList.findIndex((item) => item.replyNum === replyNum);
+        const idx = replyList.findIndex((item: { replyNum: number }) => item.replyNum === replyNum);
         const newReplyList = [...replyList];
         newReplyList.splice(idx, 1);
         dispatch(updateReplyList(newReplyList));
