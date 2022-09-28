@@ -1,22 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type IResults = string[];
-
-interface IState {
-  results: IResults;
-}
-
 const searchResult = createSlice({
   name: 'searchResult',
   initialState: {
-    results: [] as IResults,
+    result: '',
   },
   reducers: {
-    bringItems: (state, action: PayloadAction<IResults>): IState => ({
-      results: [...state.results, ...action.payload],
-    }),
+    updateSearchedKeyword: (state, action: PayloadAction<string>) => {
+      state.result = action.payload;
+    },
   },
 });
 
-export const searchedDataActions = searchResult.actions;
+export const { updateSearchedKeyword } = searchResult.actions;
 export default searchResult;

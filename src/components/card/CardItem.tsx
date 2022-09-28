@@ -11,7 +11,6 @@ function CardItem({
   content,
   heartState,
   setModalOpacity,
-  path,
 }) {
 
   const dispatch = useDispatch();
@@ -57,7 +56,7 @@ function CardItem({
         },
         {
           headers: {
-            'X-ACCESS-TOKEN': localStorage.getItem('accessToken'),
+            'X-ACCESS-TOKEN': localStorage.getItem('accessToken')!,
           },
         },
       )

@@ -1,24 +1,19 @@
 import axios from 'axios';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
 import '../Searching.scss';
 // eslint-disable-next-line import/order
 
 // import useAxios from '../../../../hooks/useAxios';
 
 import { postActions } from 'reducers/post';
+import { useAppDispatch } from 'store/hooks';
+import { updateSearchedKeyword } from 'reducers/searchResult';
 
 function SearchForm() {
-  const dispatch = useDispatch();
-  const [typedKeyword, setTypedKeyword] = useState();
+  const dispatch = useAppDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
   };
-  // const getPostData = (url) => {
-  //   useAxios(url);
-  // };
 
   return (
     <div id="wrap">
@@ -29,21 +24,20 @@ function SearchForm() {
           name="search"
           type="text"
           placeholder="검색"
-          onChange={(e) => {
-            setTypedKeyword(e.target.value);
-          }}
-          onKeyUp={() => {
+          onKeyUp={(e) => {
             if (window.event.keyCode === 13) {
+              dispatch(updateSearchedKeyword(e.target.value));
               // getPostData(`process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`);
               // console.log(getPostData);
               // dispatch(postActions.updateItems(getPostData.data));
               // setTypedKeyword(e.target.value);
               axios
                 .get(
-                  `${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`,
+                  `${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${e.target.value}`,
                   {},
                 )
                 .then((res) => {
+                  console.log('in SearchForm', res.data);
                   dispatch(postActions.updateItems(res.data));
                 })
                 .catch((res) => {

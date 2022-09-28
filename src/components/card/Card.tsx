@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from 'store/hooks';
 
 import { postActions } from '../../reducers/post';
 import PostModal from '../postModal/index';
@@ -22,7 +23,7 @@ export interface CardProps {
 
 function Cards() {
   const dispatch = useDispatch();
-  const cardData = useSelector((state) => state.post);
+  const cardData = useAppSelector((state) => state.post);
   const [modalOpacity, setModalOpacity] = useState<number>(0);
 
   useEffect(() => {
@@ -49,7 +50,6 @@ function Cards() {
                 title={data.title}
                 content={data.content}
                 heartState={data.heart}
-                path={data.path}
                 setModalOpacity={setModalOpacity}
               />
             ))}
