@@ -1,8 +1,5 @@
 import axios from 'axios';
 import '../Searching.scss';
-// eslint-disable-next-line import/order
-
-// import useAxios from '../../../../hooks/useAxios';
 
 import { postActions } from 'reducers/post';
 import { useAppDispatch } from 'store/hooks';

@@ -27,15 +27,15 @@ function Cards() {
   const [modalOpacity, setModalOpacity] = useState<number>(0);
 
   useEffect(() => {
-    async function fetchCards() {
-      const getCards = await axios
-        .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`)
-        .then((res) => res.data);
-
-      dispatch(postActions.updateItems(getCards));
-    }
-    fetchCards();
-  }, [modalOpacity]);
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`)
+      .then((res) => {
+        dispatch(postActions.updateItems(res.data));
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  }, []);
 
   return (
     <div className="cards">

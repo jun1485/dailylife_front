@@ -17,15 +17,6 @@ function PostRender() {
   useEffect(() => {
     if (openPostModal === true) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
-
-    axios
-      .get(`${process.env.REACT_APP_HOST}/api/board/getBoardNotLogin`)
-      .then((res) => {
-        dispatch(postActions.updateItems(res.data));
-      })
-      .catch((res) => {
-        console.log(res);
-      });
   }, [openPostModal]);
 
   return (

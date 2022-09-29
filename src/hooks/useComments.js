@@ -11,7 +11,6 @@ const useComments = () => {
   /** 게시글 선택 시 replyList(댓글 정보 state) 업데이트 */
 
   const fetchComments = async (boardNum) => {
-    console.log(boardNum);
     const { data: res } = await commentApi.getComments(boardNum);
     // res.data = [{replyTime: '1시간'}, {replyTime: '2시간'}, {replyTime: '1분'}]
     // ['1시간', '2시간', '1분']

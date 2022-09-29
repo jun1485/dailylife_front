@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import PostRender from './PostRender';
-
 import MyPageIcon from 'components/Icons/MyPageIcon';
+import PostRender from './postRender';
 
 
 function NavLinks() {

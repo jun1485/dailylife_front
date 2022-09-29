@@ -12,7 +12,6 @@ function WritePage(props) {
   const [file, setFile] = useState('');
   const [fileImage, setFileImage] = useState('');
 
-  // eslint-disable-next-line consistent-return
   function handleSubmit(e) {
     e.preventDefault();
     if (localStorage.getItem('accessToken') === null)
@@ -33,11 +32,15 @@ function WritePage(props) {
           'Content-Type': 'multipart/form-data',
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res)
+        window.location.replace("/");
+      })
       .catch((err) => console.log(err));
+    closeModal();
   }
   const closeModal = (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     props.changeOpenPostModal(false);
   };
   return (
@@ -114,10 +117,10 @@ function WritePage(props) {
                 <button
                   type="submit"
                   className="submit-btn"
-                  // onClick={closeModal}
-                  //   onClick={() => {
-                  //     if (fileImage === '' ? (alert('이미지를 등록해주세요!')))
-                  // }}
+                // onClick={closeModal}
+                //   onClick={() => {
+                //     if (fileImage === '' ? (alert('이미지를 등록해주세요!')))
+                // }}
                 >
                   게시물 등록
                 </button>
