@@ -23,7 +23,6 @@ function SearchForm() {
           placeholder="검색"
           onKeyUp={(e) => {
             if (window.event.keyCode === 13) {
-              dispatch(updateSearchedKeyword(e.target.value));
               // getPostData(`process.env.REACT_APP_HOST}/api/board/getBoardNotLogin?keyword=${typedKeyword}&pg=1`);
               // console.log(getPostData);
               // dispatch(postActions.updateItems(getPostData.data));
@@ -34,8 +33,8 @@ function SearchForm() {
                   {},
                 )
                 .then((res) => {
-                  console.log('in SearchForm', res.data);
                   dispatch(postActions.updateItems(res.data));
+                  dispatch(updateSearchedKeyword(e.target.value));
                 })
                 .catch((res) => {
                   console.log(res);

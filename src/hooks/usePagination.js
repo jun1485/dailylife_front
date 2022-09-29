@@ -7,10 +7,8 @@ function usePagination({ boardCountPerPage, pageRangeCount }) {
   const dispatch = useAppDispatch();
   const store = useAppSelector((state) => state);
   const [postCount, setPostCount] = useState(0);
-
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    // console.log('usePagination');
-    console.log(store.post.myValues);
     async function foo() {
       const x = await fetchTotalBoardCount();
       setPostCount(() => x);
@@ -18,7 +16,7 @@ function usePagination({ boardCountPerPage, pageRangeCount }) {
     if (store.searchResult.result) {
       setPostCount(() => store.post.myValues.length);
     } else foo();
-  }, [store.post.myValues]);
+  }, [store.searchResult.result]);
 
   const handleChange = (selectedPage) => {
     const fetchPages = async () => {
@@ -27,6 +25,7 @@ function usePagination({ boardCountPerPage, pageRangeCount }) {
       console.log('postedItems:', postedItems);
     };
     fetchPages();
+    setPage(selectedPage);
   };
   const fetchTotalBoardCount = async () => {
     const { data: boardCount } = await postApi.getTotalPostCount();
@@ -39,7 +38,7 @@ function usePagination({ boardCountPerPage, pageRangeCount }) {
     pageRangeCount,
     postCount,
     handleChange,
-    fetchTotalBoardCount,
+    page,
   };
 }
 
